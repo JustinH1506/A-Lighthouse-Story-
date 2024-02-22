@@ -54,7 +54,22 @@ public class PlayerMovement : MonoBehaviour
 
     public void FixedUpdate()
     {
-        rb.velocity = new Vector3(inputX * moveSpeed, rb.velocity.y, inputZ * moveSpeed);
+        //rb.velocity = new Vector3(inputX * moveSpeed, rb.velocity.y, inputZ * moveSpeed);
+
+        Vector3 cameraForward = Camera.main.transform.forward;
+        Vector3 cameraRight = Camera.main.transform.right;
+
+        cameraForward.y = 0;
+        cameraRight.y = 0;
+        cameraForward = Vector3.forward.normalized;
+        cameraRight = Vector3.right.normalized;
+
+        Vector3 forwardRelativeMovementVector = inputZ * cameraForward;
+        Vector3 rightRelativeMovementVector = inputX * cameraRight;
+
+        Vector3 cameraRelativeMovement = forwardRelativeMovementVector + rightRelativeMovementVector;
+
+        transform.Translate(cameraRelativeMovement, Space.World);
     }
 
     private void Move(InputAction.CallbackContext context)
