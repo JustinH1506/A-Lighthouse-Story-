@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     [Tooltip("Speed to make the Player Move (Has to be negative.)")]
     [Space(5)]
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveSpeed, rotationSpeed;
 
     private float inputX, inputZ;
 
@@ -49,27 +49,44 @@ public class PlayerMovement : MonoBehaviour
         
         _playerControllerMap.Player.Move.performed -= Move;
         _playerControllerMap.Player.Move.canceled -= Move;
-
     }
 
     public void FixedUpdate()
     {
-        //rb.velocity = new Vector3(inputX * moveSpeed, rb.velocity.y, inputZ * moveSpeed);
+        /*rb.velocity = new Vector3(inputX * moveSpeed, rb.velocity.y, inputZ * moveSpeed);
 
+        if (rb.velocity != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }*/
+
+        /*Vector3 cameraForward = Camera.main.transform.forward;
+        Vector3 cameraRight = Camera.main.transform.right;*/
+        
         Vector3 cameraForward = Camera.main.transform.forward;
         Vector3 cameraRight = Camera.main.transform.right;
 
         cameraForward.y = 0;
         cameraRight.y = 0;
-        cameraForward = Vector3.forward.normalized;
-        cameraRight = Vector3.right.normalized;
+        cameraForward = cameraForward.normalized;
+        cameraRight = cameraRight.normalized;
 
         Vector3 forwardRelativeMovementVector = inputZ * cameraForward;
         Vector3 rightRelativeMovementVector = inputX * cameraRight;
 
         Vector3 cameraRelativeMovement = forwardRelativeMovementVector + rightRelativeMovementVector;
+        cameraRelativeMovement.Normalize();
 
-        transform.Translate(cameraRelativeMovement, Space.World);
+        transform.Translate(cameraRelativeMovement * moveSpeed * Time.deltaTime, Space.World);
+        
+        if (cameraRelativeMovement != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(cameraRelativeMovement, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
     }
 
     private void Move(InputAction.CallbackContext context)
