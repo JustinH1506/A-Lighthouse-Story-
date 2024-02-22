@@ -17,6 +17,10 @@ public class PlayerMovement : PlayerBase
 
     private float inputX, inputZ;
 
+    private bool isSneaking;
+    
+    private bool isSprinting;
+
     #endregion
     
     #region Methods
@@ -27,6 +31,10 @@ public class PlayerMovement : PlayerBase
 
         _playerControllerMap.Player.Move.performed += Move;
         _playerControllerMap.Player.Move.canceled += Move;
+        
+        _playerControllerMap.Player.Sneak.performed += Sneak;
+        
+        _playerControllerMap.Player.Sprint.performed += Sprint;
     }
 
     private void OnDisable()
@@ -39,17 +47,6 @@ public class PlayerMovement : PlayerBase
 
     public void FixedUpdate()
     {
-        /*rb.velocity = new Vector3(inputX * moveSpeed, rb.velocity.y, inputZ * moveSpeed);
-
-        if (rb.velocity != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
-
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-        }*/
-
-        /*Vector3 cameraForward = Camera.main.transform.forward;
-        Vector3 cameraRight = Camera.main.transform.right;*/
         
         Vector3 cameraForward = Camera.main.transform.forward;
         Vector3 cameraRight = Camera.main.transform.right;
@@ -80,6 +77,43 @@ public class PlayerMovement : PlayerBase
         inputX = context.ReadValue<Vector3>().x;
         
         inputZ = context.ReadValue<Vector3>().z;
+    }
+
+    private void Sneak(InputAction.CallbackContext context)
+    {
+        if (context.performed && !isSneaking)
+        {
+            isSneaking = true;
+
+            isSprinting = false;
+            
+            moveSpeed = 3;
+        }
+        else
+        {
+            isSneaking = false;
+
+            moveSpeed = 7;
+        }
+    }
+
+    private void Sprint(InputAction.CallbackContext context)
+    {
+        if (context.performed && !isSprinting)
+        {
+            isSprinting = true;
+
+            isSneaking = false;
+            
+            moveSpeed = 9;
+        }
+        else
+        {
+            isSprinting = false;
+
+            moveSpeed = 7;
+        }
+            
     }
     #endregion
 }
