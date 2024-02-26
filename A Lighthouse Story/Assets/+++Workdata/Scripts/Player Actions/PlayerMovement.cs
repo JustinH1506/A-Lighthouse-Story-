@@ -24,27 +24,6 @@ public class PlayerMovement : PlayerBase
     #endregion
     
     #region Methods
-
-    private void OnEnable()
-    {
-        _playerControllerMap.Enable();
-
-        _playerControllerMap.Player.Move.performed += Move;
-        _playerControllerMap.Player.Move.canceled += Move;
-        
-        _playerControllerMap.Player.Sneak.performed += Sneak;
-        
-        _playerControllerMap.Player.Sprint.performed += Sprint;
-    }
-
-    private void OnDisable()
-    {
-        _playerControllerMap.Disable();
-        
-        _playerControllerMap.Player.Move.performed -= Move;
-        _playerControllerMap.Player.Move.canceled -= Move;
-    }
-
     public void FixedUpdate()
     {
         
@@ -72,14 +51,14 @@ public class PlayerMovement : PlayerBase
         }
     }
 
-    private void Move(InputAction.CallbackContext context)
+    public void Move(InputAction.CallbackContext context)
     {
         inputX = context.ReadValue<Vector3>().x;
         
         inputZ = context.ReadValue<Vector3>().z;
     }
 
-    private void Sneak(InputAction.CallbackContext context)
+    public void Sneak(InputAction.CallbackContext context)
     {
         if (context.performed && !isSneaking)
         {
@@ -97,7 +76,7 @@ public class PlayerMovement : PlayerBase
         }
     }
 
-    private void Sprint(InputAction.CallbackContext context)
+    public void Sprint(InputAction.CallbackContext context)
     {
         if (context.performed && !isSprinting)
         {

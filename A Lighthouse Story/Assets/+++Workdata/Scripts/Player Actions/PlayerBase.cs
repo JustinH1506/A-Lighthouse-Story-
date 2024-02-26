@@ -5,12 +5,6 @@ using UnityEngine;
 
 public class PlayerBase : MonoBehaviour
 {
-    #region Scripts
-    
-    public PlayerControllerMap _playerControllerMap;
-    
-    #endregion
-    
     #region Variables
 
     public Rigidbody rb;
@@ -19,8 +13,6 @@ public class PlayerBase : MonoBehaviour
 
     private void Awake()
     {
-        _playerControllerMap = new PlayerControllerMap();
-
         rb = GetComponent<Rigidbody>();
     }
 }
