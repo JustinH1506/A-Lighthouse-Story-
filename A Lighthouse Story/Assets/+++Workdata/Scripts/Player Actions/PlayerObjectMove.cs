@@ -7,7 +7,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerObjectMove : PlayerBase
 {
+    [SerializeField] private PlayerMovement _playerMovement;
+    
     private bool raycastHit;
+
+    public bool isMoving;
     
     private GameObject moveableObject;
 
@@ -38,21 +42,25 @@ public class PlayerObjectMove : PlayerBase
 
     public void GetObject(InputAction.CallbackContext context)
     {
-        Debug.Log("Set to Child!");
-        
         if (raycastHit)
         {
             moveableObject.transform.SetParent(transform);
+
+            isMoving = true;
+
+            _playerMovement.moveSpeed = 3;
         }
     }
 
     public void LoseObject(InputAction.CallbackContext context)
     {
-        Debug.Log("Unset");
-        
         if(raycastHit)
         {
             moveableObject.transform.SetParent(null);
+
+            isMoving = false;
+            
+            _playerMovement.moveSpeed = 7;
         }
     }
 

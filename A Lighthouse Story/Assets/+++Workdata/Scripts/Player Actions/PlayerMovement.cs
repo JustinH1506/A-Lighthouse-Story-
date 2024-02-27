@@ -5,12 +5,18 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : PlayerBase
 {
+    #region Scripts
+    
+    [SerializeField] private PlayerObjectMove _playerObjectMove;
+    
+    #endregion 
+    
     #region Variables
     
     [Header("Movement")]
     [Tooltip("Speed to make the Player Move (Has to be negative.)")]
     [Space(5)]
-    [SerializeField] private float moveSpeed, rotationSpeed;
+    public float moveSpeed, rotationSpeed;
 
     private float inputX, inputZ;
 
@@ -23,7 +29,6 @@ public class PlayerMovement : PlayerBase
     #region Methods
     public void FixedUpdate()
     {
-        
         Vector3 cameraForward = Camera.main.transform.forward;
         Vector3 cameraRight = Camera.main.transform.right;
 
@@ -40,7 +45,7 @@ public class PlayerMovement : PlayerBase
 
         transform.Translate(cameraRelativeMovement * moveSpeed * Time.deltaTime, Space.World);
         
-        if (cameraRelativeMovement != Vector3.zero)
+        if (cameraRelativeMovement != Vector3.zero && !_playerObjectMove.isMoving)
         {
             Quaternion toRotation = Quaternion.LookRotation(cameraRelativeMovement, Vector3.up);
 
@@ -57,7 +62,7 @@ public class PlayerMovement : PlayerBase
 
     public void Sneak(InputAction.CallbackContext context)
     {
-        if (context.performed && !isSneaking)
+        if (context.performed && !isSneaking && !_playerObjectMove.isMoving)
         {
             isSneaking = true;
 
@@ -75,7 +80,7 @@ public class PlayerMovement : PlayerBase
 
     public void Sprint(InputAction.CallbackContext context)
     {
-        if (context.performed && !isSprinting)
+        if (context.performed && !isSprinting && !_playerObjectMove.isMoving)
         {
             isSprinting = true;
 
