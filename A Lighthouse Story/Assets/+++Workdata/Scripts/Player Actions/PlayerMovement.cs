@@ -70,7 +70,7 @@ public class PlayerMovement : PlayerBase
             
             moveSpeed = 3;
         }
-        else
+        else if(!_playerObjectMove.isMoving)
         {
             isSneaking = false;
 
@@ -88,7 +88,7 @@ public class PlayerMovement : PlayerBase
             
             moveSpeed = 9;
         }
-        else
+        else if(!_playerObjectMove.isMoving)
         {
             isSprinting = false;
 
