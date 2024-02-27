@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private PlayerMovement _playerMovement;
 
+    [SerializeField] private PlayerObjectMove _playerObjectMove;
+
     private void Awake()
     {
         _playerControllerMap = new PlayerControllerMap();
@@ -29,6 +31,9 @@ public class InputManager : MonoBehaviour
         _playerControllerMap.Player.Sneak.performed += _playerMovement.Sneak;
         
         _playerControllerMap.Player.Sprint.performed += _playerMovement.Sprint;
+        
+        _playerControllerMap.Player.MoveObject.started += _playerObjectMove.GetObject;
+        _playerControllerMap.Player.MoveObject.canceled += _playerObjectMove.LoseObject;
     }
     
     private void OnDisable()
@@ -40,6 +45,8 @@ public class InputManager : MonoBehaviour
         
         _playerControllerMap.Player.Move.performed -= _playerMovement.Move;
         _playerControllerMap.Player.Move.canceled -= _playerMovement.Move;
-
+        
+        _playerControllerMap.Player.MoveObject.started -= _playerObjectMove.GetObject;
+        _playerControllerMap.Player.MoveObject.canceled -= _playerObjectMove.LoseObject;
     }
 }

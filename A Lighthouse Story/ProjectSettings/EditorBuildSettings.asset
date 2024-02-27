@@ -14,4 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/+++Workdata/Scenes/Vertical Slice.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 40b11b4025f53ec4f9b066e59d0af92d,
+      type: 2}
