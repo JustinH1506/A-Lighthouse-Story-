@@ -13,7 +13,7 @@ public class FieldOfView : MonoBehaviour
     public LayerMask obstacleMask;
     
     public List<Transform> visibleTargets = new List<Transform>();
-
+    
     private void Start()
     {
         StartCoroutine("FindTargetsWithDelay", .2f);
@@ -27,7 +27,7 @@ public class FieldOfView : MonoBehaviour
             FindInvisibleTargets();
         }
     }
-    
+
     void FindInvisibleTargets()
     {
         visibleTargets.Clear();
@@ -50,7 +50,7 @@ public class FieldOfView : MonoBehaviour
             }
         }
     }
-
+    
     public Vector3 DirFromAngle(float angleInDegrees,bool angleIsGlobal)
     {
         if (!angleIsGlobal)
