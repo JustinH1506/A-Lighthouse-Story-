@@ -43,7 +43,7 @@ public class PlayerMovement : PlayerBase
         Vector3 cameraRelativeMovement = forwardRelativeMovementVector + rightRelativeMovementVector;
         cameraRelativeMovement.Normalize();
 
-        transform.Translate(cameraRelativeMovement * moveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(cameraRelativeMovement * moveSpeed * Time.fixedDeltaTime, Space.World);
         
         if (cameraRelativeMovement != Vector3.zero && !_playerObjectMove.isMoving)
         {

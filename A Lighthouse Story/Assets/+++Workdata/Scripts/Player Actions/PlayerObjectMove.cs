@@ -21,10 +21,10 @@ public class PlayerObjectMove : PlayerBase
     {
         RaycastHit hit;
         
+        Debug.DrawRay(transform.position, startPos.forward, Color.green);
+        
         if (Physics.Raycast(startPos.position, startPos.forward, out hit, 1))
         {
-            Debug.DrawRay(transform.position, startPos.forward, Color.green);
-            
             if(hit.collider.CompareTag("Chest"))
             {
                 raycastHit = true;
