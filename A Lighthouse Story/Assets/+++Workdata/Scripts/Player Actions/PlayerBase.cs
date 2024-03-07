@@ -4,12 +4,13 @@ public class PlayerBase : MonoBehaviour
 {
     #region Variables
 
-    public Rigidbody rb;
+    protected Rigidbody rb;
     
     #endregion
 
     private void Awake()
     {
+        //We get the Rigidbody.
         rb = GetComponent<Rigidbody>();
     }
 }

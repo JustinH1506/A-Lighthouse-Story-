@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Rigidbody))]
@@ -16,7 +17,18 @@ public class PlayerMovement : PlayerBase
     [Header("Movement")]
     [Tooltip("Speed to make the Player Move (Has to be negative.)")]
     [Space(5)]
-    public float moveSpeed, rotationSpeed;
+    public float acceleration;
+    
+    [Tooltip("How fast the character loses speed.")]
+    public float decelerationSpeed;
+    
+    [Tooltip("Maximum speed the character can move.")]
+    public float maxSpeed;
+    
+    [Header("Movement")]
+    [Tooltip("Speed to make the Player Move (Has to be negative.)")]
+    [Space(5)]
+    public float rotationSpeed;
 
     private float inputX, inputZ;
 
@@ -27,6 +39,8 @@ public class PlayerMovement : PlayerBase
     #endregion
     
     #region Methods
+    
+    
     public void FixedUpdate()
     {
         Vector3 cameraForward = Camera.main.transform.forward;
@@ -43,7 +57,23 @@ public class PlayerMovement : PlayerBase
         Vector3 cameraRelativeMovement = forwardRelativeMovementVector + rightRelativeMovementVector;
         cameraRelativeMovement.Normalize();
 
-        transform.Translate(cameraRelativeMovement * moveSpeed * Time.fixedDeltaTime, Space.World);
+        if(cameraRelativeMovement != Vector3.zero)
+        {
+            rb.AddForce(cameraRelativeMovement * acceleration, ForceMode.Force);
+
+            if (rb.velocity.magnitude > maxSpeed)
+            {
+                rb.velocity = rb.velocity.normalized * maxSpeed;
+                
+                Debug.Log(rb.velocity);
+            }
+        }
+        else
+        {
+            rb.AddForce(rb.velocity * -decelerationSpeed, ForceMode.Force);
+            
+            Debug.Log(rb.velocity);
+        }
         
         if (cameraRelativeMovement != Vector3.zero && !_playerObjectMove.isMoving)
         {
@@ -53,13 +83,18 @@ public class PlayerMovement : PlayerBase
         }
     }
 
+    
+    /// <summary>
+    /// We save the x and z value in inputX and inputZ.
+    /// </summary>
+    /// <param name="context"></param>
     public void Move(InputAction.CallbackContext context)
     {
         inputX = context.ReadValue<Vector3>().x;
         
         inputZ = context.ReadValue<Vector3>().z;
     }
-
+    
     public void Sneak(InputAction.CallbackContext context)
     {
         if (context.performed && !isSneaking && !_playerObjectMove.isMoving)
@@ -68,13 +103,13 @@ public class PlayerMovement : PlayerBase
 
             isSprinting = false;
             
-            moveSpeed = 3;
+            maxSpeed = 3;
         }
         else if(!_playerObjectMove.isMoving)
         {
             isSneaking = false;
 
-            moveSpeed = 7;
+            maxSpeed = 5;
         }
     }
 
@@ -86,15 +121,14 @@ public class PlayerMovement : PlayerBase
 
             isSneaking = false;
             
-            moveSpeed = 9;
+            maxSpeed = 7;
         }
         else if(!_playerObjectMove.isMoving)
         {
             isSprinting = false;
 
-            moveSpeed = 7;
+            maxSpeed = 5;
         }
-            
     }
     #endregion
 }

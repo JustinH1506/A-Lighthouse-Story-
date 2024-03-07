@@ -48,7 +48,7 @@ public class PlayerObjectMove : PlayerBase
 
             isMoving = true;
 
-            _playerMovement.moveSpeed = 3;
+            _playerMovement.maxSpeed = 3;
         }
     }
 
@@ -60,7 +60,7 @@ public class PlayerObjectMove : PlayerBase
 
             isMoving = false;
             
-            _playerMovement.moveSpeed = 7;
+            _playerMovement.maxSpeed = 7;
         }
     }
 
