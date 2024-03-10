@@ -19,6 +19,10 @@ public class PlayerObjectMove : PlayerBase
     
     private bool raycastHit;
 
+    [Tooltip("Maximum distance for the Raycast")]
+    [Range(0, 10)]
+    [SerializeField] private float raycastDistance;
+
     #endregion
     
     #region Declared Objects
@@ -36,7 +40,7 @@ public class PlayerObjectMove : PlayerBase
         
         Debug.DrawRay(transform.position, startPos.forward, Color.green);
         
-        if (Physics.Raycast(startPos.position, startPos.forward, out hit, 0.1f,1))
+        if (Physics.Raycast(startPos.position, startPos.forward, out hit, raycastDistance,1))
         {
             if(hit.collider.CompareTag("Chest"))
             {
@@ -44,12 +48,12 @@ public class PlayerObjectMove : PlayerBase
                 
                 moveableObject = hit.collider.gameObject;
             }
-            else
-            {
-                moveableObject = null;
+        }
+        else
+        {
+            moveableObject = null;
                 
-                raycastHit = false;
-            }
+            raycastHit = false;
         }
     }
 
@@ -61,7 +65,7 @@ public class PlayerObjectMove : PlayerBase
 
             isMoving = true;
 
-            //_playerMovement.maxSpeed = 3;
+            _playerMovement.maxSpeed = 3;
         }
     }
 
@@ -73,7 +77,7 @@ public class PlayerObjectMove : PlayerBase
 
             isMoving = false;
             
-            //_playerMovement.maxSpeed = 5;
+            _playerMovement.maxSpeed = 5;
         }
     }
     #endregion
