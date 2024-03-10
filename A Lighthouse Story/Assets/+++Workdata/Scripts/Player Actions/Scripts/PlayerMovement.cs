@@ -13,7 +13,7 @@ public class PlayerMovement : PlayerBase
     
     #region Variables
     
-    [Header("Movement floats")]
+    [Header("Movement")]
     [Tooltip("Speed to make the Player Move (Has to be negative.)")]
     [Space(5)]
     public float acceleration;
@@ -24,6 +24,7 @@ public class PlayerMovement : PlayerBase
     [Tooltip("Maximum speed the character can move.")]
     public float maxSpeed;
     
+    [Header("Rotation")]
     [Tooltip("Speed to make the Player Move (Has to be negative.)")]
     [Space(5)]
     public float rotationSpeed;

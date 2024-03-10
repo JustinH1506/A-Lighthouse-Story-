@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInputManager : MonoBehaviour
 {
@@ -43,6 +45,9 @@ public class PlayerInputManager : MonoBehaviour
         
         _playerControllerMap.Player.Move.performed += _playerMovement.Move;
         _playerControllerMap.Player.Move.canceled += _playerMovement.Move;
+
+        _playerControllerMap.Player.Climb.performed += _playerClimbing.Climb;
+        _playerControllerMap.Player.Climb.canceled += _playerClimbing.Climb;
         
         _playerControllerMap.Player.Sneak.performed += _playerMovement.Sneak;
         
@@ -62,8 +67,27 @@ public class PlayerInputManager : MonoBehaviour
         _playerControllerMap.Player.Move.performed -= _playerMovement.Move;
         _playerControllerMap.Player.Move.canceled -= _playerMovement.Move;
         
+        _playerControllerMap.Player.Climb.performed -= _playerClimbing.Climb;
+        _playerControllerMap.Player.Climb.canceled -= _playerClimbing.Climb;
+        
         _playerControllerMap.Player.MoveObject.started -= _playerObjectMove.GetObject;
         _playerControllerMap.Player.MoveObject.canceled -= _playerObjectMove.LoseObject;
+    }
+
+    private void ChangeActiveMovement(InputAction.CallbackContext context)
+    {
+        if (_playerMovement.isActiveAndEnabled)
+        {
+            _playerMovement.enabled = false;
+
+            _playerClimbing.enabled = true;
+        }
+        else
+        {
+            _playerMovement.enabled = true;
+
+            _playerClimbing.enabled = false;
+        }
     }
     #endregion
 }
