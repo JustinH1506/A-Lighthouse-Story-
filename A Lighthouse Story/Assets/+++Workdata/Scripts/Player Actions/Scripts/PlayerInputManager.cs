@@ -74,20 +74,29 @@ public class PlayerInputManager : MonoBehaviour
         _playerControllerMap.Player.MoveObject.canceled -= _playerObjectMove.LoseObject;
     }
 
-    private void ChangeActiveMovement(InputAction.CallbackContext context)
+    private void OnCollisionEnter(Collision col)
     {
-        if (_playerMovement.isActiveAndEnabled)
+        if(col.gameObject.CompareTag("Climbable"))
         {
             _playerMovement.enabled = false;
 
             _playerClimbing.enabled = true;
+            
+            Physics.gravity = new Vector3(0, -9.81f, 0);
         }
-        else
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if(other.gameObject.CompareTag("Climbable"))
         {
             _playerMovement.enabled = true;
 
             _playerClimbing.enabled = false;
+
+            Physics.gravity = new Vector3(0, -50, 0);
         }
     }
+
     #endregion
 }

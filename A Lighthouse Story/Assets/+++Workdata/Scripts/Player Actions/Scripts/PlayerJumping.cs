@@ -25,7 +25,7 @@ public class PlayerJumping : PlayerBase
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.performed && canJump && !_playerObjectMove.isMoving)
-           rb.AddForce(new Vector3(rb.velocity.x, jumpStrength, rb.velocity.z), ForceMode.Force);
+           rb.AddForce(new Vector3(rb.velocity.x, jumpStrength, rb.velocity.y), ForceMode.Acceleration);
     }
     
     #endregion

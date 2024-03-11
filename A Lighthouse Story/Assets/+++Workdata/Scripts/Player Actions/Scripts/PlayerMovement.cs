@@ -41,39 +41,52 @@ public class PlayerMovement : PlayerBase
     
     public void FixedUpdate()
     {
-        Vector3 cameraForward = Camera.main.transform.forward;
-        Vector3 cameraRight = Camera.main.transform.right;
+       Movement();
+    }
 
-        cameraForward.y = 0;
-        cameraRight.y = 0;
-        cameraForward = cameraForward.normalized;
-        cameraRight = cameraRight.normalized;
-
-        Vector3 forwardRelativeMovementVector = inputZ * cameraForward;
-        Vector3 rightRelativeMovementVector = inputX * cameraRight;
-
-        Vector3 cameraRelativeMovement = forwardRelativeMovementVector + rightRelativeMovementVector;
-        cameraRelativeMovement.Normalize();
-
-        if(cameraRelativeMovement != Vector3.zero)
+    private void Movement()
+    {
+        if(inputX != 0 || inputZ != 0)
         {
-            rb.AddForce(cameraRelativeMovement * acceleration, ForceMode.Force);
+            Vector3 cameraForward = Camera.main.transform.forward;
+            Vector3 cameraRight = Camera.main.transform.right;
 
-            if (rb.velocity.magnitude > maxSpeed)
+            cameraForward.y = 0;
+            cameraRight.y = 0;
+            cameraForward = cameraForward.normalized;
+            cameraRight = cameraRight.normalized;
+
+            Vector3 forwardRelativeMovementVector = inputZ * cameraForward;
+            Vector3 rightRelativeMovementVector = inputX * cameraRight;
+
+            Vector3 cameraRelativeMovement = forwardRelativeMovementVector + rightRelativeMovementVector;
+            cameraRelativeMovement.Normalize();
+
+            if (cameraRelativeMovement != Vector3.zero)
             {
-                rb.velocity = rb.velocity.normalized * maxSpeed;
-            }
-        }
-        else
-        {
-            rb.AddForce(rb.velocity * -decelerationSpeed, ForceMode.Force);
-        }
-        
-        if (cameraRelativeMovement != Vector3.zero && !_playerObjectMove.isMoving)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(cameraRelativeMovement, Vector3.up);
+                rb.AddForce(cameraRelativeMovement * acceleration, ForceMode.Force);
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+                if (rb.velocity.magnitude > maxSpeed)
+                {
+                    float yAxis = rb.velocity.y;
+                    
+                    rb.velocity = rb.velocity.normalized * maxSpeed;
+
+                    rb.velocity = new Vector3(rb.velocity.x, yAxis, rb.velocity.z);
+                }
+            }
+            else
+            {
+                rb.AddForce(rb.velocity * -decelerationSpeed, ForceMode.Force);
+            }
+
+            if (cameraRelativeMovement != Vector3.zero && !_playerObjectMove.isMoving)
+            {
+                Quaternion toRotation = Quaternion.LookRotation(cameraRelativeMovement, Vector3.up);
+
+                transform.rotation =
+                    Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+            }
         }
     }
 
