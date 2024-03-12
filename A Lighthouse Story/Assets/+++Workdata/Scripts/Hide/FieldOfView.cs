@@ -6,15 +6,31 @@ using UnityEngine.SceneManagement;
 
 public class FieldOfView : MonoBehaviour
 {
+    private Found _found;
+    
+    #region Variables
+
+    [Header("View Radius and Angle.")]
     public float viewRadius;
     [Range(0,360)]
     public float viewAngle;
 
+    [Header("Layer Masks.")]
     public LayerMask targetMask;
     public LayerMask obstacleMask;
     
+    [Header("List of Visible Targets.")]
     public List<Transform> visibleTargets = new List<Transform>();
     
+    public System.Action gameOver;
+
+    #endregion
+
+    private void Awake()
+    {
+        _found = GetComponent<Found>();
+    }
+
     private void Start()
     {
         StartCoroutine("FindTargetsWithDelay", .2f);
@@ -46,7 +62,7 @@ public class FieldOfView : MonoBehaviour
 
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
-                    visibleTargets.Add(target);
+                    _found.GameOver(target);
                 }
             }
         }
