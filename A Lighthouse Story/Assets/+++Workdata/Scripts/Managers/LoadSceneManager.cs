@@ -55,8 +55,6 @@ public class LoadSceneManager : MonoBehaviour
         newScene = SceneManager.GetSceneByName(newSceneName);
         SceneManager.SetActiveScene(newScene);
         
-        //waits for 1 second to show the loading screen for smooth scene switch
-        yield return new WaitForSeconds(1f);
         sceneLoaded = true;
         //lastly, we disable the loading screen and set the current scene accordingly
         currentScene = newSceneName;
