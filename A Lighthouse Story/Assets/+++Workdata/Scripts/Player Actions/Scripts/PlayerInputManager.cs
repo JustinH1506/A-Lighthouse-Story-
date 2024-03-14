@@ -81,8 +81,8 @@ public class PlayerInputManager : MonoBehaviour
             _playerMovement.enabled = false;
 
             _playerClimbing.enabled = true;
-            
-            Physics.gravity = new Vector3(0, -9.81f, 0);
+
+            _playerClimbing.rb.useGravity = false;
         }
     }
 
@@ -93,8 +93,8 @@ public class PlayerInputManager : MonoBehaviour
             _playerMovement.enabled = true;
 
             _playerClimbing.enabled = false;
-
-            Physics.gravity = new Vector3(0, -50, 0);
+            
+            _playerClimbing.rb.useGravity = true;
         }
     }
 

@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : PlayerBase
 {
@@ -29,6 +28,8 @@ public class PlayerMovement : PlayerBase
     [Space(5)]
     public float rotationSpeed;
 
+    [SerializeField] private float fallSpeed;
+
     private float inputX, inputZ;
 
     private bool isSneaking;
@@ -46,6 +47,7 @@ public class PlayerMovement : PlayerBase
 
     private void Movement()
     {
+        Debug.Log(rb.velocity.y);
         if(inputX != 0 || inputZ != 0)
         {
             Vector3 cameraForward = Camera.main.transform.forward;
@@ -87,6 +89,11 @@ public class PlayerMovement : PlayerBase
                 transform.rotation =
                     Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
             }
+        }
+        
+        if (rb.velocity.y < fallSpeed)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, fallSpeed, rb.velocity.z);
         }
     }
 

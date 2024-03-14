@@ -21,8 +21,6 @@ public class FieldOfView : MonoBehaviour
     
     [Header("List of Visible Targets.")]
     public List<Transform> visibleTargets = new List<Transform>();
-    
-    public System.Action gameOver;
 
     #endregion
 

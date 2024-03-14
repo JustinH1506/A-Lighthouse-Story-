@@ -4,7 +4,8 @@ public class PlayerBase : MonoBehaviour
 {
     #region Variables
 
-    protected Rigidbody rb;
+    [HideInInspector]
+    public Rigidbody rb;
     
     #endregion
 
