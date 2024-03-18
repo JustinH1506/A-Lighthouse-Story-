@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Chest
+  - Climbable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Target
   - Water
   - UI
-  - 
+  - Obstacle
   - 
   - 
   - 
