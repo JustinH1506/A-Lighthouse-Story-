@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -65,7 +61,7 @@ public class PlayerObjectMove : PlayerBase
 
             isMoving = true;
 
-            _playerMovement.maxSpeed = 3;
+            _playerMovement.maxSpeed = 0.5f;
         }
     }
 
@@ -77,7 +73,7 @@ public class PlayerObjectMove : PlayerBase
 
             isMoving = false;
             
-            _playerMovement.maxSpeed = 5;
+            _playerMovement.maxSpeed = 2;
         }
     }
     #endregion

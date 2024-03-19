@@ -1,12 +1,14 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class FieldOfView : MonoBehaviour
 {
+    #region Scripts
+    
     private Found _found;
+    
+    #endregion
     
     #region Variables
 
@@ -24,6 +26,7 @@ public class FieldOfView : MonoBehaviour
 
     #endregion
 
+    #region Methods
     private void Awake()
     {
         _found = GetComponent<Found>();
@@ -75,4 +78,6 @@ public class FieldOfView : MonoBehaviour
         
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
+    
+    #endregion
 }

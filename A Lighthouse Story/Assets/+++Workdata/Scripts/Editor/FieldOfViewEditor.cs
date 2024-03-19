@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.XR;
 
 [CustomEditor(typeof(FieldOfView))]
 public class FieldOfViewEditor : Editor
 {
+   #region MyRegion
+
    private void OnSceneGUI()
    {
       FieldOfView fow = (FieldOfView)target;
@@ -25,4 +23,6 @@ public class FieldOfViewEditor : Editor
          Handles.DrawLine(fow.transform.position, visibleTarget.position);
       }
    }
+
+   #endregion
 }

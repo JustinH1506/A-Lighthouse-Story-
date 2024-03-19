@@ -1,27 +1,35 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class IKFootSolver : MonoBehaviour
 {
+    #region Things
     [SerializeField] private LayerMask terrainLayer = default;
-    [SerializeField] Transform body = default;
+    [SerializeField] private Transform body = default;
     [SerializeField] private IKFootSolver otherFoot = default;
-    
+    #endregion
+
+    #region MyRegion
+
+    [Header("Movement")]
     [SerializeField] private float speed = 1;
     [SerializeField] private float stepDistance = 4;
     [SerializeField] private float stepLength = 4;
     [SerializeField] private float stepHeight = 1;
-
+    
     private float footSpacing;
     private float lerp;
 
+    #endregion
+    
+    #region Vector3
+    
     [SerializeField] private Vector3 footOffset = default;
     private Vector3 oldPosition, currentPosition, newPosition;
     private Vector3 oldNormal, currentNormal, newNormal;
+    
+    #endregion
 
+    #region Methods
     private void Start()
     {
         footSpacing = transform.localPosition.x;
@@ -82,4 +90,6 @@ public class IKFootSolver : MonoBehaviour
     {
         return lerp < 1;
     }
+    
+    #endregion
 }
