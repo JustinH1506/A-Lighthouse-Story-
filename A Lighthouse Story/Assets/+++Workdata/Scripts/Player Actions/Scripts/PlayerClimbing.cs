@@ -35,8 +35,6 @@ public class PlayerClimbing : PlayerBase
     {
         if(inputY != 0)
         {
-            Debug.Log(inputY);
-            
             rb.AddForce(new Vector3(rb.velocity.x, inputY * acceleration, rb.velocity.z), ForceMode.Force);
 
             if (rb.velocity.magnitude > maxSpeed)

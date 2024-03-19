@@ -47,7 +47,6 @@ public class PlayerMovement : PlayerBase
 
     private void Movement()
     {
-        Debug.Log(rb.velocity.y);
         if(inputX != 0 || inputZ != 0)
         {
             Vector3 cameraForward = Camera.main.transform.forward;
