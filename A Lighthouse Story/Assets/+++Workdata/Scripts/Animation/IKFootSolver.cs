@@ -15,6 +15,7 @@ public class IKFootSolver : MonoBehaviour
     [SerializeField] private float stepDistance = 4;
     [SerializeField] private float stepLength = 4;
     [SerializeField] private float stepHeight = 1;
+    [SerializeField] private float raycastDistance;
     
     private float footSpacing;
     private float lerp;
@@ -46,7 +47,7 @@ public class IKFootSolver : MonoBehaviour
 
         Ray ray = new Ray(body.position + (body.right * footSpacing), Vector3.down);
 
-        if (Physics.Raycast(ray, out RaycastHit info, 10, terrainLayer.value))
+        if (Physics.Raycast(ray, out RaycastHit info, raycastDistance, terrainLayer.value))
         {
             Debug.Log("Works");
             
