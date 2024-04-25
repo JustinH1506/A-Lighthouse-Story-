@@ -1,27 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 using UnityEngine.Serialization;
 
 public class EnemyMovement : MonoBehaviour
 {
     [FormerlySerializedAs("movement")] [SerializeField] private float moveSpeed;
-
-    [SerializeField] private Transform rightTarget;
+     
+    public Transform rightTarget;
     
     [SerializeField] private Transform leftTarget;
 
     private bool isLeft = true, isRight;
-
-    private Rigidbody rb;
-
-    private void Awake()
-    {
-        //rb = GetComponent<Rigidbody>();
-    }
-
+    
     private void FixedUpdate()
     {
         
