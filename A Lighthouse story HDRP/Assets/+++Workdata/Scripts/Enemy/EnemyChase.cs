@@ -7,8 +7,6 @@ public class EnemyChase : MonoBehaviour
 {
     [SerializeField] private EnemyMovement _enemyMovement;
 
-    [SerializeField] private Transform playerTransform;
-
     private bool playerIsTarget;
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +20,9 @@ public class EnemyChase : MonoBehaviour
     private void Update()
     {
         if (playerIsTarget)
-            _enemyMovement.rightTarget = playerTransform;
-
+        {
+            _enemyMovement.isLeft = false;
+            _enemyMovement.isRight = false;
+        }    
     }
 }

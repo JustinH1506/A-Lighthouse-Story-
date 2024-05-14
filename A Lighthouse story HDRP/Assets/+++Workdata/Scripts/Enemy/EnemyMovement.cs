@@ -1,37 +1,44 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [FormerlySerializedAs("movement")] [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveSpeed;
      
-    public Transform rightTarget;
+    [SerializeField] private Transform rightTarget;
     
     [SerializeField] private Transform leftTarget;
 
-    private bool isLeft = true, isRight;
+    [SerializeField] private Transform playerTransform;
+
+    public bool isLeft, isRight;
     
     private void FixedUpdate()
     {
-        
-        if (transform.position != rightTarget.position && !isRight)
+        if(isLeft || isRight)
         {
-            transform.position = Vector3.MoveTowards(transform.position, rightTarget.position, moveSpeed);
+            if (transform.position != rightTarget.position && !isRight)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, rightTarget.position, moveSpeed);
+            }
+            else if (transform.position == rightTarget.position)
+            {
+                isRight = true;
+                isLeft = false;
+            }
+
+            if (transform.position != leftTarget.position && !isLeft)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, leftTarget.position, moveSpeed);
+            }
+            else if (transform.position == leftTarget.position)
+            {
+                isLeft = true;
+                isRight = false;
+            }
         }
-        else if (transform.position == rightTarget.position)
+        else
         {
-            isRight = true;
-            isLeft = false;
-        }
-        
-        if(transform.position != leftTarget.position && !isLeft)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, leftTarget.position, moveSpeed);
-        }
-        else if (transform.position == leftTarget.position)
-        {
-            isLeft = true;
-            isRight = false;
+            transform.position = Vector3.MoveTowards(transform.position,playerTransform.position, moveSpeed);
         }
     }
 }
