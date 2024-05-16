@@ -90,10 +90,10 @@ public class PlayerMovement : PlayerBase
             }
         }
         
-        if (rb.velocity.y < fallSpeed)
+        /*if (rb.velocity.y < fallSpeed)
         {
             rb.velocity = new Vector3(rb.velocity.x, fallSpeed, rb.velocity.z);
-        }
+        }*/
     }
 
     
@@ -116,13 +116,13 @@ public class PlayerMovement : PlayerBase
 
             isSprinting = false;
             
-            maxSpeed = 3;
+            maxSpeed = 0.5f;
         }
         else if(!_playerObjectMove.isMoving)
         {
             isSneaking = false;
 
-            maxSpeed = 5;
+            maxSpeed = 1;
         }
     }
 
@@ -134,13 +134,13 @@ public class PlayerMovement : PlayerBase
 
             isSneaking = false;
             
-            maxSpeed = 7;
+            maxSpeed = 1.5f;
         }
         else if(!_playerObjectMove.isMoving)
         {
             isSprinting = false;
 
-            maxSpeed = 5;
+            maxSpeed = 1;
         }
     }
     #endregion

@@ -21,15 +21,22 @@ public class PlayerJumping : PlayerBase
     #endregion
     
     #region Methods
+    
 
     private void OnCollisionEnter(Collision other)
     {
-        canJump = true;
+        if (other.gameObject.layer != ground)
+        {
+            canJump = true; 
+        }
     }
 
     private void OnCollisionStay(Collision other)
     {
-        canJump = true;
+        if (other.gameObject.layer == ground)
+        {
+            canJump = true; 
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)

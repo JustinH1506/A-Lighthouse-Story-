@@ -1,6 +1,9 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Timeline;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerObjectMove : PlayerBase
 {
     #region Scripts
@@ -21,7 +24,7 @@ public class PlayerObjectMove : PlayerBase
 
     #endregion
     
-    #region Declared Objects
+    #region Objects
     
     private GameObject moveableObject;
 
@@ -58,10 +61,8 @@ public class PlayerObjectMove : PlayerBase
         if (raycastHit)
         {
             moveableObject.transform.SetParent(transform);
-
+            
             isMoving = true;
-
-            _playerMovement.maxSpeed = 0.5f;
         }
     }
 
@@ -70,10 +71,8 @@ public class PlayerObjectMove : PlayerBase
         if(raycastHit)
         {
             moveableObject.transform.SetParent(null);
-
-            isMoving = false;
             
-            _playerMovement.maxSpeed = 2;
+            isMoving = false;
         }
     }
     #endregion
