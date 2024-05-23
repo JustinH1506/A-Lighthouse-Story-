@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,12 +7,6 @@ using UnityEngine.Timeline;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerObjectMove : PlayerBase
 {
-    #region Scripts
-    
-    [SerializeField] private PlayerMovement _playerMovement;
-    
-    #endregion
-    
     #region Variables
     
     public bool isMoving;
@@ -23,16 +18,30 @@ public class PlayerObjectMove : PlayerBase
     [SerializeField] private float raycastDistance;
 
     #endregion
+
+    #region Components
+
+    private SpringJoint _springJoint;
+
+    #endregion
     
     #region Objects
     
     private GameObject moveableObject;
+
+    private Rigidbody moveableObjectRb;
 
     [SerializeField] private Transform startPos;
     
     #endregion
 
     #region Methods
+
+    private void Awake()
+    {
+        _springJoint = GetComponentInChildren<SpringJoint>();
+    }
+
     private void FixedUpdate()
     {
         RaycastHit hit;
@@ -60,7 +69,9 @@ public class PlayerObjectMove : PlayerBase
     {
         if (raycastHit)
         {
-            moveableObject.transform.SetParent(transform);
+            moveableObjectRb = moveableObject.GetComponent<Rigidbody>();
+
+            _springJoint.connectedBody = moveableObjectRb;
             
             isMoving = true;
         }
@@ -70,7 +81,7 @@ public class PlayerObjectMove : PlayerBase
     {
         if(raycastHit)
         {
-            moveableObject.transform.SetParent(null);
+            _springJoint.connectedBody = null;
             
             isMoving = false;
         }
