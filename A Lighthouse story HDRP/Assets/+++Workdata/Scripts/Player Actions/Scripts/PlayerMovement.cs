@@ -89,13 +89,7 @@ public class PlayerMovement : PlayerBase
                     Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
             }
         }
-        
-        /*if (rb.velocity.y < fallSpeed)
-        {
-            rb.velocity = new Vector3(rb.velocity.x, fallSpeed, rb.velocity.z);
-        }*/
     }
-
     
     /// <summary>
     /// We save the x and z value in inputX and inputZ.

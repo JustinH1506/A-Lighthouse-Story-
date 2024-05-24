@@ -41,9 +41,6 @@ public class PlayerInputManager : MonoBehaviour
         
         _playerControllerMap.Player.Move.performed += _playerMovement.Move;
         _playerControllerMap.Player.Move.canceled += _playerMovement.Move;
-
-       //_playerControllerMap.Player.Climb.performed += _playerClimbing.Climb;
-       //_playerControllerMap.Player.Climb.canceled += _playerClimbing.Climb;
         
         _playerControllerMap.Player.Sneak.performed += _playerMovement.Sneak;
         

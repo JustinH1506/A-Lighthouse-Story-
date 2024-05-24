@@ -10,8 +10,6 @@ public class PlayerObjectMove : PlayerBase
     #region Variables
     
     public bool isMoving;
-    
-    private bool raycastHit;
 
     [Tooltip("Maximum distance for the Raycast")]
     [Range(0, 10)]
@@ -52,26 +50,29 @@ public class PlayerObjectMove : PlayerBase
         {
             if(hit.collider.CompareTag("Chest"))
             {
-                raycastHit = true;
-                
                 moveableObject = hit.collider.gameObject;
             }
         }
         else
         {
             moveableObject = null;
-                
-            raycastHit = false;
+        }
+
+        if(isMoving && moveableObject != null)
+        {
+            transform.LookAt(new Vector3(moveableObject.transform.position.x, transform.position.y, moveableObject.transform.position.z));
         }
     }
 
     public void GetObject(InputAction.CallbackContext context)
     {
-        if (raycastHit)
+        if (moveableObject != null)
         {
             moveableObjectRb = moveableObject.GetComponent<Rigidbody>();
 
             _springJoint.connectedBody = moveableObjectRb;
+
+            moveableObjectRb.mass = 1;
             
             isMoving = true;
         }
@@ -79,9 +80,11 @@ public class PlayerObjectMove : PlayerBase
 
     public void LoseObject(InputAction.CallbackContext context)
     {
-        if(raycastHit)
+        if(moveableObject != null)
         {
             _springJoint.connectedBody = null;
+            
+            moveableObjectRb.mass = 100;
             
             isMoving = false;
         }
