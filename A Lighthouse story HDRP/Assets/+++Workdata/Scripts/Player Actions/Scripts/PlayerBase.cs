@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class PlayerBase : MonoBehaviour
 {
-    #region Variables
+    #region Components
+    
+    protected Rigidbody rb;
 
-    [HideInInspector]
-    public Rigidbody rb;
+    protected Animator anim;
     
     #endregion
 
@@ -14,6 +15,8 @@ public class PlayerBase : MonoBehaviour
     {
         //We get the Rigidbody.
         rb = GetComponent<Rigidbody>();
+
+        anim = GetComponent<Animator>();
     }
     
     #endregion

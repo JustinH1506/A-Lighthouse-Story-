@@ -8,7 +8,13 @@ public class PlayerMovement : PlayerBase
     
     [SerializeField] private PlayerObjectMove _playerObjectMove;
     
-    #endregion 
+    #endregion
+
+    #region Components
+
+    [SerializeField] private CapsuleCollider _capsuleCollider;
+    
+    #endregion
     
     #region Variables
     
@@ -28,8 +34,6 @@ public class PlayerMovement : PlayerBase
     [Space(5)]
     public float rotationSpeed;
 
-    [SerializeField] private float fallSpeed;
-
     private float inputX, inputZ;
 
     private bool isSneaking;
@@ -39,7 +43,6 @@ public class PlayerMovement : PlayerBase
     #endregion
     
     #region Methods
-    
     public void FixedUpdate()
     {
        Movement();
@@ -47,6 +50,14 @@ public class PlayerMovement : PlayerBase
 
     private void Movement()
     {
+        if (_playerObjectMove.isMoving)
+        {
+            maxSpeed = 0.25f;
+        }
+        else
+        {
+            maxSpeed = 1;
+        }
         if(inputX != 0 || inputZ != 0)
         {
             Vector3 cameraForward = Camera.main.transform.forward;
@@ -107,6 +118,10 @@ public class PlayerMovement : PlayerBase
         if (context.performed && !isSneaking && !_playerObjectMove.isMoving)
         {
             isSneaking = true;
+            
+            anim.SetBool("isSneaking", isSneaking);
+
+            _capsuleCollider.height = .5f;
 
             isSprinting = false;
             
@@ -116,6 +131,8 @@ public class PlayerMovement : PlayerBase
         {
             isSneaking = false;
 
+            _capsuleCollider.height = 1.9f;
+            
             maxSpeed = 1;
         }
     }
