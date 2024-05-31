@@ -4,9 +4,11 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : PlayerBase
 {
-    #region Scripts
+    #region Classes
     
     [SerializeField] private PlayerObjectMove _playerObjectMove;
+
+    public Data positionData;
     
     #endregion
 
@@ -41,8 +43,30 @@ public class PlayerMovement : PlayerBase
     private bool isSprinting;
 
     #endregion
+
+    #region Local classes
+    [System.Serializable]
+    public class Data
+    {
+        public Transform safePoint;
+    }
+    
+    #endregion
     
     #region Methods
+
+    private void Start()
+    {
+        var currentPosition = GameStateManager.instance.gameState.positionData;
+        
+        if (currentPosition != null)
+        {
+            positionData = currentPosition;
+            
+            transform.position = positionData.safePoint.position;
+        }
+    }
+
     public void FixedUpdate()
     {
        Movement();

@@ -10,6 +10,8 @@ using UnityEngine;
 public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager instance;
+    
+    public GameData gameState = new GameData();
 
     public const string mainMenuSceneName = "Main Menu";
     public const string level1SceneName = "Vertical Slice";
