@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class EnemyStates : MonoBehaviour
 {
-    [SerializeField] private EnemyMovement _enemyMovement;
+    [SerializeField] private EnemyChase enemyChase;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            _enemyMovement.enabled = true;
+            enemyChase.enabled = true;
         }
     }
 }

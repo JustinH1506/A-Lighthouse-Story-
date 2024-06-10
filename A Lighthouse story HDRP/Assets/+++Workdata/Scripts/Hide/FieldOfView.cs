@@ -7,6 +7,8 @@ public class FieldOfView : MonoBehaviour
     #region Scripts
     
     private Found _found;
+
+    [SerializeField] private EnemyPatrol _enemyPatrol;
     
     #endregion
     
@@ -63,7 +65,8 @@ public class FieldOfView : MonoBehaviour
 
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
-                    _found.GameOver(target);
+                    _enemyPatrol.isLeft = false;
+                    _enemyPatrol.isRight = false;
                 }
             }
         }

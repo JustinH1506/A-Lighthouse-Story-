@@ -8,33 +8,46 @@ public class EnemyPatrol : MonoBehaviour
     
     [SerializeField] private Transform leftTarget;
     
+    [SerializeField] private Transform playerPosition;
+    
     public bool isLeft, isRight;
 
-    private void FixedUpdate()
+    private void Update()
     {
         Patrol();
     }
 
     private void Patrol()
     {
-        if (transform.position != leftTarget.position && !isLeft)
+        if (!isLeft && !isRight)
         {
-            transform.position = Vector3.MoveTowards(transform.position, leftTarget.position, moveSpeed);
-        }
-        else if (transform.position == leftTarget.position) 
-        { 
-            isLeft = true; 
-            isRight = false;
+            transform.position = Vector3.MoveTowards(transform.position, playerPosition.position, moveSpeed);
+            
+            transform.LookAt(playerPosition);
+            
+            return;
         }
         
-        if (transform.position != rightTarget.position && !isRight)
+        if (isRight && !isLeft)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, leftTarget.position, moveSpeed);
+            
+            if (Vector3.Distance(transform.position, leftTarget.position) < 1f) 
+            { 
+                isLeft = true; 
+                isRight = false;
+            }
+        }
+        
+        if (isLeft && !isRight)
         {
             transform.position = Vector3.MoveTowards(transform.position, rightTarget.position, moveSpeed);
-        }
-        else if (transform.position == rightTarget.position) 
-        { 
-            isLeft = false; 
-            isRight = true;
+            
+            if (Vector3.Distance(transform.position, rightTarget.position) < 1f) 
+            { 
+                isLeft = false; 
+                isRight = true;
+            }
         }
     } 
 }

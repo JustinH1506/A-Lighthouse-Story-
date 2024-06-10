@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyChase : MonoBehaviour
 {
     #region Variables
 
