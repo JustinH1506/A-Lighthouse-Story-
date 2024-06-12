@@ -110,11 +110,13 @@ public class AutoFlip : MonoBehaviour {
 
         if (repeats == 1)
         {
+            yield return new WaitForSeconds(0.2f);
             yield return StartCoroutine(FlipRTL(xc, xl, h, frameTime, dx, 0));
         }
 
         if (repeats == 2)
         {
+            yield return new WaitForSeconds(0.2f);
             yield return StartCoroutine(FlipRTL(xc, xl, h, frameTime, dx, 1));
         }
     }
@@ -134,12 +136,14 @@ public class AutoFlip : MonoBehaviour {
         
         if (repeats == 1)
         {
-            yield return StartCoroutine(FlipRTL(xc, xl, h, frameTime, dx, 0));
+            yield return new WaitForSeconds(0.2f);
+            yield return StartCoroutine(FlipLTR(xc, xl, h, frameTime, dx, 0));
         }
 
         if (repeats == 2)
         {
-            yield return StartCoroutine(FlipRTL(xc, xl, h, frameTime, dx, 1));
+            yield return new WaitForSeconds(0.2f);
+            yield return StartCoroutine(FlipLTR(xc, xl, h, frameTime, dx, 1));
         }
     }
 }
