@@ -25,7 +25,7 @@ public class PlayerObjectMove : PlayerBase
     
     private GameObject moveableObject;
 
-    private Rigidbody moveableObjectRb;
+    public Rigidbody moveableObjectRb;
 
     [SerializeField] private Transform startPos;
     
@@ -62,29 +62,29 @@ public class PlayerObjectMove : PlayerBase
         }
     }
 
-    public void GetObject(InputAction.CallbackContext context)
+    public void ConnectObject(InputAction.CallbackContext context)
     {
         if (moveableObject != null)
         {
             moveableObjectRb = moveableObject.GetComponent<Rigidbody>();
 
-            _springJoint.connectedBody = moveableObjectRb;
+            //_springJoint.connectedBody = moveableObjectRb;
 
-            moveableObjectRb.mass = 1;
+            //moveableObjectRb.mass = 1;
             
             isMoving = true;
         }
     }
 
-    public void LoseObject(InputAction.CallbackContext context)
+    public void DisconnectObject(InputAction.CallbackContext context)
     {
         if(moveableObject != null)
         {
-            _springJoint.connectedBody = null;
-            
-            moveableObjectRb.mass = 100;
-            
             isMoving = false;
+            
+            //_springJoint.connectedBody = null;
+            
+            //moveableObjectRb.mass = 100;
         }
     }
     #endregion

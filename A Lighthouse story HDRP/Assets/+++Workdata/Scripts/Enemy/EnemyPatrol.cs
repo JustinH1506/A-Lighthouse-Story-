@@ -11,7 +11,7 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private Transform playerPosition;
     
     public bool isLeft, isRight;
-
+    
     private void Update()
     {
         Patrol();

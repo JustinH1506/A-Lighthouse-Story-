@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
-using Unity.VisualScripting;
-using UnityEditor.Searcher;
 using UnityEngine;
 
 public class CameraChange : MonoBehaviour

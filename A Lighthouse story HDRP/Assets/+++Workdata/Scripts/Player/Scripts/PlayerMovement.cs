@@ -21,7 +21,7 @@ public class PlayerMovement : PlayerBase
     #region Variables
     
     [Header("Movement")]
-    [Tooltip("Speed to make the Player Move (Has to be negative.)")]
+    [Tooltip("Speed to make the Player Move.")]
     [Space(5)]
     public float acceleration;
     
@@ -32,7 +32,7 @@ public class PlayerMovement : PlayerBase
     public float maxSpeed;
     
     [Header("Rotation")]
-    [Tooltip("Speed to make the Player Move (Has to be negative.)")]
+    [Tooltip("Speed to make the Player Move.")]
     [Space(5)]
     public float rotationSpeed;
 
@@ -100,6 +100,11 @@ public class PlayerMovement : PlayerBase
 
             if (cameraRelativeMovement != Vector3.zero)
             {
+                if (_playerObjectMove.isMoving)
+                {
+                    _playerObjectMove.moveableObjectRb.AddForce(cameraRelativeMovement * acceleration, ForceMode.Force); 
+                }
+                
                 rb.AddForce(cameraRelativeMovement * acceleration, ForceMode.Force);
 
                 if (rb.velocity.magnitude > maxSpeed)
@@ -116,6 +121,7 @@ public class PlayerMovement : PlayerBase
                 rb.AddForce(rb.velocity * -decelerationSpeed, ForceMode.Force);
             }
 
+            
             if (cameraRelativeMovement != Vector3.zero && !_playerObjectMove.isMoving)
             {
                 Quaternion toRotation = Quaternion.LookRotation(cameraRelativeMovement, Vector3.up);

@@ -46,8 +46,8 @@ public class PlayerInputManager : MonoBehaviour
         
         _playerControllerMap.Player.Sprint.performed += _playerMovement.Sprint;
         
-        _playerControllerMap.Player.MoveObject.started += _playerObjectMove.GetObject;
-        _playerControllerMap.Player.MoveObject.canceled += _playerObjectMove.LoseObject;
+        _playerControllerMap.Player.MoveObject.started += _playerObjectMove.ConnectObject;
+        _playerControllerMap.Player.MoveObject.canceled += _playerObjectMove.DisconnectObject;
     }
     
     private void OnDisable()
@@ -63,8 +63,8 @@ public class PlayerInputManager : MonoBehaviour
         //_playerControllerMap.Player.Climb.performed -= _playerClimbing.Climb;
         //_playerControllerMap.Player.Climb.canceled -= _playerClimbing.Climb;
         
-        _playerControllerMap.Player.MoveObject.started -= _playerObjectMove.GetObject;
-        _playerControllerMap.Player.MoveObject.canceled -= _playerObjectMove.LoseObject;
+        _playerControllerMap.Player.MoveObject.started -= _playerObjectMove.ConnectObject;
+        _playerControllerMap.Player.MoveObject.canceled -= _playerObjectMove.DisconnectObject;
     }
 
     /*private void OnCollisionEnter(Collision col)
