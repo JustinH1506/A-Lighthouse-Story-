@@ -78,10 +78,11 @@ public class PlayerMovement : PlayerBase
         {
             maxSpeed = 0.25f;
         }
-        else
+        else if(!isSneaking && !isSprinting)
         {
             maxSpeed = 1;
         }
+       
         if(inputX != 0 || inputZ != 0)
         {
             Vector3 cameraForward = Camera.main.transform.forward;
@@ -100,10 +101,10 @@ public class PlayerMovement : PlayerBase
 
             if (cameraRelativeMovement != Vector3.zero)
             {
-                if (_playerObjectMove.isMoving)
+                /*if (_playerObjectMove.isMoving)
                 {
                     _playerObjectMove.moveableObjectRb.AddForce(cameraRelativeMovement * acceleration, ForceMode.Force); 
-                }
+                }*/
                 
                 rb.AddForce(cameraRelativeMovement * acceleration, ForceMode.Force);
 

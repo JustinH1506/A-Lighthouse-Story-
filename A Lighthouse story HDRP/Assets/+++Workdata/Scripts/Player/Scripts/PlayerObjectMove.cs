@@ -68,9 +68,9 @@ public class PlayerObjectMove : PlayerBase
         {
             moveableObjectRb = moveableObject.GetComponent<Rigidbody>();
 
-            //_springJoint.connectedBody = moveableObjectRb;
+            _springJoint.connectedBody = moveableObjectRb;
 
-            //moveableObjectRb.mass = 1;
+            moveableObjectRb.mass = 1;
             
             isMoving = true;
         }
@@ -82,9 +82,9 @@ public class PlayerObjectMove : PlayerBase
         {
             isMoving = false;
             
-            //_springJoint.connectedBody = null;
+            _springJoint.connectedBody = null;
             
-            //moveableObjectRb.mass = 100;
+            moveableObjectRb.mass = 100;
         }
     }
     #endregion
