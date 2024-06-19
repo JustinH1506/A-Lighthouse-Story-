@@ -33,9 +33,7 @@ public class EnemyStates : MonoBehaviour
 
     IEnumerator WaitTimeDuringCrabShot()
     {
-        _playerMovement.enabled = false;
-        
-        _playerMovement.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        _playerMovement.DisableMovement();
         
         crabShot.enabled = true;
 
@@ -43,10 +41,11 @@ public class EnemyStates : MonoBehaviour
 
         crabShot.enabled = false;
         
-        yield return new WaitForSeconds(moveAgainWaitTime);
-
         enemyChase.enabled = true;
+        
+        //yield return new WaitForSeconds(moveAgainWaitTime);
+        
 
-        _playerMovement.enabled = true;
+        _playerMovement.isDisabled = false;
     }
 }

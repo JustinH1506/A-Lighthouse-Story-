@@ -62,11 +62,13 @@ public class FieldOfView : MonoBehaviour
             if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
             {
                 float dstToTarget = Vector3.Distance(transform.position, target.position);
-
+                
+                _enemyPatrol.isLeft = false;
+                _enemyPatrol.isRight = false;
+                
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
-                    _enemyPatrol.isLeft = false;
-                    _enemyPatrol.isRight = false;
+                    
                 }
             }
         }

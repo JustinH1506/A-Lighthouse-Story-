@@ -42,6 +42,8 @@ public class PlayerMovement : PlayerBase
     
     private bool isSprinting;
 
+    public bool isDisabled = false;
+
     #endregion
 
     #region Local classes
@@ -74,6 +76,8 @@ public class PlayerMovement : PlayerBase
 
     private void Movement()
     {
+        if (isDisabled) return;
+        
         if (_playerObjectMove.isMoving)
         {
             maxSpeed = 0.25f;
@@ -161,7 +165,9 @@ public class PlayerMovement : PlayerBase
         else if(!_playerObjectMove.isMoving)
         {
             isSneaking = false;
-
+            
+            anim.SetBool("isSneaking", isSneaking);
+            
             _capsuleCollider.height = 1.9f;
             
             maxSpeed = 1;
@@ -173,8 +179,12 @@ public class PlayerMovement : PlayerBase
         if (context.performed && !isSprinting && !_playerObjectMove.isMoving)
         {
             isSprinting = true;
+            
+            anim.SetBool("isSprinting", isSprinting);
 
             isSneaking = false;
+            
+            anim.SetBool("isSneaking", isSneaking);
             
             maxSpeed = 1.5f;
         }
@@ -184,6 +194,13 @@ public class PlayerMovement : PlayerBase
 
             maxSpeed = 1;
         }
+    }
+
+    public void DisableMovement()
+    {
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        isDisabled = true;
     }
     #endregion
 }

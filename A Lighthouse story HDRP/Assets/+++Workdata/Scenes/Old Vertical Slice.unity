@@ -4903,7 +4903,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566b74ad1c0ce294d804f0f9fd312ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   maxSpeed: 3
   acceleration: 50
   deceleration: 50
@@ -4919,10 +4918,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2bef8b31dff4cd40ae4a03df5b573f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  _playerMovement: {fileID: 1489599384}
   isMoving: 0
   raycastDistance: 1
+  moveableObjectRb: {fileID: 0}
   startPos: {fileID: 2142555785}
 --- !u!114 &1489599383
 MonoBehaviour:
@@ -4936,7 +4934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e5f5d607fae6445bc756d95ba98245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   _playerObjectMove: {fileID: 1489599382}
   jumpStrength: 50
   ground:
@@ -4955,13 +4952,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bee0b2bc40f044f8ed9cd489cca57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   _playerObjectMove: {fileID: 1489599382}
+  positionData:
+    safePoint: {fileID: 0}
+  _capsuleCollider: {fileID: 0}
   acceleration: 20
   decelerationSpeed: 20
   maxSpeed: 1
   rotationSpeed: 720
-  fallSpeed: -10
 --- !u!114 &1489599385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5843,7 +5841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1521632593
 Transform:
   m_ObjectHideFlags: 0
@@ -5907,6 +5905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a75540ab3f836646bf527bb7410467e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyPatrol: {fileID: 0}
   viewRadius: 40
   viewAngle: 67
   targetMask:
@@ -6365,7 +6364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566b74ad1c0ce294d804f0f9fd312ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   maxSpeed: 3
   acceleration: 50
   deceleration: 50
@@ -6381,10 +6379,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2bef8b31dff4cd40ae4a03df5b573f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  _playerMovement: {fileID: 1610349546}
   isMoving: 0
   raycastDistance: 1
+  moveableObjectRb: {fileID: 0}
   startPos: {fileID: 1862573969}
 --- !u!114 &1610349545
 MonoBehaviour:
@@ -6398,7 +6395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e5f5d607fae6445bc756d95ba98245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   _playerObjectMove: {fileID: 1610349544}
   jumpStrength: 50
   ground:
@@ -6417,13 +6413,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bee0b2bc40f044f8ed9cd489cca57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   _playerObjectMove: {fileID: 1610349544}
+  positionData:
+    safePoint: {fileID: 0}
+  _capsuleCollider: {fileID: 0}
   acceleration: 20
   decelerationSpeed: 20
   maxSpeed: 1
   rotationSpeed: 720
-  fallSpeed: -10
 --- !u!114 &1610349547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6452,7 +6449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a73704b6d95f984281115446b8a0731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   downStart: 0.5
   downEnd: 0.1
   fwd: 0.1
@@ -9336,13 +9332,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bee0b2bc40f044f8ed9cd489cca57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   _playerObjectMove: {fileID: 1966196988}
+  positionData:
+    safePoint: {fileID: 0}
+  _capsuleCollider: {fileID: 0}
   acceleration: 50
   decelerationSpeed: 50
   maxSpeed: 5
   rotationSpeed: 720
-  fallSpeed: -10
 --- !u!54 &1966196984
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9382,7 +9379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e5f5d607fae6445bc756d95ba98245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   _playerObjectMove: {fileID: 1966196988}
   jumpStrength: 50
   ground:
@@ -9413,10 +9409,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2bef8b31dff4cd40ae4a03df5b573f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  _playerMovement: {fileID: 1966196983}
   isMoving: 0
   raycastDistance: 0.2
+  moveableObjectRb: {fileID: 0}
   startPos: {fileID: 287662028}
 --- !u!114 &1966196989
 MonoBehaviour:
@@ -9430,7 +9425,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566b74ad1c0ce294d804f0f9fd312ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   maxSpeed: 3
   acceleration: 50
   deceleration: 50
