@@ -93,7 +93,7 @@ public class PlayerMovement : PlayerBase
         }
         else if(!isSneaking && !isSprinting)
         {
-            maxSpeed = 1;
+            maxSpeed = defaultSpeed;
         }
        
         if(inputX != 0 || inputZ != 0)

@@ -44,6 +44,9 @@ public class FieldOfView : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(delay);
+            
+            Debug.Log("Works here");
+            
             FindInvisibleTargets();
         }
     }
@@ -63,12 +66,12 @@ public class FieldOfView : MonoBehaviour
             {
                 float dstToTarget = Vector3.Distance(transform.position, target.position);
                 
-                _enemyPatrol.isLeft = false;
-                _enemyPatrol.isRight = false;
-                
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
+                    visibleTargets.Add(target);
                     
+                    _enemyPatrol.isLeft = false;
+                    _enemyPatrol.isRight = false;
                 }
             }
         }
