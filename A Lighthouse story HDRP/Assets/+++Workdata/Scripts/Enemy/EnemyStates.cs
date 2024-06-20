@@ -44,7 +44,7 @@ public class EnemyStates : MonoBehaviour
         enemyChase.enabled = true;
         
         //yield return new WaitForSeconds(moveAgainWaitTime);
-        
-        _playerMovement.DisableMovement();
+
+        _playerMovement.isDisabled = false;
     }
 }

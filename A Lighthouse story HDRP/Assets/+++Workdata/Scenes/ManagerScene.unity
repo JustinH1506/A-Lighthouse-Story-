@@ -664,7 +664,7 @@ MonoBehaviour:
   m_FlareTint: {r: 0.04955499, g: 0.090920806, b: 0.3018868, a: 1}
   m_FlareFalloff: 263.27
   m_SurfaceTexture: {fileID: 0}
-  m_SurfaceTint: {r: 0.08522601, g: 0.27409112, b: 0.7924528, a: 1}
+  m_SurfaceTint: {r: 0.037522234, g: 0.11305082, b: 0.3207547, a: 1}
   m_Distance: 1.5000066e+11
   m_UseRayTracedShadows: 0
   m_NumRayTracingSamples: 4

@@ -51,7 +51,7 @@ public class PlayerMovement : PlayerBase
     
     private bool isSprinting;
 
-    private bool isDisabled = false;
+    public bool isDisabled = false;
 
     #endregion
 
@@ -207,16 +207,9 @@ public class PlayerMovement : PlayerBase
 
     public void DisableMovement()
     {
-        if(!isDisabled)
-        {
-            gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
-            isDisabled = true;
-        }
-        else
-        {
-            isDisabled = false;
-        }
+        isDisabled = true;
+            
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
     #endregion
 }
