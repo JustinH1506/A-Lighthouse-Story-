@@ -45,7 +45,6 @@ public class EnemyStates : MonoBehaviour
         
         //yield return new WaitForSeconds(moveAgainWaitTime);
         
-
-        _playerMovement.isDisabled = false;
+        _playerMovement.DisableMovement();
     }
 }

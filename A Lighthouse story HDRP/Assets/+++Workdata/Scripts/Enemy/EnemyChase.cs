@@ -1,7 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
-
 
 public class EnemyChase : MonoBehaviour
 {
@@ -31,12 +28,11 @@ public class EnemyChase : MonoBehaviour
     {
         Vector3 targetPos = new Vector3(player.position.x, transform.position.y, player.position.z);
 
-        Vector3 direction = (targetPos - transform.position).normalized;
+        //Vector3 direction = (targetPos - transform.position).normalized;
             
-        
         //transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed);
         
-        rb.MovePosition(transform.position + direction * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(transform.position + targetPos * Time.deltaTime * moveSpeed);
     }
     
     #endregion

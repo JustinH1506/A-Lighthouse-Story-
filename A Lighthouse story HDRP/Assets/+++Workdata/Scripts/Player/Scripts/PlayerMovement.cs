@@ -31,6 +31,15 @@ public class PlayerMovement : PlayerBase
     [Tooltip("Maximum speed the character can move.")]
     public float maxSpeed;
     
+    [Tooltip("Speed the player has during normal walking.")]
+    public float defaultSpeed;
+
+    [Tooltip("Speed during sneaking.")]
+    public float sneakSpeed;
+
+    [Tooltip("Speed during sprinting.")]
+    public float sprintSpeed;
+    
     [Header("Rotation")]
     [Tooltip("Speed to make the Player Move.")]
     [Space(5)]
@@ -42,7 +51,7 @@ public class PlayerMovement : PlayerBase
     
     private bool isSprinting;
 
-    public bool isDisabled = false;
+    private bool isDisabled = false;
 
     #endregion
 
@@ -160,7 +169,7 @@ public class PlayerMovement : PlayerBase
 
             isSprinting = false;
             
-            maxSpeed = 0.5f;
+            maxSpeed = sneakSpeed;
         }
         else if(!_playerObjectMove.isMoving)
         {
@@ -170,7 +179,7 @@ public class PlayerMovement : PlayerBase
             
             _capsuleCollider.height = 1.9f;
             
-            maxSpeed = 1;
+            maxSpeed = defaultSpeed;
         }
     }
 
@@ -186,21 +195,28 @@ public class PlayerMovement : PlayerBase
             
             anim.SetBool("isSneaking", isSneaking);
             
-            maxSpeed = 1.5f;
+            maxSpeed = sprintSpeed;
         }
-        else if(!_playerObjectMove.isMoving)
+        else if(!_playerObjectMove.isMoving && isSprinting)
         {
             isSprinting = false;
 
-            maxSpeed = 1;
+            maxSpeed = defaultSpeed;
         }
     }
 
     public void DisableMovement()
     {
-        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        if(!isDisabled)
+        {
+            gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
-        isDisabled = true;
+            isDisabled = true;
+        }
+        else
+        {
+            isDisabled = false;
+        }
     }
     #endregion
 }
