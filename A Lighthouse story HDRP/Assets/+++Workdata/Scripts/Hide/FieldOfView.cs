@@ -6,8 +6,6 @@ public class FieldOfView : MonoBehaviour
 {
     #region Scripts
     
-    private Found _found;
-
     [SerializeField] private EnemyPatrol _enemyPatrol;
     
     #endregion
@@ -29,11 +27,7 @@ public class FieldOfView : MonoBehaviour
     #endregion
 
     #region Methods
-    private void Awake()
-    {
-        _found = GetComponent<Found>();
-    }
-
+    
     private void Start()
     {
         StartCoroutine("FindTargetsWithDelay", .2f);
@@ -69,9 +63,8 @@ public class FieldOfView : MonoBehaviour
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
                     visibleTargets.Add(target);
-                    
-                    _enemyPatrol.isLeft = false;
-                    _enemyPatrol.isRight = false;
+
+                    _enemyPatrol.foundPlayer = true;
                 }
             }
         }

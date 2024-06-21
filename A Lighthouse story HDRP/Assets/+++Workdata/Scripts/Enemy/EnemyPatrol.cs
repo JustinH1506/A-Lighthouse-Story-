@@ -1,54 +1,105 @@
+using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
-    
     [SerializeField] private Transform rightTarget;
     
     [SerializeField] private Transform leftTarget;
     
     [SerializeField] private Transform playerPosition;
     
-    public bool isLeft, isRight;
+    private NavMeshAgent _navMeshAgent;
+
+    private Animator _anim;
     
-    private void Update()
+    [SerializeField] private bool moveBack;
+
+    public bool foundPlayer;
+
+    private void Awake()
+    {
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+
+        _anim = GetComponentInChildren<Animator>();
+    }
+
+    private void FixedUpdate()
     {
         Patrol();
     }
 
     private void Patrol()
     {
-        if (!isLeft && !isRight)
+        if (foundPlayer)
         {
-            transform.position = Vector3.MoveTowards(transform.position, playerPosition.position, moveSpeed);
-            
-            transform.LookAt(playerPosition);
+            _navMeshAgent.SetDestination(playerPosition.position);
+
+            _navMeshAgent.angularSpeed = 120;
             
             return;
         }
         
-        if (isRight && !isLeft)
+        if (moveBack)
         {
-            transform.position = Vector3.MoveTowards(transform.position, leftTarget.position, moveSpeed);
+            _navMeshAgent.SetDestination(leftTarget.position);
             
-            if (Vector3.Distance(transform.position, leftTarget.position) < 1f) 
-            { 
-                isLeft = true; 
-                isRight = false;
+            _anim.SetFloat("speed", -1f);
+            if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+            {
+                moveBack = false;
+                _navMeshAgent.SetDestination(rightTarget.position);
+                
+                _anim.SetFloat("speed", 1f);
             }
         }
-        
-        if (isLeft && !isRight)
+        else
         {
-            transform.position = Vector3.MoveTowards(transform.position, rightTarget.position, moveSpeed);
+            _navMeshAgent.SetDestination(rightTarget.position);
             
-            if (Vector3.Distance(transform.position, rightTarget.position) < 1f) 
-            { 
-                isLeft = false; 
-                isRight = true;
+            _anim.SetFloat("speed", 1f);
+            if (!_navMeshAgent.pathPending)
+            {
+                if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+                {
+                    moveBack = true;
+                    
+                    _anim.SetFloat("speed", 1f);
+                }
             }
         }
+
+        /*if (!isLeft && !isRight)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, playerPosition.position, moveSpeed);
+
+                    transform.LookAt(playerPosition);
+
+                    return;
+                }
+
+                if (isRight && !isLeft)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, leftTarget.position, moveSpeed);
+
+                    if (Vector3.Distance(transform.position, leftTarget.position) < 1f)
+                    {
+                        isLeft = true;
+                        isRight = false;
+                    }
+                }
+
+                if (isLeft && !isRight)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, rightTarget.position, moveSpeed);
+
+                    if (Vector3.Distance(transform.position, rightTarget.position) < 1f)
+                    {
+                        isLeft = false;
+                        isRight = true;
+                    }
+                }*/
     } 
 }
 
