@@ -13,6 +13,8 @@ public class PlayerObjectMove : PlayerBase
     [Range(0, 10)]
     [SerializeField] private float raycastDistance;
 
+    [SerializeField] private LayerMask targetLayer;
+
     #endregion
 
     #region Components
@@ -44,10 +46,11 @@ public class PlayerObjectMove : PlayerBase
         
         Debug.DrawRay(transform.position, startPos.forward, Color.green);
         
-        if (Physics.Raycast(startPos.position, startPos.forward, out hit, raycastDistance,1))
+        if (Physics.Raycast(startPos.position, startPos.forward, out hit, raycastDistance,targetLayer))
         {
             if(hit.collider.CompareTag("Chest"))
             {
+                Debug.Log("Chest got it");
                 moveableObject = hit.collider.gameObject;
             }
         }

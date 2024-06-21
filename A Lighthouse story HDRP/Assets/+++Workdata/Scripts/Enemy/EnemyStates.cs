@@ -1,6 +1,5 @@
 using System.Collections;
 using Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyStates : MonoBehaviour
@@ -42,9 +41,9 @@ public class EnemyStates : MonoBehaviour
         crabShot.enabled = false;
         
         enemyChase.enabled = true;
-        
-        //yield return new WaitForSeconds(moveAgainWaitTime);
 
         _playerMovement.isDisabled = false;
+        
+        gameObject.SetActive(false);
     }
 }

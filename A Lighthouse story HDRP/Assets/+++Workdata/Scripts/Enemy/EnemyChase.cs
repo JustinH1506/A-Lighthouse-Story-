@@ -9,6 +9,8 @@ public class EnemyChase : MonoBehaviour
 
     [SerializeField] private Transform player;
 
+    [SerializeField] private Animator anim;
+
     private Rigidbody rb;
 
     private NavMeshAgent _navMeshAgent;
@@ -20,6 +22,8 @@ public class EnemyChase : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        anim = GetComponent<Animator>();
 
         _navMeshAgent = GetComponent<NavMeshAgent>();
     }
@@ -34,6 +38,10 @@ public class EnemyChase : MonoBehaviour
         Vector3 targetPos = new Vector3(player.position.x, transform.position.y, player.position.z);
 
         _navMeshAgent.SetDestination(targetPos);
+
+        anim.SetTrigger("isWalking");
+        
+        anim.SetFloat("speed", -1f);
 
         //Vector3 direction = (targetPos - transform.position).normalized;
 

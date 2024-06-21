@@ -7,5 +7,7 @@ public class EnemyChaseStop : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         _enemyChase.enabled = false;
+        
+        gameObject.SetActive(false);
     }
 }

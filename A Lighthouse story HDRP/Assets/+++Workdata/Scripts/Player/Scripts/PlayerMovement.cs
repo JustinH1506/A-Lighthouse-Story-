@@ -90,8 +90,12 @@ public class PlayerMovement : PlayerBase
         if (_playerObjectMove.isMoving)
         {
             maxSpeed = 0.25f;
+
+            isSprinting = false;
+
+            isSprinting = false;
         }
-        else if(!isSneaking && !isSprinting)
+        else
         {
             maxSpeed = defaultSpeed;
         }
