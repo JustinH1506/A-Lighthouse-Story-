@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject oceanPlane;
+    
     private AutoFlip autoFlipScript;
 
     private void Awake()
@@ -20,5 +22,10 @@ public class MainMenu : MonoBehaviour
     public void FlipPage()
     {
         autoFlipScript.FlipRightPage(0);
+    }
+
+    public void DisableOcean()
+    {
+        oceanPlane.SetActive(false);
     }
 }

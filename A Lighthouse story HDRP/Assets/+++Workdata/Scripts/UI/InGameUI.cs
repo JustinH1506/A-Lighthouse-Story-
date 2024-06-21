@@ -6,8 +6,11 @@ using UnityEngine.InputSystem;
 
 public class InGameUI : MonoBehaviour
 {
+    public static InGameUI Instance { get; private set; }
+    
     [SerializeField] private CanvasGroup inGameMenu;
     [SerializeField] private CanvasGroup inGameOptions;
+    [SerializeField] private CanvasGroup demoEndScreen;
     
     private PlayerInputManager playerInput;
 
@@ -17,9 +20,11 @@ public class InGameUI : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         inputActions = new PlayerControllerMap();
         inGameMenu.HideCanvasGroup();
         inGameOptions.HideCanvasGroup();
+        demoEndScreen.HideCanvasGroup();
     }
 
     private void Start()
@@ -66,6 +71,9 @@ public class InGameUI : MonoBehaviour
         gameObject.SetActive(isInGame);
     }
 
+    /// <summary>
+    /// opens in game menu
+    /// </summary>
     public void OpenInGameUI()
     {
         if (GameStateManager.instance.currentState == GameStateManager.GameState.InGame)
@@ -79,6 +87,9 @@ public class InGameUI : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    /// <summary>
+    /// close in game menu
+    /// </summary>
     public void CloseInGameUI()
     {
         inGameMenu.HideCanvasGroup();
@@ -89,20 +100,45 @@ public class InGameUI : MonoBehaviour
             playerInput.enabled = true;
     }
 
+    /// <summary>
+    /// opens the in game option menu
+    /// </summary>
     public void OpenOptionsMenu()
     {
         inGameMenu.HideCanvasGroup();
         inGameOptions.ShowCanvasGroup();
     }
 
+    /// <summary>
+    /// opens the main pause menu
+    /// </summary>
     public void OpenMenu()
     {
         inGameMenu.ShowCanvasGroup();
         inGameOptions.HideCanvasGroup();
     }
 
+    /// <summary>
+    /// shows the demo end screen
+    /// </summary>
+    public void ShowEndofDemo()
+    {
+        demoEndScreen.ShowCanvasGroup();
+    }
+
+    /// <summary>
+    /// loads main menu
+    /// </summary>
     public void LoadMainMenu()
     {
         GameStateManager.instance.GoToMainMenu();
+    }
+
+    /// <summary>
+    /// quits the game
+    /// </summary>
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
