@@ -38,34 +38,38 @@ public class EnemyPatrol : MonoBehaviour
 
             _navMeshAgent.angularSpeed = 120;
             
+            _anim.SetFloat("speed", -1f);
+            
             return;
         }
+        
+        _anim.SetTrigger("isWalking");
         
         if (moveBack)
         {
             _navMeshAgent.SetDestination(leftTarget.position);
             
-            _anim.SetFloat("speed", -1f);
+            _anim.SetFloat("speed", 1f);
             if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
             {
                 moveBack = false;
                 _navMeshAgent.SetDestination(rightTarget.position);
                 
-                _anim.SetFloat("speed", 1f);
+                _anim.SetFloat("speed", -1f);
             }
         }
         else
         {
             _navMeshAgent.SetDestination(rightTarget.position);
             
-            _anim.SetFloat("speed", 1f);
+            _anim.SetFloat("speed", -1f);
             if (!_navMeshAgent.pathPending)
             {
                 if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
                 {
                     moveBack = true;
                     
-                    _anim.SetFloat("speed", 1f);
+                    _anim.SetFloat("speed", -1f);
                 }
             }
         }
