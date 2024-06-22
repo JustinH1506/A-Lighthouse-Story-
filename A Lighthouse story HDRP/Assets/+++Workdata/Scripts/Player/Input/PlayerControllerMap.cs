@@ -251,6 +251,15 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SkipCredits"",
+                    ""type"": ""Button"",
+                    ""id"": ""e858b9fe-cedc-49e4-990b-6006a48ee3da"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -262,6 +271,17 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""388d4bf7-7511-4ad0-80a2-3ec15ae6eca7"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkipCredits"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -281,6 +301,7 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_PauseGame = m_UI.FindAction("PauseGame", throwIfNotFound: true);
+        m_UI_SkipCredits = m_UI.FindAction("SkipCredits", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -429,11 +450,13 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_PauseGame;
+    private readonly InputAction m_UI_SkipCredits;
     public struct UIActions
     {
         private @PlayerControllerMap m_Wrapper;
         public UIActions(@PlayerControllerMap wrapper) { m_Wrapper = wrapper; }
         public InputAction @PauseGame => m_Wrapper.m_UI_PauseGame;
+        public InputAction @SkipCredits => m_Wrapper.m_UI_SkipCredits;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -446,6 +469,9 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
             @PauseGame.started += instance.OnPauseGame;
             @PauseGame.performed += instance.OnPauseGame;
             @PauseGame.canceled += instance.OnPauseGame;
+            @SkipCredits.started += instance.OnSkipCredits;
+            @SkipCredits.performed += instance.OnSkipCredits;
+            @SkipCredits.canceled += instance.OnSkipCredits;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -453,6 +479,9 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
             @PauseGame.started -= instance.OnPauseGame;
             @PauseGame.performed -= instance.OnPauseGame;
             @PauseGame.canceled -= instance.OnPauseGame;
+            @SkipCredits.started -= instance.OnSkipCredits;
+            @SkipCredits.performed -= instance.OnSkipCredits;
+            @SkipCredits.canceled -= instance.OnSkipCredits;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -482,5 +511,6 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnPauseGame(InputAction.CallbackContext context);
+        void OnSkipCredits(InputAction.CallbackContext context);
     }
 }

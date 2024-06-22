@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/+++Workdata/Scenes/Vertical Slice.unity
     guid: b70dfb83b05562941aac31e8d9b206ad
+  - enabled: 1
+    path: Assets/+++Workdata/Scenes/Credits.unity
+    guid: 91fe603ab4376dc499bc920cf285929c
   m_configObjects: {}

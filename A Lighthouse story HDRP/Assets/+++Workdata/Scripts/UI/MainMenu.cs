@@ -28,4 +28,9 @@ public class MainMenu : MonoBehaviour
     {
         oceanPlane.SetActive(false);
     }
+
+    public void StartCredits()
+    {
+        LoadSceneManager.instance.SwitchScene("Credits");
+    }
 }
