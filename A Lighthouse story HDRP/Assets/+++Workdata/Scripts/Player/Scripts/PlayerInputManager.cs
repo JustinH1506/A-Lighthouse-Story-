@@ -17,6 +17,9 @@ public class PlayerInputManager : MonoBehaviour
     
     #region Methods
     
+    /// <summary>
+    /// We create a new PlayerControllerMap and get the PlayerJumping, PlayerMovement and PlayerObjectMove. 
+    /// </summary>
     private void Awake()
     {
         _playerControllerMap = new PlayerControllerMap();
@@ -28,6 +31,11 @@ public class PlayerInputManager : MonoBehaviour
         _playerObjectMove = GetComponent<PlayerObjectMove>();
     }
 
+    
+    /// <summary>
+    /// Enable the PlayerControllerMap.
+    /// Subscribe methods to certain buttons. 
+    /// </summary>
     private void OnEnable()
     {
         _playerControllerMap.Enable();
@@ -46,6 +54,10 @@ public class PlayerInputManager : MonoBehaviour
         _playerControllerMap.Player.MoveObject.canceled += _playerObjectMove.DisconnectObject;
     }
     
+    /// <summary>
+    /// Disable the PlayerControllerMap.
+    /// Desubscribe methods to certain buttons. 
+    /// </summary>
     private void OnDisable()
     {
         _playerControllerMap.Disable();

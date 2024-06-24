@@ -22,6 +22,10 @@ public class EnemyStates : MonoBehaviour
 
     #endregion
     
+    /// <summary>
+    /// If the player walks unti the collider Start Coroutine WaitTImeDuringShotCrab.
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -30,6 +34,17 @@ public class EnemyStates : MonoBehaviour
         }
     }
 
+    
+    /// <summary>
+    /// Call Player movements Disable Movement method.
+    /// Enable crabShot.
+    /// wait for the crabShotWaitTime value.
+    /// crabShot disabled.
+    /// enemy chase enabled.
+    /// playerMovement siDisabled bool is false.
+    /// gameObject gets Set InActive. 
+    /// </summary>
+    /// <returns></returns>
     IEnumerator WaitTimeDuringCrabShot()
     {
         _playerMovement.DisableMovement();

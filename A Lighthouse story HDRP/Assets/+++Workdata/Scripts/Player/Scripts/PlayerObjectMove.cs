@@ -35,11 +35,17 @@ public class PlayerObjectMove : PlayerBase
 
     #region Methods
 
+    /// <summary>
+    /// Get SpringJoint in Children.
+    /// </summary>
     private void Awake()
     {
         _springJoint = GetComponentInChildren<SpringJoint>();
     }
 
+    /// <summary>
+    /// Shoots a Raycast to find moveable objects and sets one if found to moveableObject. 
+    /// </summary>
     private void FixedUpdate()
     {
         RaycastHit hit;
@@ -65,6 +71,10 @@ public class PlayerObjectMove : PlayerBase
         }
     }
 
+    /// <summary>
+    /// We connect the Rigidbody to our SpringJoint ti have it moving. 
+    /// </summary>
+    /// <param name="context"></param>
     public void ConnectObject(InputAction.CallbackContext context)
     {
         if (moveableObject != null)
@@ -78,7 +88,11 @@ public class PlayerObjectMove : PlayerBase
             isMoving = true;
         }
     }
-
+    
+    /// <summary>
+    /// We disconnect the spring joint to make it not moveable. 
+    /// </summary>
+    /// <param name="context"></param>
     public void DisconnectObject(InputAction.CallbackContext context)
     {
         if(moveableObject != null)

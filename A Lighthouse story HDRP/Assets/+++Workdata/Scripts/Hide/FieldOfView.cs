@@ -28,11 +28,19 @@ public class FieldOfView : MonoBehaviour
 
     #region Methods
     
+    /// <summary>
+    /// Start FindTargetsWithDelay.
+    /// </summary>
     private void Start()
     {
         StartCoroutine("FindTargetsWithDelay", .2f);
     }
 
+    /// <summary>
+    /// Calls FindInvisisbleTarget.
+    /// </summary>
+    /// <param name="delay"></param>
+    /// <returns></returns>
     IEnumerator FindTargetsWithDelay(float delay)
     {
         while (true)
@@ -45,6 +53,9 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Finds the player when no obstacle is in the way and follows the target then. 
+    /// </summary>
     void FindInvisibleTargets()
     {
         visibleTargets.Clear();
@@ -70,6 +81,12 @@ public class FieldOfView : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Returns a Vector3 which gives us the Direction angle. 
+    /// </summary>
+    /// <param name="angleInDegrees"></param>
+    /// <param name="angleIsGlobal"></param>
+    /// <returns></returns>
     public Vector3 DirFromAngle(float angleInDegrees,bool angleIsGlobal)
     {
         if (!angleIsGlobal)

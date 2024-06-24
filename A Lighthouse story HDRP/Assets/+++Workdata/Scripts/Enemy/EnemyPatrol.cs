@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +17,9 @@ public class EnemyPatrol : MonoBehaviour
 
     public bool foundPlayer;
 
+    /// <summary>
+    /// Get NavMesh and Animator. 
+    /// </summary>
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -25,11 +27,18 @@ public class EnemyPatrol : MonoBehaviour
         _anim = GetComponentInChildren<Animator>();
     }
 
+    /// <summary>
+    /// Call Patrol method.
+    /// </summary>
     private void FixedUpdate()
     {
         Patrol();
     }
 
+    /// <summary>
+    /// Depending where the enemy is walks to the left or right.
+    /// If the enemy found a Player it will abandon the patrol and walk to the player. 
+    /// </summary>
     private void Patrol()
     {
         if (foundPlayer)

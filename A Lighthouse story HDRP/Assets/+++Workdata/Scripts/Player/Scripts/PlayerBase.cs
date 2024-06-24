@@ -11,6 +11,10 @@ public class PlayerBase : MonoBehaviour
     #endregion
 
     #region Methods
+    
+    /// <summary>
+    /// Gets Rigidbody and Animator. 
+    /// </summary>
     private void Awake()
     {
         //We get the Rigidbody.

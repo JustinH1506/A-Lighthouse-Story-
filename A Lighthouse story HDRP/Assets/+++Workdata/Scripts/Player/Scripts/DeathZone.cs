@@ -10,6 +10,11 @@ public class DeathZone : MonoBehaviour
     #endregion
     
     #region Classes
+    
+    /// <summary>
+    /// Reloads Level on death. 
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

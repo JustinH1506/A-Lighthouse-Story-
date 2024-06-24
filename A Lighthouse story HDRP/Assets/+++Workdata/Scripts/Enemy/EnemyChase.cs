@@ -19,6 +19,9 @@ public class EnemyChase : MonoBehaviour
 
     #region Methods
 
+    /// <summary>
+    /// Get the Rigidbody, Animator and NavMeshAgent. 
+    /// </summary>
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -28,11 +31,17 @@ public class EnemyChase : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
+    /// <summary>
+    /// Call Chase method. 
+    /// </summary>
     private void FixedUpdate()
     {
         Chase();
     }
 
+    /// <summary>
+    /// Start the Chase to the player and enable the Animations. 
+    /// </summary>
     private void Chase()
     {
         Vector3 targetPos = new Vector3(player.position.x, transform.position.y, player.position.z);

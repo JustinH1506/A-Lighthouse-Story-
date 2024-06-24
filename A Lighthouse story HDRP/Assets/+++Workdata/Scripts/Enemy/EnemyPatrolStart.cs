@@ -11,6 +11,11 @@ public class EnemyPatrolStart : MonoBehaviour
 
     [SerializeField] private PlayerMovement _playerMovement;
 
+    
+    /// <summary>
+    /// Starts WaitTimeDuringHideCrabShot.
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -19,6 +24,10 @@ public class EnemyPatrolStart : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Disables Players movement and changes camera. Waits for a while and brings the camera back. 
+    /// </summary>
+    /// <returns></returns>
     IEnumerator WaitTimeDuringHideCrabShot()
     {
         _playerMovement.DisableMovement();
