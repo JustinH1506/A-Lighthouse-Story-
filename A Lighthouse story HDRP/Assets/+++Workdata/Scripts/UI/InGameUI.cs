@@ -140,6 +140,8 @@ public class InGameUI : MonoBehaviour
     public void LoadMainMenu()
     {
         GameStateManager.instance.GoToMainMenu();
+
+        Time.timeScale = 1f;
     }
 
     /// <summary>
