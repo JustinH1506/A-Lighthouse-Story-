@@ -10,6 +10,11 @@ public class AutoFlip : MonoBehaviour {
     public Book ControledBook;
     public int AnimationFramesCount = 40;
     bool isFlipping = false;
+
+    /// <summary>
+    /// int to skip turn pages sfx for the first page turn
+    /// </summary>
+    private int noSoundInteger = 1;
     // Use this for initialization
     void Start () {
         if (!ControledBook)
@@ -99,6 +104,15 @@ public class AutoFlip : MonoBehaviour {
         float y = (-h / (xl * xl)) * (x - xc) * (x - xc);
 
         ControledBook.DragRightPageToPoint(new Vector3(x, y, 0));
+        if (noSoundInteger == 1)
+        {
+            noSoundInteger -= 1;
+        }
+        else
+        {
+            MusicManager.Instance.PlaySFX(MusicManager.Instance.turnPages);
+        }
+        
         for (int i = 0; i < AnimationFramesCount; i++)
         {
             y = (-h / (xl * xl)) * (x - xc) * (x - xc);
@@ -125,6 +139,7 @@ public class AutoFlip : MonoBehaviour {
         float x = xc - xl;
         float y = (-h / (xl * xl)) * (x - xc) * (x - xc);
         ControledBook.DragLeftPageToPoint(new Vector3(x, y, 0));
+        MusicManager.Instance.PlaySFX(MusicManager.Instance.turnPages);
         for (int i = 0; i < AnimationFramesCount; i++)
         {
             y = (-h / (xl * xl)) * (x - xc) * (x - xc);
