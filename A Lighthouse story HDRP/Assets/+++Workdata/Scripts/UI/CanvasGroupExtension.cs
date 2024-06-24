@@ -2,6 +2,10 @@ using UnityEngine;
 
 public static class CanvasGroupExtension
 {
+    /// <summary>
+    /// sets alpha to 0 and set interactable and blocksRaycasts to false
+    /// </summary>
+    /// <param name="myCanvasGroup">this canvas group</param>
     public static void HideCanvasGroup(this CanvasGroup myCanvasGroup)
     {
         myCanvasGroup.alpha = 0f;
@@ -9,6 +13,10 @@ public static class CanvasGroupExtension
         myCanvasGroup.blocksRaycasts = false;
     }
 
+    /// <summary>
+    /// sets alpha to 1 and set interactable and blocksRaycasts to true
+    /// </summary>
+    /// <param name="myCanvasGroup">this canvas group</param>
     public static void ShowCanvasGroup(this CanvasGroup myCanvasGroup)
     {
         myCanvasGroup.alpha = 1f;

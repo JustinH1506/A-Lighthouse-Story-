@@ -8,14 +8,20 @@ public class InGameUI : MonoBehaviour
 {
     public static InGameUI Instance { get; private set; }
     
+    //all panels in under the pause menu
     [SerializeField] private CanvasGroup inGameMenu;
     [SerializeField] private CanvasGroup inGameOptions;
     [SerializeField] private CanvasGroup demoEndScreen;
+
+    //searching eye object and animator
+    [SerializeField] private GameObject searchingEye;
+    private Animator eyeAnim;
     
     private PlayerInputManager playerInput;
 
     private PlayerControllerMap inputActions;
 
+    //bool to check if player may open menu
     public bool menuActive = true;
 
     private void Awake()
@@ -25,6 +31,8 @@ public class InGameUI : MonoBehaviour
         inGameMenu.HideCanvasGroup();
         inGameOptions.HideCanvasGroup();
         demoEndScreen.HideCanvasGroup();
+        eyeAnim = searchingEye.GetComponent<Animator>();
+        searchingEye.SetActive(false);
     }
 
     private void Start()
@@ -52,13 +60,13 @@ public class InGameUI : MonoBehaviour
     {
         if (context.performed && menuActive &&
             (GameStateManager.instance.currentState != GameStateManager.GameState.InMainMenu) &&
-            (inGameMenu.interactable == false))
+            (inGameMenu.interactable == false) && inGameOptions.interactable == false)
         {
             OpenInGameUI();
         }
         else if (context.performed &&
                  (GameStateManager.instance.currentState != GameStateManager.GameState.InMainMenu) &&
-                 (inGameMenu.interactable == true))
+                 (inGameMenu.interactable == true || inGameOptions.interactable == true))
         {
             CloseInGameUI();
         }
@@ -140,5 +148,29 @@ public class InGameUI : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    /// <summary>
+    /// activates the searching eye UI
+    /// </summary>
+    public void ActivateSearchingEye()
+    {
+        searchingEye.SetActive(true);
+    }
+
+    /// <summary>
+    /// sets the searching eye animation to search 
+    /// </summary>
+    public void EyeSearchingState()
+    {
+        eyeAnim.SetBool("detectedPlayer", false);
+    }
+
+    /// <summary>
+    /// sets the searching eye animation to detected
+    /// </summary>
+    public void EyeDetectedState()
+    {
+        eyeAnim.SetBool("detectedPlayer", true);
     }
 }

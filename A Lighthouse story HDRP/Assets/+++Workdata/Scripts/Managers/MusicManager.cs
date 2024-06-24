@@ -9,27 +9,45 @@ public class MusicManager : MonoBehaviour
 
     [Header("Audio Sources")] 
     [SerializeField] private AudioSource musicAudio;
+    [SerializeField] private AudioSource ambienceAudio;
     [SerializeField] private AudioSource sFXAudio;
 
-    [Header("Audio Clips Music")] 
-    [SerializeField] private AudioClip mainMenuMusic;
-    [SerializeField] private AudioClip beachMusic;
-    [SerializeField] private AudioClip crabChaseMusic;
-    [SerializeField] private AudioClip crabSearchMusic;
-    [SerializeField] private AudioClip creditMusic;
+    [Header("Music")] 
+    public AudioClip mainMenuMusic;
+    public AudioClip beachMusic;
+    public AudioClip crabChaseMusic;
+    public AudioClip crabSearchMusic;
+    public AudioClip creditMusic;
 
-    [Header("Audio Clips InGame SFX")] 
-    [SerializeField] private AudioClip windAmbience;
-    [SerializeField] private AudioClip seagullScreams;
-    [SerializeField] private AudioClip sandFootsteps;
-    [SerializeField] private AudioClip grassFootsteps;
-    [SerializeField] private AudioClip obstacleMoving;
-    [SerializeField] private AudioClip crabWalk;
+    [Header("Ambience")] 
+    public AudioClip beachAmbience;
+    public AudioClip forestAmbience;
 
-    [Header("Audio Clip UI SFX")] 
-    [SerializeField] private AudioClip turnPages;
-    [SerializeField] private AudioClip buttonHover;
-    [SerializeField] private AudioClip buttonPress;
+    [Header("Player Footsteps")] 
+    public AudioClip grassStepA;
+    public AudioClip grassStepB;
+    public AudioClip grassStepC;
+    public AudioClip grassStepD;
+    public AudioClip grassStepE;
+    public AudioClip sandStepA;
+    public AudioClip sandStepB;
+    public AudioClip sandStepC;
+    public AudioClip sandStepD;
+    public AudioClip sandStepE;
+    public AudioClip woodStepA;
+    public AudioClip woodStepB;
+    public AudioClip woodStepC;
+    public AudioClip woodStepD;
+    public AudioClip woodStepE;
+    
+    [Header("InGame SFX")]
+    public AudioClip seagullScreams;
+    public AudioClip obstacleMoving;
+
+    [Header("UI SFX")] 
+    public AudioClip turnPages;
+    public AudioClip buttonHover;
+    public AudioClip buttonPress;
 
     private void Awake()
     {
@@ -40,5 +58,36 @@ public class MusicManager : MonoBehaviour
     {
         musicAudio.clip = mainMenuMusic;
         musicAudio.Play();
+    }
+
+    /// <summary>
+    /// stops current music and plays the new clip
+    /// </summary>
+    /// <param name="clip">audio clip to play</param>
+    public void PlayMusic(AudioClip clip)
+    {
+        musicAudio.Stop();
+        musicAudio.clip = clip;
+        musicAudio.Play();
+    }
+
+    /// <summary>
+    /// stops current ambience and plays the new clip
+    /// </summary>
+    /// <param name="clip">audio clip to play</param>
+    public void PlayAmbience(AudioClip clip)
+    {
+        ambienceAudio.Stop();
+        ambienceAudio.clip = clip;
+        ambienceAudio.Play();
+    }
+
+    /// <summary>
+    /// plays sfx audio clip one time
+    /// </summary>
+    /// <param name="clip">audio clip to play</param>
+    public void PlaySFX(AudioClip clip)
+    {
+        sFXAudio.PlayOneShot(clip);
     }
 }
