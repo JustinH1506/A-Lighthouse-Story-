@@ -47,8 +47,6 @@ public class FieldOfView : MonoBehaviour
         {
             yield return new WaitForSeconds(delay);
             
-            Debug.Log("Works here");
-            
             FindInvisibleTargets();
         }
     }
@@ -76,6 +74,10 @@ public class FieldOfView : MonoBehaviour
                     visibleTargets.Add(target);
 
                     _enemyPatrol.foundPlayer = true;
+                    
+                    InGameUI.Instance.EyeDetectedState();
+                    
+                    MusicManager.Instance.PlayMusic(MusicManager.Instance.crabChaseMusic);
                 }
             }
         }

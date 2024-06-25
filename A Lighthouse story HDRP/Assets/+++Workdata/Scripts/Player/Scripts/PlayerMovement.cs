@@ -44,14 +44,16 @@ public class PlayerMovement : PlayerBase
     [Tooltip("Speed to make the Player Move.")]
     [Space(5)]
     public float rotationSpeed;
-
+    
+    [Tooltip("Disables the movement.")]
+    public bool isDisabled = false;
+    
     private float inputX, inputZ;
 
     private bool isSneaking;
     
     private bool isSprinting;
 
-    public bool isDisabled = false;
 
     #endregion
 
@@ -65,18 +67,6 @@ public class PlayerMovement : PlayerBase
     #endregion
     
     #region Methods
-    
-    private void Start()
-    {
-        var currentPosition = GameStateManager.instance.gameState.positionData;
-        
-        if (currentPosition != null)
-        {
-            positionData = currentPosition;
-            
-            transform.position = positionData.safePoint.position;
-        }
-    }
 
     /// <summary>
     /// Calls Movement Method.
@@ -85,7 +75,6 @@ public class PlayerMovement : PlayerBase
     {
        Movement();
     }
-
     
     /// <summary>
     /// Here we get the movement which is based on AddForce.
@@ -95,7 +84,6 @@ public class PlayerMovement : PlayerBase
     {
         // Disables the movement.
         if (isDisabled) return;
-        
         
         if (_playerObjectMove.isMoving)
         {
