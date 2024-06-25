@@ -13,6 +13,8 @@ public class PlayerObjectMove : PlayerBase
     [Range(0, 10)]
     [SerializeField] private float raycastDistance;
 
+    [SerializeField] private LayerMask targetLayer;
+
     #endregion
 
     #region Components
@@ -33,21 +35,28 @@ public class PlayerObjectMove : PlayerBase
 
     #region Methods
 
+    /// <summary>
+    /// Get SpringJoint in Children.
+    /// </summary>
     private void Awake()
     {
         _springJoint = GetComponentInChildren<SpringJoint>();
     }
 
+    /// <summary>
+    /// Shoots a Raycast to find moveable objects and sets one if found to moveableObject. 
+    /// </summary>
     private void FixedUpdate()
     {
         RaycastHit hit;
         
         Debug.DrawRay(transform.position, startPos.forward, Color.green);
         
-        if (Physics.Raycast(startPos.position, startPos.forward, out hit, raycastDistance,1))
+        if (Physics.Raycast(startPos.position, startPos.forward, out hit, raycastDistance,targetLayer))
         {
             if(hit.collider.CompareTag("Chest"))
             {
+                Debug.Log("Chest got it");
                 moveableObject = hit.collider.gameObject;
             }
         }
@@ -62,6 +71,10 @@ public class PlayerObjectMove : PlayerBase
         }
     }
 
+    /// <summary>
+    /// We connect the Rigidbody to our SpringJoint ti have it moving. 
+    /// </summary>
+    /// <param name="context"></param>
     public void ConnectObject(InputAction.CallbackContext context)
     {
         if (moveableObject != null)
@@ -75,7 +88,11 @@ public class PlayerObjectMove : PlayerBase
             isMoving = true;
         }
     }
-
+    
+    /// <summary>
+    /// We disconnect the spring joint to make it not moveable. 
+    /// </summary>
+    /// <param name="context"></param>
     public void DisconnectObject(InputAction.CallbackContext context)
     {
         if(moveableObject != null)

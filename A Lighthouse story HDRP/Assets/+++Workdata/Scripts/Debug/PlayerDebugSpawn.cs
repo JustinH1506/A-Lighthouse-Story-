@@ -9,6 +9,9 @@ public class PlayerDebugSpawn : MonoBehaviour
     [SerializeField] private Transform debugPoint2;
     [SerializeField] private Transform debugPoint3;
 
+    /// <summary>
+    /// Spawns you to new place.
+    /// </summary>
     private void Update()
     {
         if (Input.GetKey("1"))

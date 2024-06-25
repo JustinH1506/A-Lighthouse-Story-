@@ -6,6 +6,9 @@ public class FieldOfViewEditor : Editor
 {
    #region MyRegion
 
+   /// <summary>
+   /// Lets us see the Radius from the Field Of view script.
+   /// </summary>
    private void OnSceneGUI()
    {
       FieldOfView fow = (FieldOfView)target;

@@ -22,7 +22,10 @@ public class PlayerJumping : PlayerBase
     
     #region Methods
     
-
+    /// <summary>
+    /// canJump will be true if other is ground layer. 
+    /// </summary>
+    /// <param name="other"></param>
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.layer != ground)
@@ -31,6 +34,10 @@ public class PlayerJumping : PlayerBase
         }
     }
 
+    /// <summary>
+    /// canJump will be true if other is ground layer.
+    /// </summary>
+    /// <param name="other"></param>
     private void OnCollisionStay(Collision other)
     {
         if (other.gameObject.layer == ground)
@@ -39,6 +46,10 @@ public class PlayerJumping : PlayerBase
         }
     }
 
+    /// <summary>
+    /// Jumps the player with the amount of jumpSrength as added force. 
+    /// </summary>
+    /// <param name="context"></param>
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.performed && canJump && !_playerObjectMove.isMoving)

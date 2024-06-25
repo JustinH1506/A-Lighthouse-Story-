@@ -65,7 +65,7 @@ public class PlayerMovement : PlayerBase
     #endregion
     
     #region Methods
-
+    
     private void Start()
     {
         var currentPosition = GameStateManager.instance.gameState.positionData;
@@ -78,20 +78,34 @@ public class PlayerMovement : PlayerBase
         }
     }
 
+    /// <summary>
+    /// Calls Movement Method.
+    /// </summary>
     public void FixedUpdate()
     {
        Movement();
     }
 
+    
+    /// <summary>
+    /// Here we get the movement which is based on AddForce.
+    /// The movement is based on world space and gets that info from the camera position.
+    /// </summary>
     private void Movement()
     {
+        // Disables the movement.
         if (isDisabled) return;
+        
         
         if (_playerObjectMove.isMoving)
         {
             maxSpeed = 0.25f;
+
+            isSprinting = false;
+
+            isSprinting = false;
         }
-        else if(!isSneaking && !isSprinting)
+        else
         {
             maxSpeed = defaultSpeed;
         }
@@ -114,10 +128,6 @@ public class PlayerMovement : PlayerBase
 
             if (cameraRelativeMovement != Vector3.zero)
             {
-                /*if (_playerObjectMove.isMoving)
-                {
-                    _playerObjectMove.moveableObjectRb.AddForce(cameraRelativeMovement * acceleration, ForceMode.Force); 
-                }*/
                 
                 rb.AddForce(cameraRelativeMovement * acceleration, ForceMode.Force);
 
@@ -157,6 +167,10 @@ public class PlayerMovement : PlayerBase
         inputZ = context.ReadValue<Vector3>().z;
     }
     
+    /// <summary>
+    /// Slows moveSpeed and start animation. 
+    /// </summary>
+    /// <param name="context"></param>
     public void Sneak(InputAction.CallbackContext context)
     {
         if (context.performed && !isSneaking && !_playerObjectMove.isMoving)
@@ -183,6 +197,10 @@ public class PlayerMovement : PlayerBase
         }
     }
 
+    /// <summary>
+    /// Increases the speed and starts sprint animation. 
+    /// </summary>
+    /// <param name="context"></param>
     public void Sprint(InputAction.CallbackContext context)
     {
         if (context.performed && !isSprinting && !_playerObjectMove.isMoving)
@@ -205,6 +223,10 @@ public class PlayerMovement : PlayerBase
         }
     }
 
+    
+    /// <summary>
+    /// Method to disable movement and stop Player. 
+    /// </summary>
     public void DisableMovement()
     {
         isDisabled = true;

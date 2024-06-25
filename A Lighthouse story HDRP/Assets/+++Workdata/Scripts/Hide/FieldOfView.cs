@@ -6,8 +6,6 @@ public class FieldOfView : MonoBehaviour
 {
     #region Scripts
     
-    private Found _found;
-
     [SerializeField] private EnemyPatrol _enemyPatrol;
     
     #endregion
@@ -29,16 +27,20 @@ public class FieldOfView : MonoBehaviour
     #endregion
 
     #region Methods
-    private void Awake()
-    {
-        _found = GetComponent<Found>();
-    }
-
+    
+    /// <summary>
+    /// Start FindTargetsWithDelay.
+    /// </summary>
     private void Start()
     {
         StartCoroutine("FindTargetsWithDelay", .2f);
     }
 
+    /// <summary>
+    /// Calls FindInvisisbleTarget.
+    /// </summary>
+    /// <param name="delay"></param>
+    /// <returns></returns>
     IEnumerator FindTargetsWithDelay(float delay)
     {
         while (true)
@@ -51,6 +53,9 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Finds the player when no obstacle is in the way and follows the target then. 
+    /// </summary>
     void FindInvisibleTargets()
     {
         visibleTargets.Clear();
@@ -69,14 +74,19 @@ public class FieldOfView : MonoBehaviour
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
                     visibleTargets.Add(target);
-                    
-                    _enemyPatrol.isLeft = false;
-                    _enemyPatrol.isRight = false;
+
+                    _enemyPatrol.foundPlayer = true;
                 }
             }
         }
     }
     
+    /// <summary>
+    /// Returns a Vector3 which gives us the Direction angle. 
+    /// </summary>
+    /// <param name="angleInDegrees"></param>
+    /// <param name="angleIsGlobal"></param>
+    /// <returns></returns>
     public Vector3 DirFromAngle(float angleInDegrees,bool angleIsGlobal)
     {
         if (!angleIsGlobal)

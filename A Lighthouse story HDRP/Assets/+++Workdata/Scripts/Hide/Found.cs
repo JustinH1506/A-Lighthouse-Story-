@@ -10,6 +10,10 @@ public class Found : MonoBehaviour
 
     #region Methods
 
+    /// <summary>
+    /// Sets target to safePosition. 
+    /// </summary>
+    /// <param name="target"></param>
     public void GameOver(Transform target)
     {
         target.position = safePosition.position;
