@@ -260,6 +260,15 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PressAnyButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""a5249f53-0821-48fd-953a-5258ca7f5add"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -284,6 +293,28 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
                     ""action"": ""SkipCredits"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ff30e8a-5a33-4cdb-a175-8ca814be67db"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PressAnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bdefeb87-b0e8-417a-9148-1414e1c611bc"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PressAnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -302,6 +333,7 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_PauseGame = m_UI.FindAction("PauseGame", throwIfNotFound: true);
         m_UI_SkipCredits = m_UI.FindAction("SkipCredits", throwIfNotFound: true);
+        m_UI_PressAnyButton = m_UI.FindAction("PressAnyButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -451,12 +483,14 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_PauseGame;
     private readonly InputAction m_UI_SkipCredits;
+    private readonly InputAction m_UI_PressAnyButton;
     public struct UIActions
     {
         private @PlayerControllerMap m_Wrapper;
         public UIActions(@PlayerControllerMap wrapper) { m_Wrapper = wrapper; }
         public InputAction @PauseGame => m_Wrapper.m_UI_PauseGame;
         public InputAction @SkipCredits => m_Wrapper.m_UI_SkipCredits;
+        public InputAction @PressAnyButton => m_Wrapper.m_UI_PressAnyButton;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -472,6 +506,9 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
             @SkipCredits.started += instance.OnSkipCredits;
             @SkipCredits.performed += instance.OnSkipCredits;
             @SkipCredits.canceled += instance.OnSkipCredits;
+            @PressAnyButton.started += instance.OnPressAnyButton;
+            @PressAnyButton.performed += instance.OnPressAnyButton;
+            @PressAnyButton.canceled += instance.OnPressAnyButton;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -482,6 +519,9 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
             @SkipCredits.started -= instance.OnSkipCredits;
             @SkipCredits.performed -= instance.OnSkipCredits;
             @SkipCredits.canceled -= instance.OnSkipCredits;
+            @PressAnyButton.started -= instance.OnPressAnyButton;
+            @PressAnyButton.performed -= instance.OnPressAnyButton;
+            @PressAnyButton.canceled -= instance.OnPressAnyButton;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -512,5 +552,6 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
     {
         void OnPauseGame(InputAction.CallbackContext context);
         void OnSkipCredits(InputAction.CallbackContext context);
+        void OnPressAnyButton(InputAction.CallbackContext context);
     }
 }

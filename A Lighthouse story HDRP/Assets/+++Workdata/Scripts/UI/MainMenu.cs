@@ -2,16 +2,48 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject oceanPlane;
+    private Animator mainMenuAnim;
+
+    private bool canPressAnyButton = true;
+
+    private PlayerControllerMap inputActions;
     
     private AutoFlip autoFlipScript;
 
     private void Awake()
     {
+        mainMenuAnim = GetComponent<Animator>();
+        inputActions = new PlayerControllerMap();
         autoFlipScript = FindObjectOfType<AutoFlip>();
+        canPressAnyButton = true;
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Enable();
+
+        inputActions.UI.PressAnyButton.performed += PressAnyButton;
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Disable();
+
+        inputActions.UI.PressAnyButton.performed -= PressAnyButton;
+    }
+
+    private void PressAnyButton(InputAction.CallbackContext context)
+    {
+        if (context.performed && canPressAnyButton)
+        {
+            mainMenuAnim.Play("Fade_In_Main");
+            canPressAnyButton = false;
+        }
     }
 
     /// <summary>
