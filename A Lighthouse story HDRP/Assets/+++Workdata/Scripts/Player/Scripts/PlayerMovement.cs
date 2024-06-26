@@ -44,11 +44,10 @@ public class PlayerMovement : PlayerBase
     [Tooltip("Speed to make the Player Move.")]
     [Space(5)]
     public float rotationSpeed;
+
+    [HideInInspector] public bool isDisabled = false;
     
-    [Tooltip("Disables the movement.")]
-    public bool isDisabled = false;
-    
-    private float inputX, inputZ;
+    public float inputX, inputZ;
 
     private bool isSneaking;
     

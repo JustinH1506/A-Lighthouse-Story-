@@ -5,16 +5,30 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerObjectMove : PlayerBase
 {
-    #region Variables
-    
-    public bool isMoving;
+    #region Classes
 
+    private PlayerMovement playerMovement;
+    
+    #endregion
+    
+    #region Variables
     [Tooltip("Maximum distance for the Raycast")]
     [Range(0, 10)]
     [SerializeField] private float raycastDistance;
 
-    [SerializeField] private LayerMask targetLayer;
+    [SerializeField] private float pushPower;
 
+    [SerializeField] private Transform moveableObjectParent;
+
+    private float inputX, inputZ;
+
+    [HideInInspector]
+    public bool isMoving;
+
+    [Tooltip("Offsets the Raycast.")]
+    [SerializeField] private float offset;
+
+    [SerializeField] private LayerMask targetLayer;
     #endregion
 
     #region Components
@@ -28,8 +42,6 @@ public class PlayerObjectMove : PlayerBase
     private GameObject moveableObject;
 
     public Rigidbody moveableObjectRb;
-
-    [SerializeField] private Transform startPos;
     
     #endregion
 
@@ -41,6 +53,8 @@ public class PlayerObjectMove : PlayerBase
     private void Awake()
     {
         _springJoint = GetComponentInChildren<SpringJoint>();
+
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     /// <summary>
@@ -50,11 +64,13 @@ public class PlayerObjectMove : PlayerBase
     {
         RaycastHit hit;
         
-        Debug.DrawRay(transform.position, startPos.forward, Color.green);
+        Vector3 raycastOrigin = new Vector3(transform.position.x, transform.position.y + offset, transform.position.z);
         
-        if (Physics.Raycast(startPos.position, startPos.forward, out hit, raycastDistance,targetLayer))
+        Debug.DrawRay(raycastOrigin, transform.forward, Color.green);
+        
+        if (Physics.Raycast(raycastOrigin, transform.forward, out hit, raycastDistance,targetLayer))
         {
-            if(hit.collider.CompareTag("Chest"))
+            if(hit.collider.CompareTag("Moveable"))
             {
                 Debug.Log("Chest got it");
                 moveableObject = hit.collider.gameObject;
@@ -65,8 +81,11 @@ public class PlayerObjectMove : PlayerBase
             moveableObject = null;
         }
 
-        if(isMoving && moveableObject != null)
+        if(isMoving && moveableObject != null && moveableObjectRb != null)
         {
+            Debug.Log("Lol");
+            moveableObjectRb.velocity = rb.velocity;
+            
             transform.LookAt(new Vector3(moveableObject.transform.position.x, transform.position.y, moveableObject.transform.position.z));
         }
     }
@@ -81,9 +100,11 @@ public class PlayerObjectMove : PlayerBase
         {
             moveableObjectRb = moveableObject.GetComponent<Rigidbody>();
 
-            _springJoint.connectedBody = moveableObjectRb;
+            //_springJoint.connectedBody = moveableObjectRb;
 
-            moveableObjectRb.mass = 1;
+            //moveableObjectRb.mass = 1;
+            
+            //moveableObject.transform.SetParent(transform);
             
             isMoving = true;
         }
@@ -97,11 +118,13 @@ public class PlayerObjectMove : PlayerBase
     {
         if(moveableObject != null)
         {
+            //moveableObject.transform.SetParent(moveableObjectParent);
+            
             isMoving = false;
             
-            _springJoint.connectedBody = null;
+            //_springJoint.connectedBody = null;
             
-            moveableObjectRb.mass = 100;
+            //moveableObjectRb.mass = 100;
         }
     }
     #endregion
