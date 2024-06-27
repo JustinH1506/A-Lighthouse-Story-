@@ -1,6 +1,5 @@
 using System.Collections;
 using Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyPatrolStart : MonoBehaviour
@@ -35,6 +34,12 @@ public class EnemyPatrolStart : MonoBehaviour
         hideCrabShot.enabled = true;
 
         yield return new WaitForSeconds(3f);
+        
+        InGameUI.Instance.ActivateSearchingEye();
+        
+        InGameUI.Instance.EyeSearchingState();
+        
+        MusicManager.Instance.PlayMusic(MusicManager.Instance.crabSearchMusic);
 
         hideCrabShot.enabled = false;
         

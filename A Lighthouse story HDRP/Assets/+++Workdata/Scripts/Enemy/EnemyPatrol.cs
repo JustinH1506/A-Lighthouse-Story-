@@ -36,7 +36,7 @@ public class EnemyPatrol : MonoBehaviour
     }
 
     /// <summary>
-    /// Depending where the enemy is walks to the left or right.
+    /// Depends on where the enemy is walks to the left or right.
     /// If the enemy found a Player it will abandon the patrol and walk to the player. 
     /// </summary>
     private void Patrol()

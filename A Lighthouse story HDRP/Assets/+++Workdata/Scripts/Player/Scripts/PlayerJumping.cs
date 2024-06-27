@@ -12,7 +12,14 @@ public class PlayerJumping : PlayerBase
 
     #region Varaibles
     
+    [Tooltip("How strong the Player jumps.")]
     [SerializeField] private int jumpStrength;
+    
+    [Tooltip("Time before falling.")]
+    public float coyoteTime;
+
+    [Tooltip("How much the CoyoteTime is.")]
+    public float coyoteTimeCounter;
 
     [SerializeField] private LayerMask ground;
 
@@ -23,31 +30,29 @@ public class PlayerJumping : PlayerBase
     #region Methods
     
     /// <summary>
-    /// canJump will be true if other is ground layer. 
+    /// Shoot a raycast down to look for ground. 
     /// </summary>
-    /// <param name="other"></param>
-    private void OnCollisionEnter(Collision other)
+    private void FixedUpdate()
     {
-        if (other.gameObject.layer != ground)
+        if(Physics.Raycast(transform.position, Vector3.down, .25f, ground))
         {
-            canJump = true; 
+            canJump = true;
+
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTime -= Time.deltaTime;
+        }
+
+        if (!Physics.Raycast(transform.position, Vector3.down, .25f, ground) && coyoteTimeCounter <= 0)
+        {
+            canJump = false;
         }
     }
 
     /// <summary>
-    /// canJump will be true if other is ground layer.
-    /// </summary>
-    /// <param name="other"></param>
-    private void OnCollisionStay(Collision other)
-    {
-        if (other.gameObject.layer == ground)
-        {
-            canJump = true; 
-        }
-    }
-
-    /// <summary>
-    /// Jumps the player with the amount of jumpSrength as added force. 
+    /// Jumps the player with the amount of jumpStrength as added force. 
     /// </summary>
     /// <param name="context"></param>
     public void Jump(InputAction.CallbackContext context)
