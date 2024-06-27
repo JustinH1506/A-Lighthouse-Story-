@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 
 [RequireComponent(typeof(Rigidbody))]
@@ -35,6 +36,8 @@ public class PlayerObjectMove : PlayerBase
     private SpringJoint _springJoint;
 
     private FixedJoint _fixedJoint;
+
+    [SerializeField] private PhysicMaterial zeroFriction;
 
     #endregion
     
@@ -116,7 +119,9 @@ public class PlayerObjectMove : PlayerBase
             
             //moveableObject.transform.SetParent(transform);
 
-            _fixedJoint = moveableObject.gameObject.GetComponent<FixedJoint>();
+            moveableObject.GetComponent<BoxCollider>().material = zeroFriction;
+
+            _fixedJoint = moveableObject.gameObject.AddComponent<FixedJoint>();
 
             _fixedJoint.connectedBody = rb;
             
@@ -135,6 +140,10 @@ public class PlayerObjectMove : PlayerBase
             moveableObjectRb = null;
 
             _fixedJoint.connectedBody = null;
+            
+            Destroy(moveableObject.gameObject.GetComponent<FixedJoint>());
+
+            moveableObject.GetComponent<BoxCollider>().material = null;
             
             //moveableObject.transform.SetParent(moveableObjectParent);
             

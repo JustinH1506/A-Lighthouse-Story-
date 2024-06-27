@@ -133,7 +133,6 @@ public class PlayerMovement : PlayerBase
             {
                 rb.AddForce(rb.velocity * -decelerationSpeed, ForceMode.Force);
             }
-
             
             if (cameraRelativeMovement != Vector3.zero && !_playerObjectMove.isMoving)
             {
