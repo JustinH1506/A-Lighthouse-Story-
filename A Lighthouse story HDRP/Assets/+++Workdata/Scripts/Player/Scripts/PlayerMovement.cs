@@ -86,7 +86,7 @@ public class PlayerMovement : PlayerBase
         
         if (_playerObjectMove.isMoving)
         {
-            maxSpeed = 0.25f;
+            maxSpeed = sneakSpeed;
 
             isSprinting = false;
 
@@ -107,8 +107,10 @@ public class PlayerMovement : PlayerBase
             cameraForward = cameraForward.normalized;
             cameraRight = cameraRight.normalized;
 
+            
             Vector3 forwardRelativeMovementVector = inputZ * cameraForward;
             Vector3 rightRelativeMovementVector = inputX * cameraRight;
+            
 
             Vector3 cameraRelativeMovement = forwardRelativeMovementVector + rightRelativeMovementVector;
             cameraRelativeMovement.Normalize();
@@ -166,8 +168,6 @@ public class PlayerMovement : PlayerBase
             
             anim.SetBool("isSneaking", isSneaking);
 
-            _capsuleCollider.height = .5f;
-
             isSprinting = false;
             
             maxSpeed = sneakSpeed;
@@ -177,8 +177,6 @@ public class PlayerMovement : PlayerBase
             isSneaking = false;
             
             anim.SetBool("isSneaking", isSneaking);
-            
-            _capsuleCollider.height = 1.9f;
             
             maxSpeed = defaultSpeed;
         }

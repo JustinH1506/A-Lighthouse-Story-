@@ -21,8 +21,7 @@ public class PlayerObjectMove : PlayerBase
     [SerializeField] private Transform moveableObjectParent;
 
     private float inputX, inputZ;
-
-    [HideInInspector]
+    
     public bool isMoving;
 
     [Tooltip("Offsets the Raycast.")]
@@ -34,6 +33,8 @@ public class PlayerObjectMove : PlayerBase
     #region Components
 
     private SpringJoint _springJoint;
+
+    private FixedJoint _fixedJoint;
 
     #endregion
     
@@ -50,8 +51,10 @@ public class PlayerObjectMove : PlayerBase
     /// <summary>
     /// Get SpringJoint in Children.
     /// </summary>
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         _springJoint = GetComponentInChildren<SpringJoint>();
 
         playerMovement = GetComponent<PlayerMovement>();
@@ -78,33 +81,44 @@ public class PlayerObjectMove : PlayerBase
         }
         else
         {
-            moveableObject = null;
+             moveableObject = null;
+
+            //moveableObjectRb = null;
         }
 
         if(isMoving && moveableObject != null && moveableObjectRb != null)
         {
-            Debug.Log("Lol");
-            moveableObjectRb.velocity = rb.velocity;
+            /*Vector3 forceDirection = moveableObject.transform.position - transform.position;
+            forceDirection.y = 0;
+            forceDirection.Normalize();
+            
+            moveableObjectRb.AddForceAtPosition(forceDirection * (pushPower * playerMovement.inputX), transform.position, ForceMode.Impulse);
+            
+            Debug.Log(moveableObjectRb.velocity);*/
             
             transform.LookAt(new Vector3(moveableObject.transform.position.x, transform.position.y, moveableObject.transform.position.z));
         }
     }
 
     /// <summary>
-    /// We connect the Rigidbody to our SpringJoint ti have it moving. 
+    /// We connect the Rigidbody to our SpringJoint to have it moving. 
     /// </summary>
     /// <param name="context"></param>
     public void ConnectObject(InputAction.CallbackContext context)
     {
         if (moveableObject != null)
         {
-            moveableObjectRb = moveableObject.GetComponent<Rigidbody>();
-
+            //moveableObjectRb = moveableObject.GetComponent<Rigidbody>();
+            
             //_springJoint.connectedBody = moveableObjectRb;
 
             //moveableObjectRb.mass = 1;
             
             //moveableObject.transform.SetParent(transform);
+
+            _fixedJoint = moveableObject.gameObject.GetComponent<FixedJoint>();
+
+            _fixedJoint.connectedBody = rb;
             
             isMoving = true;
         }
@@ -118,6 +132,10 @@ public class PlayerObjectMove : PlayerBase
     {
         if(moveableObject != null)
         {
+            moveableObjectRb = null;
+
+            _fixedJoint.connectedBody = null;
+            
             //moveableObject.transform.SetParent(moveableObjectParent);
             
             isMoving = false;

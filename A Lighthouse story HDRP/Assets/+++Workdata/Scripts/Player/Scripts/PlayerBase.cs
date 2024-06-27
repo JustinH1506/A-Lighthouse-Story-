@@ -15,7 +15,7 @@ public class PlayerBase : MonoBehaviour
     /// <summary>
     /// Gets Rigidbody and Animator. 
     /// </summary>
-    private void Awake()
+    protected virtual void Awake()
     {
         //We get the Rigidbody.
         rb = GetComponent<Rigidbody>();
