@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 55a70dd9210c0d446b6147195bb33b17
+guid: d88a5c659fa5dd04f8ad146a680a95a0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MetalCrate_MTL
+    second: {fileID: 2100000, guid: 62760cc7309471f48a1c6bc7acd0af30, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

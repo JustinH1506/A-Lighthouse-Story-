@@ -111,7 +111,8 @@ public class PlayerMovement : PlayerBase
             Vector3 forwardRelativeMovementVector = inputZ * cameraForward;
             Vector3 rightRelativeMovementVector = inputX * cameraRight;
             
-
+            
+            
             Vector3 cameraRelativeMovement = forwardRelativeMovementVector + rightRelativeMovementVector;
             cameraRelativeMovement.Normalize();
 
@@ -119,6 +120,11 @@ public class PlayerMovement : PlayerBase
             {
                 
                 rb.AddForce(cameraRelativeMovement * acceleration, ForceMode.Force);
+                
+                anim.SetFloat("velocityX", rb.velocity.x);
+                anim.SetFloat("velocityZ", rb.velocity.z);
+                
+                Debug.Log(rb.velocity);
 
                 if (rb.velocity.magnitude > maxSpeed)
                 {
@@ -127,6 +133,9 @@ public class PlayerMovement : PlayerBase
                     rb.velocity = rb.velocity.normalized * maxSpeed;
 
                     rb.velocity = new Vector3(rb.velocity.x, yAxis, rb.velocity.z);
+                    
+                    anim.SetFloat("velocityX", rb.velocity.x);
+                    anim.SetFloat("velocityZ", rb.velocity.z);
                 }
             }
             else
@@ -169,6 +178,8 @@ public class PlayerMovement : PlayerBase
 
             isSprinting = false;
             
+            anim.SetBool("isSprinting", isSprinting);
+            
             maxSpeed = sneakSpeed;
         }
         else if(!_playerObjectMove.isMoving)
@@ -202,6 +213,8 @@ public class PlayerMovement : PlayerBase
         else if(!_playerObjectMove.isMoving && isSprinting)
         {
             isSprinting = false;
+            
+            anim.SetBool("isSprinting", isSprinting);
 
             maxSpeed = defaultSpeed;
         }
