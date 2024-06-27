@@ -64,22 +64,22 @@ public class MusicManager : MonoBehaviour
     /// stops current music and plays the new clip
     /// </summary>
     /// <param name="clip">audio clip to play</param>
-    public void PlayMusic(AudioClip clip)
+    public void PlayMusic(AudioClip clip, float fadeDuration)
     {
-        musicAudio.Stop();
+        musicAudio.FadeOut(fadeDuration);
         musicAudio.clip = clip;
-        musicAudio.Play();
+        musicAudio.FadeIn(fadeDuration);
     }
 
     /// <summary>
     /// stops current ambience and plays the new clip
     /// </summary>
     /// <param name="clip">audio clip to play</param>
-    public void PlayAmbience(AudioClip clip)
+    public void PlayAmbience(AudioClip clip, float fadeDuration)
     {
-        ambienceAudio.Stop();
+        ambienceAudio.FadeOut(fadeDuration);
         ambienceAudio.clip = clip;
-        ambienceAudio.Play();
+        ambienceAudio.FadeIn(fadeDuration);
     }
 
     /// <summary>

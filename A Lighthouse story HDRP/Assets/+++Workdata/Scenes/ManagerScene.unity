@@ -5149,11 +5149,11 @@ MonoBehaviour:
   musicAudio: {fileID: 1205846719}
   ambienceAudio: {fileID: 294394207}
   sFXAudio: {fileID: 1919824799}
-  mainMenuMusic: {fileID: 8300000, guid: 8ad1ed9af1a76ae4eab0f3b9545af96b, type: 3}
-  beachMusic: {fileID: 0}
-  crabChaseMusic: {fileID: 8300000, guid: 8628aa80dd5f6cb4cb813b1ee2d692d5, type: 3}
-  crabSearchMusic: {fileID: 0}
-  creditMusic: {fileID: 0}
+  mainMenuMusic: {fileID: 8300000, guid: c5b8cc52cf0770a4faa4f13fe397c068, type: 3}
+  beachMusic: {fileID: 8300000, guid: 4a605851c7174694598d0ed38f908020, type: 3}
+  crabChaseMusic: {fileID: 8300000, guid: 985615f2b8496be4f9d0e4b3f455246d, type: 3}
+  crabSearchMusic: {fileID: 8300000, guid: cc5fa9bfd7ae9e6469609081432b0788, type: 3}
+  creditMusic: {fileID: 8300000, guid: c5b8cc52cf0770a4faa4f13fe397c068, type: 3}
   beachAmbience: {fileID: 8300000, guid: 55e688f6eac3260468fbb1b247cbff53, type: 3}
   forestAmbience: {fileID: 8300000, guid: 48f01ed3afb757e45acfd87e413d036c, type: 3}
   grassStepA: {fileID: 8300000, guid: a9150094c79902947b672316c0306c25, type: 3}
