@@ -11,12 +11,12 @@ public class States : MonoBehaviour
         if (other.gameObject.layer == sand)
         {
             Debug.Log("Bitch");
-            MusicManager.Instance.PlayAmbience(MusicManager.Instance.beachAmbience);
+            MusicManager.Instance.PlayAmbience(MusicManager.Instance.beachAmbience, 1f);
         }
 
         if (other.gameObject.layer == grass)
         {
-            MusicManager.Instance.PlayAmbience(MusicManager.Instance.forestAmbience);
+            MusicManager.Instance.PlayAmbience(MusicManager.Instance.forestAmbience, 1f);
         }
     }
 }

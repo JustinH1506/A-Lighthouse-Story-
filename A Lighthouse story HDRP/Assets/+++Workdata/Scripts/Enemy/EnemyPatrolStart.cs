@@ -39,7 +39,7 @@ public class EnemyPatrolStart : MonoBehaviour
         
         InGameUI.Instance.EyeSearchingState();
         
-        MusicManager.Instance.PlayMusic(MusicManager.Instance.crabSearchMusic);
+        MusicManager.Instance.PlayMusic(MusicManager.Instance.crabSearchMusic, 1f);
 
         hideCrabShot.enabled = false;
         

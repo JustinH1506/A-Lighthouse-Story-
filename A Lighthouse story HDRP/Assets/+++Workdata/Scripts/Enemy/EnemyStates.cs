@@ -53,7 +53,7 @@ public class EnemyStates : MonoBehaviour
 
         yield return new WaitForSeconds(crabShotWaitTime);
         
-        MusicManager.Instance.PlayMusic(MusicManager.Instance.crabChaseMusic);
+        MusicManager.Instance.PlayMusic(MusicManager.Instance.crabChaseMusic, 1f);
 
         crabShot.enabled = false;
         

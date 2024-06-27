@@ -77,7 +77,7 @@ public class FieldOfView : MonoBehaviour
                     
                     InGameUI.Instance.EyeDetectedState();
                     
-                    MusicManager.Instance.PlayMusic(MusicManager.Instance.crabChaseMusic);
+                    MusicManager.Instance.PlayMusic(MusicManager.Instance.crabChaseMusic, 1f);
                 }
             }
         }

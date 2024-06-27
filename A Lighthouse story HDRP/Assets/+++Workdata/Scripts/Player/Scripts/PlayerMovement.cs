@@ -64,7 +64,14 @@ public class PlayerMovement : PlayerBase
     }
     
     #endregion
-    
+
+    protected override void Awake()
+    {
+        base.Awake();
+        
+        maxSpeed = defaultSpeed;
+    }
+
     #region Methods
 
     /// <summary>
@@ -90,11 +97,7 @@ public class PlayerMovement : PlayerBase
 
             isSprinting = false;
 
-            isSprinting = false;
-        }
-        else
-        {
-            maxSpeed = defaultSpeed;
+            isSneaking = false;
         }
        
         if(inputX != 0 || inputZ != 0)
@@ -121,9 +124,6 @@ public class PlayerMovement : PlayerBase
                 
                 rb.AddForce(cameraRelativeMovement * acceleration, ForceMode.Force);
                 
-                anim.SetFloat("velocityX", rb.velocity.x);
-                anim.SetFloat("velocityZ", rb.velocity.z);
-                
                 Debug.Log(rb.velocity);
 
                 if (rb.velocity.magnitude > maxSpeed)
@@ -133,9 +133,6 @@ public class PlayerMovement : PlayerBase
                     rb.velocity = rb.velocity.normalized * maxSpeed;
 
                     rb.velocity = new Vector3(rb.velocity.x, yAxis, rb.velocity.z);
-                    
-                    anim.SetFloat("velocityX", rb.velocity.x);
-                    anim.SetFloat("velocityZ", rb.velocity.z);
                 }
             }
             else
@@ -150,7 +147,9 @@ public class PlayerMovement : PlayerBase
                 transform.rotation =
                     Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
             }
+            
         }
+        anim.SetFloat("velocity", rb.velocity.magnitude);
     }
     
     /// <summary>
@@ -229,6 +228,8 @@ public class PlayerMovement : PlayerBase
         isDisabled = true;
             
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        
+        anim.SetFloat("velocity", 0f);
     }
     #endregion
 }
