@@ -16,7 +16,7 @@ public class InGameUI : MonoBehaviour
     //searching eye object and animator
     [SerializeField] private GameObject searchingEye;
     private Animator eyeAnim;
-    
+
     private PlayerInputManager playerInput;
 
     private PlayerControllerMap inputActions;
@@ -32,7 +32,6 @@ public class InGameUI : MonoBehaviour
         inGameOptions.HideCanvasGroup();
         demoEndScreen.HideCanvasGroup();
         eyeAnim = searchingEye.GetComponent<Animator>();
-        searchingEye.SetActive(false);
     }
 
     private void Start()
@@ -157,7 +156,7 @@ public class InGameUI : MonoBehaviour
     /// </summary>
     public void ActivateSearchingEye()
     {
-        searchingEye.SetActive(true);
+        eyeAnim.SetTrigger("FadeIn");
     }
 
     /// <summary>
@@ -174,5 +173,11 @@ public class InGameUI : MonoBehaviour
     public void EyeDetectedState()
     {
         eyeAnim.SetBool("detectedPlayer", true);
+    }
+
+    public void DeactivateSearchingEye()
+    {
+        eyeAnim.SetTrigger("FadeOut");
+        eyeAnim.SetBool("detectedPlayer", false);
     }
 }
