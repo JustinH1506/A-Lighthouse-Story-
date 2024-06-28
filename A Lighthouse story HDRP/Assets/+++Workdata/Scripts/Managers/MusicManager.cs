@@ -66,9 +66,8 @@ public class MusicManager : MonoBehaviour
     /// <param name="clip">audio clip to play</param>
     public void PlayMusic(AudioClip clip, float fadeDuration)
     {
-        musicAudio.FadeOut(fadeDuration);
-        musicAudio.clip = clip;
-        musicAudio.FadeIn(fadeDuration);
+        musicAudio.FadingInOut(clip, fadeDuration);
+        
     }
 
     /// <summary>
@@ -77,9 +76,7 @@ public class MusicManager : MonoBehaviour
     /// <param name="clip">audio clip to play</param>
     public void PlayAmbience(AudioClip clip, float fadeDuration)
     {
-        ambienceAudio.FadeOut(fadeDuration);
-        ambienceAudio.clip = clip;
-        ambienceAudio.FadeIn(fadeDuration);
+        ambienceAudio.FadingInOut(clip, fadeDuration);
     }
 
     /// <summary>
