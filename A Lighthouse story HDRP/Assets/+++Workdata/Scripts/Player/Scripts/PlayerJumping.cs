@@ -6,48 +6,50 @@ public class PlayerJumping : PlayerBase
 {
     #region Scripts
     
-    [SerializeField] private PlayerObjectMove _playerObjectMove;
+    private PlayerObjectMove _playerObjectMove;
     
     #endregion
 
     #region Varaibles
     
     [Tooltip("How strong the Player jumps.")]
-    [SerializeField] private int jumpStrength;
+    [SerializeField] private float jumpStrength;
+    
+    [SerializeField] private float fallMultiplier;
     
     [Tooltip("Time before falling.")]
-    public float coyoteTime;
+    [SerializeField] private float coyoteTime;
 
     [Tooltip("How much the CoyoteTime is.")]
-    public float coyoteTimeCounter;
+    [SerializeField] private float coyoteTimeCounter;
 
+    [Tooltip("How far the RayCast goes.")]
+    [SerializeField] private float rayCastDistance;
+
+    [Tooltip("Layer which can be considered ground to Jump on.")]
     [SerializeField] private LayerMask ground;
-
-    public bool canJump;
     
     #endregion
     
     #region Methods
-    
-    /// <summary>
-    /// Shoot a raycast down to look for ground. 
-    /// </summary>
-    private void FixedUpdate()
-    {
-        if(Physics.Raycast(transform.position, Vector3.down, .25f, ground))
-        {
-            canJump = true;
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        _playerObjectMove = GetComponent<PlayerObjectMove>();
+    }
+
+    private void Update()
+    {
+        if (GroundCheck())
+        {
             coyoteTimeCounter = coyoteTime;
         }
-        else
-        {
-            coyoteTime -= Time.deltaTime;
-        }
 
-        if (!Physics.Raycast(transform.position, Vector3.down, .25f, ground) && coyoteTimeCounter <= 0)
+        if (!GroundCheck())
         {
-            canJump = false;
+            
         }
     }
 
@@ -57,11 +59,21 @@ public class PlayerJumping : PlayerBase
     /// <param name="context"></param>
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && canJump && !_playerObjectMove.isMoving)
+        if (context.performed && GroundCheck() && !_playerObjectMove.isMoving)
         {
-            rb.AddForce(new Vector3(rb.velocity.x, jumpStrength, rb.velocity.y), ForceMode.Acceleration);
-            canJump = false;
+            rb.AddForce(new Vector3(rb.velocity.x, jumpStrength, rb.velocity.z), ForceMode.Impulse);
+            
+            anim.SetTrigger("isJumping");
         }
+    }
+    
+    /// <summary>
+    /// Checks if Player is close enough to the ground to Jump.
+    /// </summary>
+    /// <returns></returns>
+    bool GroundCheck()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, rayCastDistance, ground);
     }
     
     #endregion

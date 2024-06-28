@@ -149,7 +149,10 @@ public class PlayerMovement : PlayerBase
             }
             
         }
-        anim.SetFloat("velocity", rb.velocity.magnitude);
+
+        Vector3 animVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        
+        anim.SetFloat("velocity", animVelocity.magnitude);
     }
     
     /// <summary>
