@@ -15,7 +15,7 @@ public class Ground : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            _playerJumping.canJump = true;
+            
         }
     }
 
@@ -27,7 +27,7 @@ public class Ground : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            _playerJumping.canJump = false;
+        
         }
     }
 }
