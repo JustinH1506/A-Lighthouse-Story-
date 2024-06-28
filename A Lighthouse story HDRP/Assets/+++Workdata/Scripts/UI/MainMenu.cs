@@ -2,17 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject oceanPlane;
+
     private Animator mainMenuAnim;
 
     private bool canPressAnyButton = true;
 
     private PlayerControllerMap inputActions;
-    
+
     private AutoFlip autoFlipScript;
 
     private void Awake()

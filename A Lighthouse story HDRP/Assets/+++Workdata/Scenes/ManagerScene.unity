@@ -2551,6 +2551,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1092419270}
   - component: {fileID: 1092419271}
+  - component: {fileID: 1092419272}
   m_Layer: 5
   m_Name: Ambience Slider
   m_TagString: Untagged
@@ -2632,10 +2633,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1107813289}
+      - m_Target: {fileID: 1092419272}
         m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
-        m_MethodName: SetAmbienceSlider
-        m_Mode: 1
+        m_MethodName: SetVolume
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2644,6 +2645,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1092419272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092419269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e575e225cc20084ba4a3e19f70dfbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: dfe19f4801a184a4ca942b366299a476, type: 2}
+  volumeKey: AmbienceVolume
 --- !u!1 &1107813283
 GameObject:
   m_ObjectHideFlags: 0
@@ -2657,7 +2672,6 @@ GameObject:
   - component: {fileID: 1107813285}
   - component: {fileID: 1107813284}
   - component: {fileID: 1107813288}
-  - component: {fileID: 1107813289}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: InGameHUD
@@ -2768,23 +2782,6 @@ MonoBehaviour:
   demoEndScreen: {fileID: 439129322}
   searchingEye: {fileID: 296252386}
   menuActive: 1
---- !u!114 &1107813289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1107813283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e575e225cc20084ba4a3e19f70dfbd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: dfe19f4801a184a4ca942b366299a476, type: 2}
-  masterSlider: {fileID: 1712825569}
-  musicSlider: {fileID: 1419426992}
-  ambienceSlider: {fileID: 1092419271}
-  sFXSlider: {fileID: 1523323413}
 --- !u!1 &1130702761
 GameObject:
   m_ObjectHideFlags: 0
@@ -3223,6 +3220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1419426991}
   - component: {fileID: 1419426992}
+  - component: {fileID: 1419426993}
   m_Layer: 5
   m_Name: MusicSlider
   m_TagString: Untagged
@@ -3304,10 +3302,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1107813289}
+      - m_Target: {fileID: 1419426993}
         m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
-        m_MethodName: SetMusicSlider
-        m_Mode: 1
+        m_MethodName: SetVolume
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3316,6 +3314,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1419426993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419426990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e575e225cc20084ba4a3e19f70dfbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: dfe19f4801a184a4ca942b366299a476, type: 2}
+  volumeKey: MusicVolume
 --- !u!1 &1519930491
 GameObject:
   m_ObjectHideFlags: 0
@@ -3401,6 +3413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1523323412}
   - component: {fileID: 1523323413}
+  - component: {fileID: 1523323414}
   m_Layer: 5
   m_Name: SFXSlider
   m_TagString: Untagged
@@ -3482,10 +3495,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1107813289}
+      - m_Target: {fileID: 1523323414}
         m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
-        m_MethodName: SetSFXSlider
-        m_Mode: 1
+        m_MethodName: SetVolume
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3494,6 +3507,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1523323414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523323411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e575e225cc20084ba4a3e19f70dfbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: dfe19f4801a184a4ca942b366299a476, type: 2}
+  volumeKey: SFXVolume
 --- !u!1 &1528830630
 GameObject:
   m_ObjectHideFlags: 0
@@ -4343,6 +4370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1712825568}
   - component: {fileID: 1712825569}
+  - component: {fileID: 1712825570}
   m_Layer: 5
   m_Name: MasterSlider
   m_TagString: Untagged
@@ -4424,10 +4452,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1107813289}
+      - m_Target: {fileID: 1712825570}
         m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
-        m_MethodName: SetMasterVolume
-        m_Mode: 1
+        m_MethodName: SetVolume
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4436,6 +4464,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1712825570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712825567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e575e225cc20084ba4a3e19f70dfbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: dfe19f4801a184a4ca942b366299a476, type: 2}
+  volumeKey: Volume
 --- !u!1 &1715055361
 GameObject:
   m_ObjectHideFlags: 0
