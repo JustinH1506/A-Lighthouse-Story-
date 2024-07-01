@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject oceanPlane;
-
     private Animator mainMenuAnim;
 
     private bool canPressAnyButton = true;
@@ -70,7 +68,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void DisableOcean()
     {
-        oceanPlane.SetActive(false);
+        
     }
 
     /// <summary>
