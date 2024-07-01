@@ -3,7 +3,22 @@ guid: 5e0e138c6b558d44fbdf6896aad9d9a6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cage_MTL
+    second: {fileID: 2100000, guid: c4f1a71857c97ff45a35ff9781dc74e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hat_MTL
+    second: {fileID: 2100000, guid: 0fcb8394b2c331a40b77c81b04a2ed1b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HutBoards_MTL
+    second: {fileID: 2100000, guid: 0749f618613995441930a04bad78ddd1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
