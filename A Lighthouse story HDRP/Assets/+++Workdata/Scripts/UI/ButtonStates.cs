@@ -6,11 +6,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ButtonStates : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
+public class ButtonStates : MonoBehaviour
 {
+    /*
     private Vector3 defaultScale = new Vector3(1, 1, 1);
     private Vector3 hoveredScale = new Vector3(1.5f, 1.5f, 1.5f);
     private Vector3 pressedScale = new Vector3(0.8f, 0.8f, 0.8f);
+    */
 
     private Button button;
 
@@ -19,6 +21,7 @@ public class ButtonStates : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         button = GetComponent<Button>();
     }
 
+    /*
     public void OnPointerDown(PointerEventData eventData)
     {
         transform.localScale = pressedScale;
@@ -37,7 +40,7 @@ public class ButtonStates : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public void OnPointerExit(PointerEventData eventData)
     {
         transform.localScale = defaultScale;
-    }
+    }*/
 
     private void SetInteractable()
     {
