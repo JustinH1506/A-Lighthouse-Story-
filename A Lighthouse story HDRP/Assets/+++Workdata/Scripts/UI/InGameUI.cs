@@ -13,9 +13,8 @@ public class InGameUI : MonoBehaviour
     [SerializeField] private CanvasGroup inGameOptions;
     [SerializeField] private CanvasGroup demoEndScreen;
 
-    //searching eye object and animator
-    [SerializeField] private GameObject searchingEye;
-    private Animator eyeAnim;
+    //searching eye animator
+    [SerializeField] private Animator eyeAnim;
 
     private PlayerInputManager playerInput;
 
@@ -31,7 +30,6 @@ public class InGameUI : MonoBehaviour
         inGameMenu.HideCanvasGroup();
         inGameOptions.HideCanvasGroup();
         demoEndScreen.HideCanvasGroup();
-        eyeAnim = searchingEye.GetComponent<Animator>();
     }
 
     private void Start()
