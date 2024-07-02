@@ -52,6 +52,9 @@ public class PlayerInputManager : MonoBehaviour
         
         _playerControllerMap.Player.MoveObject.started += _playerObjectMove.ConnectObject;
         _playerControllerMap.Player.MoveObject.canceled += _playerObjectMove.DisconnectObject;
+        
+        _playerControllerMap.Player.MoveObject.started += _playerObjectMove.ConnectBranch;
+        _playerControllerMap.Player.MoveObject.canceled += _playerObjectMove.DisconnectBranch;
     }
     
     /// <summary>
@@ -70,6 +73,9 @@ public class PlayerInputManager : MonoBehaviour
         
         _playerControllerMap.Player.MoveObject.started -= _playerObjectMove.ConnectObject;
         _playerControllerMap.Player.MoveObject.canceled -= _playerObjectMove.DisconnectObject;
+        
+        _playerControllerMap.Player.MoveObject.started -= _playerObjectMove.ConnectBranch;
+        _playerControllerMap.Player.MoveObject.canceled -= _playerObjectMove.DisconnectBranch;
     }
 
     #endregion

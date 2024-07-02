@@ -171,6 +171,8 @@ public class PlayerMovement : PlayerBase
     /// <param name="context"></param>
     public void Sneak(InputAction.CallbackContext context)
     {
+        if (isDisabled) return;
+        
         if (context.performed && !isSneaking && !_playerObjectMove.isMoving)
         {
             isSneaking = true;
@@ -178,8 +180,6 @@ public class PlayerMovement : PlayerBase
             anim.SetBool("isSneaking", isSneaking);
 
             isSprinting = false;
-            
-            anim.SetBool("isSprinting", isSprinting);
             
             maxSpeed = sneakSpeed;
         }
@@ -199,11 +199,11 @@ public class PlayerMovement : PlayerBase
     /// <param name="context"></param>
     public void Sprint(InputAction.CallbackContext context)
     {
+        if (isDisabled) return;
+        
         if (context.performed && !isSprinting && !_playerObjectMove.isMoving)
         {
             isSprinting = true;
-            
-            anim.SetBool("isSprinting", isSprinting);
 
             isSneaking = false;
             
@@ -214,13 +214,10 @@ public class PlayerMovement : PlayerBase
         else if(!_playerObjectMove.isMoving && isSprinting)
         {
             isSprinting = false;
-            
-            anim.SetBool("isSprinting", isSprinting);
 
             maxSpeed = defaultSpeed;
         }
     }
-
     
     /// <summary>
     /// Method to disable movement and stop Player. 

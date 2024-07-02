@@ -26,6 +26,8 @@ public class PlayerJumping : PlayerBase
     [Tooltip("How far the RayCast goes.")]
     [SerializeField] private float rayCastDistance;
 
+    private bool canJump;
+
     [Tooltip("Layer which can be considered ground to Jump on.")]
     [SerializeField] private LayerMask ground;
     
@@ -45,11 +47,20 @@ public class PlayerJumping : PlayerBase
         if (GroundCheck())
         {
             coyoteTimeCounter = coyoteTime;
+            
+            canJump = true;
+            
+            anim.SetTrigger("hasLanded");
         }
 
         if (!GroundCheck())
         {
-            
+            coyoteTimeCounter -= Time.deltaTime;
+
+            if (coyoteTimeCounter >= 0)
+            {
+                canJump = false;
+            }
         }
     }
 
@@ -59,7 +70,7 @@ public class PlayerJumping : PlayerBase
     /// <param name="context"></param>
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && GroundCheck() && !_playerObjectMove.isMoving)
+        if (context.performed && canJump && !_playerObjectMove.isMoving)
         {
             rb.AddForce(new Vector3(rb.velocity.x, jumpStrength, rb.velocity.z), ForceMode.Impulse);
             

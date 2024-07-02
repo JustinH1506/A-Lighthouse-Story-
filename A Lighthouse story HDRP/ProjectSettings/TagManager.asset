@@ -7,6 +7,7 @@ TagManager:
   - Climbable
   - InGameHUD
   - Moveable
+  - Branch
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Sand
   - Grass
   - Wood
-  - 
+  - Branch
   - 
   - 
   - 

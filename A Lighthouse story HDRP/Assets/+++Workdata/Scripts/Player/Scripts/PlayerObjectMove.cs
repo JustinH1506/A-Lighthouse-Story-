@@ -19,14 +19,16 @@ public class PlayerObjectMove : PlayerBase
 
     [SerializeField] private float pushPower;
 
-    [SerializeField] private Transform moveableObjectParent;
-
+    [Tooltip("Offsets the Raycast.")]
+    [SerializeField] private float offset;
+    
     private float inputX, inputZ;
     
     public bool isMoving;
 
-    [Tooltip("Offsets the Raycast.")]
-    [SerializeField] private float offset;
+    private bool isBranch;
+    
+    [SerializeField] private Transform moveableObjectParent;
 
     [SerializeField] private LayerMask targetLayer;
     #endregion
@@ -78,8 +80,15 @@ public class PlayerObjectMove : PlayerBase
         {
             if(hit.collider.CompareTag("Moveable"))
             {
-                Debug.Log("Chest got it");
                 moveableObject = hit.collider.gameObject;
+
+                isBranch = false;
+            }
+            else if (hit.collider.CompareTag("Branch"))
+            {
+                moveableObject = hit.collider.gameObject;
+                
+                isBranch = true;
             }
         }
         else
@@ -89,7 +98,7 @@ public class PlayerObjectMove : PlayerBase
             //moveableObjectRb = null;
         }
 
-        if(isMoving && moveableObject != null && moveableObjectRb != null)
+        if(isMoving && moveableObject != null && moveableObjectRb != null && !isBranch)
         {
             /*Vector3 forceDirection = moveableObject.transform.position - transform.position;
             forceDirection.y = 0;
@@ -109,16 +118,8 @@ public class PlayerObjectMove : PlayerBase
     /// <param name="context"></param>
     public void ConnectObject(InputAction.CallbackContext context)
     {
-        if (moveableObject != null)
+        if (moveableObject != null && !isBranch)
         {
-            //moveableObjectRb = moveableObject.GetComponent<Rigidbody>();
-            
-            //_springJoint.connectedBody = moveableObjectRb;
-
-            //moveableObjectRb.mass = 1;
-            
-            //moveableObject.transform.SetParent(transform);
-
             moveableObject.GetComponent<BoxCollider>().material = zeroFriction;
 
             _fixedJoint = moveableObject.gameObject.AddComponent<FixedJoint>();
@@ -127,7 +128,7 @@ public class PlayerObjectMove : PlayerBase
             
             isMoving = true;
             
-            anim.SetBool("isPushing", isMoving);
+            anim.SetTrigger("isPushing");
         }
     }
     
@@ -137,7 +138,7 @@ public class PlayerObjectMove : PlayerBase
     /// <param name="context"></param>
     public void DisconnectObject(InputAction.CallbackContext context)
     {
-        if(moveableObject != null)
+        if(moveableObject != null && !isBranch)
         {
             moveableObjectRb = null;
 
@@ -147,16 +148,39 @@ public class PlayerObjectMove : PlayerBase
 
             moveableObject.GetComponent<BoxCollider>().material = null;
             
-            //moveableObject.transform.SetParent(moveableObjectParent);
+            isMoving = false;
+            
+            anim.SetTrigger("stoppedPushing");
+        }
+    }
+
+    public void ConnectBranch(InputAction.CallbackContext context)
+    {
+        if (moveableObject != null && isBranch)
+        {
+            moveableObjectRb = moveableObject.GetComponent<Rigidbody>();
+
+            moveableObjectRb.mass = 1f;
+            
+            isMoving = true;
+            
+            anim.SetTrigger("isPushing");
+        }
+    }
+    
+    public void DisconnectBranch(InputAction.CallbackContext context)
+    {
+        if (moveableObject != null && isBranch)
+        {
+            moveableObjectRb.mass = 100f;
+            
+            moveableObjectRb = null;
             
             isMoving = false;
             
-            anim.SetBool("isPushing", isMoving);
-            
-            //_springJoint.connectedBody = null;
-            
-            //moveableObjectRb.mass = 100;
+            anim.SetTrigger("stoppedPushing");
         }
     }
+
     #endregion
 }
