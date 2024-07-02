@@ -126,6 +126,8 @@ public class PlayerObjectMove : PlayerBase
             _fixedJoint.connectedBody = rb;
             
             isMoving = true;
+            
+            anim.SetBool("isPushing", isMoving);
         }
     }
     
@@ -148,6 +150,8 @@ public class PlayerObjectMove : PlayerBase
             //moveableObject.transform.SetParent(moveableObjectParent);
             
             isMoving = false;
+            
+            anim.SetBool("isPushing", isMoving);
             
             //_springJoint.connectedBody = null;
             

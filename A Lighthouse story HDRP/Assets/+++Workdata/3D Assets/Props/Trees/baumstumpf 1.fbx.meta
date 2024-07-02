@@ -3,7 +3,22 @@ guid: 7f3c86edbaa0c63429bfcb2d253ba149
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Au\xDFen_mtl"
+    second: {fileID: 2100000, guid: 3a1bfd9813cd93f4b9114f3c2ddd118e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Innen_mtl
+    second: {fileID: 2100000, guid: 5beb9500408e47440ae5d9a73457abd4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Unbenanntes_Projekt (27)
+    second: {fileID: 2100000, guid: 7e7598e2ca7d8e2438d63a912a934f57, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

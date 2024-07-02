@@ -53,7 +53,6 @@ public class PlayerMovement : PlayerBase
     
     private bool isSprinting;
 
-
     #endregion
 
     #region Local classes
