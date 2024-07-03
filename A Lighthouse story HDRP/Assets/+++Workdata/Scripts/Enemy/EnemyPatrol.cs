@@ -93,6 +93,16 @@ public class EnemyPatrol : MonoBehaviour
                 }
             }
         }
-    } 
+    }
+
+    public void DeactivateCrabEyeUI()
+    {
+        InGameUI.Instance.DeactivateSearchingEye();
+    }
+
+    public void ActivateCrabEyeUI()
+    {
+        InGameUI.Instance.ActivateSearchingEye();
+    }
 }
 

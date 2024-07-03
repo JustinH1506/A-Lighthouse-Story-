@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d877ec3e844f2ca46830012e8e79319b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   rotation:
     m_OverrideState: 0
     m_Value: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
     m_Value: 8
   groundTint:
     m_OverrideState: 1
-    m_Value: {r: 0.122641504, g: 0.1043775, b: 0.09313812, a: 1}
+    m_Value: {r: 0.18867922, g: 0.158271, b: 0.14002608, a: 1}
   groundColorTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -154,17 +154,17 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   colorMode:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    m_Value: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
   tint:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   maxFogDistance:
     m_OverrideState: 1
-    m_Value: 29.1
+    m_Value: 15.58
   mipFogMaxMip:
     m_OverrideState: 0
     m_Value: 0.5
@@ -176,13 +176,13 @@ MonoBehaviour:
     m_Value: 1000
   baseHeight:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: -0.6
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 16.4
+    m_Value: 6.88
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 6.15
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
@@ -296,7 +296,7 @@ MonoBehaviour:
   active: 1
   skyType:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 1
   cloudType:
     m_OverrideState: 0
     m_Value: 0
