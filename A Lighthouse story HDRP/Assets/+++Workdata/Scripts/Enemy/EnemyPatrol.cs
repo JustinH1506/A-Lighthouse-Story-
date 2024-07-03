@@ -104,5 +104,10 @@ public class EnemyPatrol : MonoBehaviour
     {
         InGameUI.Instance.ActivateSearchingEye();
     }
+
+    public void ActivateCabinMusic()
+    {
+        MusicManager.Instance.PlayMusic(MusicManager.Instance.cabinMusic, 0.5f);
+    }
 }
 

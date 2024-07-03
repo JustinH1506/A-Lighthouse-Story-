@@ -47,6 +47,7 @@ public class GameStateManager : MonoBehaviour
         if (onStateChanged != null)
             onStateChanged(currentState);
         LoadSceneManager.instance.SwitchScene(mainMenuSceneName);
+        MusicManager.Instance.PlayMusic(MusicManager.Instance.mainMenuMusic, 0.1f);
     }
 
     //called to start a new game. Also changes the game state.

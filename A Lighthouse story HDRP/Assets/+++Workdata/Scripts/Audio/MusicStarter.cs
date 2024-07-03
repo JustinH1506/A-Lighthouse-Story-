@@ -5,6 +5,6 @@ public class MusicStarter : MonoBehaviour
 {
     private void Start()
     {
-        MusicManager.Instance.PlayMusic(MusicManager.Instance.beachMusic, 1f);
+        MusicManager.Instance.PlayMusic(MusicManager.Instance.beachMusic, 0.1f);
     }
 }

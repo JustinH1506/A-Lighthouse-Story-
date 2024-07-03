@@ -6562,8 +6562,10 @@ MonoBehaviour:
   crabChaseMusic: {fileID: 8300000, guid: 985615f2b8496be4f9d0e4b3f455246d, type: 3}
   crabSearchMusic: {fileID: 8300000, guid: df764116b195bcb49ad5d480ecd50068, type: 3}
   creditMusic: {fileID: 8300000, guid: c5b8cc52cf0770a4faa4f13fe397c068, type: 3}
+  cabinMusic: {fileID: 8300000, guid: e007d1a7dc6717b4facd183dd8966090, type: 3}
   beachAmbience: {fileID: 8300000, guid: 55e688f6eac3260468fbb1b247cbff53, type: 3}
   forestAmbience: {fileID: 8300000, guid: 48f01ed3afb757e45acfd87e413d036c, type: 3}
+  lighthouseAmbience: {fileID: 8300000, guid: 84043592380e4ef469a4b8816a5d35e1, type: 3}
   grassSteps:
   - {fileID: 8300000, guid: a9150094c79902947b672316c0306c25, type: 3}
   - {fileID: 8300000, guid: ffaf72da730af2340857e599e42f07ac, type: 3}
@@ -6582,11 +6584,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b6e79db94aec3f24cb24e05a99305cc1, type: 3}
   - {fileID: 8300000, guid: bb4aa1ca518ec9c4cad1ce32f5a5cdfe, type: 3}
   - {fileID: 8300000, guid: 71f0c68698809f84c9bb726dc15ec854, type: 3}
-  seagullScreams: {fileID: 0}
-  obstacleMoving: {fileID: 0}
+  crabScreech: {fileID: 8300000, guid: bbe551dbf017871468c690c88577516f, type: 3}
+  crabSteps: {fileID: 8300000, guid: 422611c3850fd9f4ea549d4e01a3252c, type: 3}
+  checkpointActivate: {fileID: 8300000, guid: 4fa2f19f671dc0f48a2e75103f60adf3, type: 3}
+  owlSound: {fileID: 8300000, guid: b16d177b6caa76c45941966a56434d35, type: 3}
+  hawkSound: {fileID: 8300000, guid: 885c13d7cc385c643be0575aabf5a84e, type: 3}
+  crowSound: {fileID: 8300000, guid: af769c4fe3673114dbc2ff23309c6dc4, type: 3}
   turnPages: {fileID: 8300000, guid: 3ff842f66b32401458ca572aeadd8bb9, type: 3}
-  buttonHover: {fileID: 0}
-  buttonPress: {fileID: 0}
+  buttonHover: {fileID: 8300000, guid: a098cb47c68f4d14b975d55b9eb1e924, type: 3}
+  buttonPress: {fileID: 8300000, guid: afc8925844b22c44cab9f42458f4224b, type: 3}
 --- !u!4 &1811845560
 Transform:
   m_ObjectHideFlags: 0

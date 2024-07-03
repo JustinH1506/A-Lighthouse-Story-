@@ -6,13 +6,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ButtonStates : MonoBehaviour
+public class ButtonStates : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 {
-    /*
-    private Vector3 defaultScale = new Vector3(1, 1, 1);
-    private Vector3 hoveredScale = new Vector3(1.5f, 1.5f, 1.5f);
-    private Vector3 pressedScale = new Vector3(0.8f, 0.8f, 0.8f);
-    */
 
     private Button button;
 
@@ -20,27 +15,16 @@ public class ButtonStates : MonoBehaviour
     {
         button = GetComponent<Button>();
     }
-
-    /*
+    
     public void OnPointerDown(PointerEventData eventData)
     {
-        transform.localScale = pressedScale;
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        transform.localScale = defaultScale;
+        MusicManager.Instance.PlayUISFX(MusicManager.Instance.buttonPress);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        transform.localScale = hoveredScale;
+        MusicManager.Instance.PlayUISFX(MusicManager.Instance.buttonHover);
     }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        transform.localScale = defaultScale;
-    }*/
 
     private void SetInteractable()
     {

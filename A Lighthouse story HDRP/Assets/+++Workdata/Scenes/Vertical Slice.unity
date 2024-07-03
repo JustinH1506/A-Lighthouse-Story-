@@ -760,6 +760,90 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86874655}
   m_Mesh: {fileID: 3925360246919112806, guid: ca2004877bbfea741b017b1a342fd48f, type: 3}
+--- !u!1 &95461346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 95461347}
+  - component: {fileID: 95461349}
+  - component: {fileID: 95461348}
+  m_Layer: 0
+  m_Name: secondcollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &95461347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95461346}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1992479151}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &95461348
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95461346}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.21829891, y: 1, z: 5.2638903}
+  m_Center: {x: -4.84, y: -0.20999998, z: -1.7130113}
+--- !u!114 &95461349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95461346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c9111f2a9bbebe4685e78abe068837c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1043489127}
+        m_TargetAssemblyTypeName: EnemyPatrol, Assembly-CSharp
+        m_MethodName: DeactivateCrabEyeUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  triggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &95848720 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7cc665dbdffbf8745838d238f038aff0,
@@ -23165,7 +23249,6 @@ GameObject:
   - component: {fileID: 1992479151}
   - component: {fileID: 1992479154}
   - component: {fileID: 1992479153}
-  - component: {fileID: 1992479152}
   m_Layer: 0
   m_Name: DeactivateEyeUI
   m_TagString: Untagged
@@ -23185,30 +23268,10 @@ Transform:
   m_LocalPosition: {x: 56.32, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 95461347}
   m_Father: {fileID: 701502192}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1992479152
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1992479150}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.22224617, y: 1.0535803, z: 4.8867993}
-  m_Center: {x: -4.8288774, y: -0.21558315, z: -1.4536715}
 --- !u!65 &1992479153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23248,6 +23311,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1043489127}
         m_TargetAssemblyTypeName: EnemyPatrol, Assembly-CSharp
         m_MethodName: DeactivateCrabEyeUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1043489127}
+        m_TargetAssemblyTypeName: EnemyPatrol, Assembly-CSharp
+        m_MethodName: ActivateCabinMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

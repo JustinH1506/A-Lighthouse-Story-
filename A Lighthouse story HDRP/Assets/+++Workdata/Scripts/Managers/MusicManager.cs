@@ -20,20 +20,25 @@ public class MusicManager : MonoBehaviour
     public AudioClip crabChaseMusic;
     public AudioClip crabSearchMusic;
     public AudioClip creditMusic;
+    public AudioClip cabinMusic;
 
     [Header("Ambience")] 
     public AudioClip beachAmbience;
     public AudioClip forestAmbience;
+    public AudioClip lighthouseAmbience;
 
     [Header("Player Footsteps")] 
     public AudioClip[] grassSteps = new AudioClip[5];
     public AudioClip[] sandSteps = new AudioClip[5];
     public AudioClip[] woodSteps = new AudioClip[5];
-    
-    
+
     [Header("InGame SFX")]
-    public AudioClip seagullScreams;
-    public AudioClip obstacleMoving;
+    public AudioClip crabScreech;
+    public AudioClip crabSteps;
+    public AudioClip checkpointActivate;
+    public AudioClip owlSound;
+    public AudioClip hawkSound;
+    public AudioClip crowSound;
 
     [Header("UI SFX")] 
     public AudioClip turnPages;
