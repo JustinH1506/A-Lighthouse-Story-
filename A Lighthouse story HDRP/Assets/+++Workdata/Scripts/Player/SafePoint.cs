@@ -1,24 +1,25 @@
+using System;
 using UnityEngine;
 
 public class SafePoint : MonoBehaviour
 {
-    #region Classes
+    [SerializeField] private Transform player;
 
-    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private Light lampLight;
     
-    #endregion
-
     #region Method
-    
+
     /// <summary>
     /// Changes position of player and safes it. 
     /// </summary>
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-        _playerMovement.transform.position = transform.position;
-
-        _playerMovement.positionData.safePoint = transform;
+        lampLight.enabled = true;
+        
+        PlayerPrefs.SetFloat("PlayerX", player.position.x);
+        PlayerPrefs.SetFloat("PlayerY", player.position.y);
+        PlayerPrefs.SetFloat("PlayerZ", player.position.z);
     }
     
     #endregion

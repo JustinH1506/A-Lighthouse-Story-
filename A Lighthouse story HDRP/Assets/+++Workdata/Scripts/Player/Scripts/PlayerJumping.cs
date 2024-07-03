@@ -15,8 +15,6 @@ public class PlayerJumping : PlayerBase
     [Tooltip("How strong the Player jumps.")]
     [SerializeField] private float jumpStrength;
     
-    [SerializeField] private float fallMultiplier;
-    
     [Tooltip("Time before falling.")]
     [SerializeField] private float coyoteTime;
 

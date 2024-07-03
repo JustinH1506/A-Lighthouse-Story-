@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,7 +15,7 @@ public class PlayerMovement : PlayerBase
 
     #region Components
 
-    [SerializeField] private CapsuleCollider _capsuleCollider;
+    [SerializeField] private CapsuleCollider sneakCollider;
     
     #endregion
     
@@ -69,6 +70,14 @@ public class PlayerMovement : PlayerBase
         base.Awake();
         
         maxSpeed = defaultSpeed;
+    }
+
+    private void Start()
+    {
+        Vector3 safePosition = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"),
+            PlayerPrefs.GetFloat("PlayerZ"));
+
+        transform.position = safePosition;
     }
 
     #region Methods
@@ -179,6 +188,8 @@ public class PlayerMovement : PlayerBase
             
             anim.SetBool("isSneaking", isSneaking);
 
+            sneakCollider.height = 0.2f;
+
             isSprinting = false;
             
             maxSpeed = sneakSpeed;
@@ -188,6 +199,8 @@ public class PlayerMovement : PlayerBase
             isSneaking = false;
             
             anim.SetBool("isSneaking", isSneaking);
+            
+            sneakCollider.height = 0.25f;
             
             maxSpeed = defaultSpeed;
         }

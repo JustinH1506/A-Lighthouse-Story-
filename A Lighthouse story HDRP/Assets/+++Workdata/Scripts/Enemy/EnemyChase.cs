@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,15 +6,13 @@ public class EnemyChase : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField] private float moveSpeed;
-
     [SerializeField] private Transform player;
 
-    [SerializeField] private Animator anim;
-
-    private Rigidbody rb;
+    private Animator anim;
 
     private NavMeshAgent _navMeshAgent;
+
+    [SerializeField] private Death _death;
 
     #endregion
 
@@ -24,8 +23,6 @@ public class EnemyChase : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-
         anim = GetComponent<Animator>();
 
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -51,13 +48,15 @@ public class EnemyChase : MonoBehaviour
         anim.SetTrigger("isWalking");
         
         anim.SetFloat("speed", -1f);
-
-        //Vector3 direction = (targetPos - transform.position).normalized;
-
-        //transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed);
-
-        //rb.MovePosition(transform.position + targetPos * Time.deltaTime * moveSpeed);
     }
-    
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            _death.StartDeathAnimation();
+        }
+    }
+
     #endregion
 }

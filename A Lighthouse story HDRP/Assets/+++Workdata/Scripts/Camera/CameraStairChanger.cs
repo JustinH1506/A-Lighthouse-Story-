@@ -11,11 +11,17 @@ public class CameraStairChanger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        stairCam.enabled = true;
+        if(other.CompareTag("Player"))
+        {
+            stairCam.enabled = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        stairCam.enabled = false;
+        if(other.CompareTag("Player"))
+        {
+            stairCam.enabled = false;
+        }
     }
 }
