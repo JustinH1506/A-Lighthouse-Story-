@@ -152,6 +152,7 @@ public class InGameUI : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+        GameStateManager.instance.DeletePlayerPrefsPosition();
     }
 
     /// <summary>

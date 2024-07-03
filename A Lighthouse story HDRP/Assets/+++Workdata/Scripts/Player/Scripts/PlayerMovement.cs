@@ -79,10 +79,13 @@ public class PlayerMovement : PlayerBase
 
     private void Start()
     {
-        Vector3 safePosition = new Vector3(PlayerPrefs.GetFloat(PlayerXKey), PlayerPrefs.GetFloat(PlayerYKey),
-            PlayerPrefs.GetFloat(PlayerZKey));
-
-        transform.position = safePosition;
+        if (PlayerPrefs.HasKey(PlayerXKey))
+        {
+            Vector3 safePosition = new Vector3(PlayerPrefs.GetFloat(PlayerXKey), PlayerPrefs.GetFloat(PlayerYKey),
+                PlayerPrefs.GetFloat(PlayerZKey));
+            
+            transform.position = safePosition;
+        }
     }
 
     #region Methods

@@ -54,6 +54,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void StartNewGame()
     {
+        GameStateManager.instance.DeletePlayerPrefsPosition();
         GameStateManager.instance.StartNewGame();
         Cursor.lockState = CursorLockMode.Locked;
     }

@@ -97,17 +97,17 @@ public class States : PlayerBase
     {
         if (isSand)
         {
-            MusicManager.Instance.PlayUISFX(sandStepList[Random.Range(0, 5)]);
+            MusicManager.Instance.PlayUISFX(MusicManager.Instance.sandSteps[Random.Range(0, 5)]);
         }
         
-        if (isSand)
+        if (isGrass)
         {
-            MusicManager.Instance.PlayUISFX(grassStepList[Random.Range(0, 5)]);
+            MusicManager.Instance.PlayUISFX(MusicManager.Instance.grassSteps[Random.Range(0, 5)]);
         }
         
-        if (isSand)
+        if (isWood)
         {
-            MusicManager.Instance.PlayUISFX(woodStepList[Random.Range(0, 5)]);
+            MusicManager.Instance.PlayUISFX(MusicManager.Instance.woodSteps[Random.Range(0, 5)]);
         }
     }
 }
