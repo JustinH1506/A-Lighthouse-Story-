@@ -152,7 +152,7 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""19abaafd-90a8-4950-b815-11eeb2533093"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -163,7 +163,7 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""093845c1-1082-4e9e-b3c5-d20a0736f675"",
-                    ""path"": ""<Keyboard>/ctrl"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

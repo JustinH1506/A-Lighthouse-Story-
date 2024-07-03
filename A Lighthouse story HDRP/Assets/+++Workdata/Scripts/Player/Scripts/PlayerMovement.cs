@@ -20,6 +20,10 @@ public class PlayerMovement : PlayerBase
     #endregion
     
     #region Variables
+
+    public const string PlayerXKey = "PlayerX";
+    public const string PlayerYKey = "PlayerY";
+    public const string PlayerZKey = "PlayerZ";
     
     [Header("Movement")]
     [Tooltip("Speed to make the Player Move.")]
@@ -75,8 +79,8 @@ public class PlayerMovement : PlayerBase
 
     private void Start()
     {
-        Vector3 safePosition = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"),
-            PlayerPrefs.GetFloat("PlayerZ"));
+        Vector3 safePosition = new Vector3(PlayerPrefs.GetFloat(PlayerXKey), PlayerPrefs.GetFloat(PlayerYKey),
+            PlayerPrefs.GetFloat(PlayerZKey));
 
         transform.position = safePosition;
     }

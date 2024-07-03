@@ -9,6 +9,8 @@ public class EndOfDemo : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            InGameUI.Instance.DeactivateSearchingEye();
+            
             InGameUI.Instance.ShowEndofDemo();
         }
     }

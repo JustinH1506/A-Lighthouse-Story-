@@ -25,7 +25,7 @@ public class States : PlayerBase
             waitUntilLookIdle = Random.Range(3f, 5f);
         }
         
-        /*sandStepList.Add(MusicManager.Instance.sandStepA);
+        sandStepList.Add(MusicManager.Instance.sandStepA);
         sandStepList.Add(MusicManager.Instance.sandStepB);
         sandStepList.Add(MusicManager.Instance.sandStepC);
         sandStepList.Add(MusicManager.Instance.sandStepD);
@@ -41,7 +41,7 @@ public class States : PlayerBase
         sandStepList.Add(MusicManager.Instance.woodStepB);
         sandStepList.Add(MusicManager.Instance.woodStepC);
         sandStepList.Add(MusicManager.Instance.woodStepD);
-        sandStepList.Add(MusicManager.Instance.woodStepE);*/
+        sandStepList.Add(MusicManager.Instance.woodStepE);
     }
 
     private void Update()
@@ -97,17 +97,17 @@ public class States : PlayerBase
     {
         if (isSand)
         {
-            MusicManager.Instance.PlaySFX(sandStepList[Random.Range(0, 5)]);
+            MusicManager.Instance.PlaySFX(sandStepList[Random.Range(0, 4)]);
         }
         
         if (isSand)
         {
-            MusicManager.Instance.PlaySFX(grassStepList[Random.Range(0, 5)]);
+            MusicManager.Instance.PlaySFX(grassStepList[Random.Range(0, 4)]);
         }
         
         if (isSand)
         {
-            MusicManager.Instance.PlaySFX(woodStepList[Random.Range(0, 5)]);
+            MusicManager.Instance.PlaySFX(woodStepList[Random.Range(0, 4)]);
         }
     }
 }
