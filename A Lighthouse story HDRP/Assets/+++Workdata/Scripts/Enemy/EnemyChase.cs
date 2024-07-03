@@ -44,8 +44,6 @@ public class EnemyChase : MonoBehaviour
         Vector3 targetPos = new Vector3(player.position.x, transform.position.y, player.position.z);
 
         _navMeshAgent.SetDestination(targetPos);
-
-        anim.SetTrigger("isWalking");
         
         anim.SetFloat("speed", -1f);
     }

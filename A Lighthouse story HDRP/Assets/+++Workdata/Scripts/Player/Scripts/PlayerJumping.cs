@@ -7,6 +7,8 @@ public class PlayerJumping : PlayerBase
     #region Scripts
     
     private PlayerObjectMove _playerObjectMove;
+
+    private PlayerMovement _playerMovement;
     
     #endregion
 
@@ -14,6 +16,9 @@ public class PlayerJumping : PlayerBase
     
     [Tooltip("How strong the Player jumps.")]
     [SerializeField] private float jumpStrength;
+
+    [Tooltip("Jump strength during jumping.")]
+    [SerializeField] private float sprintJumpStrength;
     
     [Tooltip("Time before falling.")]
     [SerializeField] private float coyoteTime;
@@ -38,6 +43,8 @@ public class PlayerJumping : PlayerBase
         base.Awake();
 
         _playerObjectMove = GetComponent<PlayerObjectMove>();
+
+        _playerMovement = GetComponent<PlayerMovement>();
     }
 
     private void Update()
@@ -68,7 +75,13 @@ public class PlayerJumping : PlayerBase
     /// <param name="context"></param>
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && canJump && !_playerObjectMove.isMoving)
+        if (context.performed && canJump && !_playerObjectMove.isMoving && _playerMovement.isSprinting)
+        {
+            rb.AddForce(new Vector3(rb.velocity.x, sprintJumpStrength, rb.velocity.z), ForceMode.Impulse);
+            
+            anim.SetTrigger("isJumping");
+        }
+        else if (context.performed && canJump && !_playerObjectMove.isMoving)
         {
             rb.AddForce(new Vector3(rb.velocity.x, jumpStrength, rb.velocity.z), ForceMode.Impulse);
             

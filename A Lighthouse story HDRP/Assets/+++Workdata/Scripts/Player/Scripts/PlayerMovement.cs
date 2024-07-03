@@ -52,7 +52,8 @@ public class PlayerMovement : PlayerBase
 
     private bool isSneaking;
     
-    private bool isSprinting;
+    [HideInInspector]
+    public bool isSprinting;
 
     #endregion
 
