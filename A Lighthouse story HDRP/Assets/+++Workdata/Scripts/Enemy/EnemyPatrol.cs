@@ -52,8 +52,6 @@ public class EnemyPatrol : MonoBehaviour
             return;
         }
         
-        _anim.SetTrigger("isWalking");
-        
         if (moveBack)
         {
             _navMeshAgent.SetDestination(leftTarget.position);
