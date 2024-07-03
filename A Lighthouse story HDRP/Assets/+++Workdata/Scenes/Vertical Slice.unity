@@ -8403,7 +8403,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902764902}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.10641512, y: 0.027814135, z: 0.0029779258, w: 0.99392825}
+  m_LocalRotation: {x: -0.106415115, y: 0.027814126, z: 0.0029779244, w: 0.99392825}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11435,6 +11435,7 @@ MonoBehaviour:
   rightTarget: {fileID: 614634565}
   leftTarget: {fileID: 857579123}
   playerPosition: {fileID: 752863036}
+  _death: {fileID: 653527169}
   moveBack: 0
   foundPlayer: 0
 --- !u!54 &1043489128

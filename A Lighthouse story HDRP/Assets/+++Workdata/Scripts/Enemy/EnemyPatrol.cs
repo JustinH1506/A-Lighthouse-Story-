@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +13,8 @@ public class EnemyPatrol : MonoBehaviour
     private NavMeshAgent _navMeshAgent;
 
     private Animator _anim;
+
+    [SerializeField] private Death _death;
     
     [SerializeField] private bool moveBack;
 
@@ -33,6 +36,14 @@ public class EnemyPatrol : MonoBehaviour
     private void FixedUpdate()
     {
         Patrol();
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            _death.StartDeathAnimation();
+        }
     }
 
     /// <summary>
