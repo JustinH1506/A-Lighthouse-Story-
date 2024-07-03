@@ -42,6 +42,8 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            InGameUI.Instance.DeactivateSearchingEye();
+            
             _death.StartDeathAnimation();
         }
     }
