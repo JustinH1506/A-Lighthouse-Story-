@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MusicManager : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class MusicManager : MonoBehaviour
     [Header("Audio Sources")] 
     [SerializeField] private AudioSource musicAudio;
     [SerializeField] private AudioSource ambienceAudio;
-    [SerializeField] private AudioSource sFXAudio;
+    [SerializeField] private AudioSource uiSFXAudio;
+    [SerializeField] private AudioSource inGameSFXAudio;
 
     [Header("Music")] 
     public AudioClip mainMenuMusic;
@@ -24,21 +26,10 @@ public class MusicManager : MonoBehaviour
     public AudioClip forestAmbience;
 
     [Header("Player Footsteps")] 
-    public AudioClip grassStepA;
-    public AudioClip grassStepB;
-    public AudioClip grassStepC;
-    public AudioClip grassStepD;
-    public AudioClip grassStepE;
-    public AudioClip sandStepA;
-    public AudioClip sandStepB;
-    public AudioClip sandStepC;
-    public AudioClip sandStepD;
-    public AudioClip sandStepE;
-    public AudioClip woodStepA;
-    public AudioClip woodStepB;
-    public AudioClip woodStepC;
-    public AudioClip woodStepD;
-    public AudioClip woodStepE;
+    public AudioClip[] grassSteps = new AudioClip[5];
+    public AudioClip[] sandSteps = new AudioClip[5];
+    public AudioClip[] woodSteps = new AudioClip[5];
+    
     
     [Header("InGame SFX")]
     public AudioClip seagullScreams;
@@ -80,11 +71,20 @@ public class MusicManager : MonoBehaviour
     }
 
     /// <summary>
-    /// plays sfx audio clip one time
+    /// plays ui sfx audio clip one time
     /// </summary>
     /// <param name="clip">audio clip to play</param>
-    public void PlaySFX(AudioClip clip)
+    public void PlayUISFX(AudioClip clip)
     {
-        sFXAudio.PlayOneShot(clip);
+        uiSFXAudio.PlayOneShot(clip);
+    }
+
+    /// <summary>
+    /// plays in game sfx audio clip one time
+    /// </summary>
+    /// <param name="clip">audio clip to play</param>
+    public void PlayInGameSFX(AudioClip clip)
+    {
+        inGameSFXAudio.PlayOneShot(clip);
     }
 }

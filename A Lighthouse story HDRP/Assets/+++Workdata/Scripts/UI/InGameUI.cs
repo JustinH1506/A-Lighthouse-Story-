@@ -60,12 +60,14 @@ public class InGameUI : MonoBehaviour
             (inGameMenu.interactable == false) && inGameOptions.interactable == false)
         {
             OpenInGameUI();
+            Cursor.lockState = CursorLockMode.None;
         }
         else if (context.performed &&
                  (GameStateManager.instance.currentState != GameStateManager.GameState.InMainMenu) &&
                  (inGameMenu.interactable == true || inGameOptions.interactable == true))
         {
             CloseInGameUI();
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
@@ -129,6 +131,7 @@ public class InGameUI : MonoBehaviour
     public void ShowEndofDemo()
     {
         demoEndScreen.ShowCanvasGroup();
+        Cursor.lockState = CursorLockMode.None;
     }
 
     /// <summary>
@@ -138,6 +141,7 @@ public class InGameUI : MonoBehaviour
     {
         GameStateManager.instance.GoToMainMenu();
         CloseInGameUI();
+        demoEndScreen.HideCanvasGroup();
 
         Time.timeScale = 1f;
     }

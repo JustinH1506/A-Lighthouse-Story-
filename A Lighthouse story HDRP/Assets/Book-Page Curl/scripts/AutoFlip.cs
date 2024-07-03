@@ -110,7 +110,7 @@ public class AutoFlip : MonoBehaviour {
         }
         else
         {
-            MusicManager.Instance.PlaySFX(MusicManager.Instance.turnPages);
+            MusicManager.Instance.PlayUISFX(MusicManager.Instance.turnPages);
         }
         
         for (int i = 0; i < AnimationFramesCount; i++)
@@ -139,7 +139,7 @@ public class AutoFlip : MonoBehaviour {
         float x = xc - xl;
         float y = (-h / (xl * xl)) * (x - xc) * (x - xc);
         ControledBook.DragLeftPageToPoint(new Vector3(x, y, 0));
-        MusicManager.Instance.PlaySFX(MusicManager.Instance.turnPages);
+        MusicManager.Instance.PlayUISFX(MusicManager.Instance.turnPages);
         for (int i = 0; i < AnimationFramesCount; i++)
         {
             y = (-h / (xl * xl)) * (x - xc) * (x - xc);

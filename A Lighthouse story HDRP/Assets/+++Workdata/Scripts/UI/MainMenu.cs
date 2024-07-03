@@ -55,6 +55,12 @@ public class MainMenu : MonoBehaviour
     public void StartNewGame()
     {
         GameStateManager.instance.StartNewGame();
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     /// <summary>
