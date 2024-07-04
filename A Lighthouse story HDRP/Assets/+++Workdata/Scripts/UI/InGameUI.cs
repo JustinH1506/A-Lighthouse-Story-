@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class InGameUI : MonoBehaviour
 {
+    #region Variables
     public static InGameUI Instance { get; private set; }
     
     //all panels in under the pause menu
@@ -22,7 +23,10 @@ public class InGameUI : MonoBehaviour
 
     //bool to check if player may open menu
     public bool menuActive = true;
+    
+    #endregion
 
+    #region Unity Methods
     private void Awake()
     {
         Instance = this;
@@ -52,7 +56,10 @@ public class InGameUI : MonoBehaviour
 
         inputActions.UI.PauseGame.performed -= PauseGame;
     }
+    
+    #endregion
 
+    #region Input Methods
     private void PauseGame(InputAction.CallbackContext context)
     {
         if (context.performed && menuActive &&
@@ -70,7 +77,9 @@ public class InGameUI : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
+    #endregion
 
+    #region Pause Menu Methods
     private void OnStateChange(GameStateManager.GameState newState)
     {
         //we toggle the availability of the inGame menu whenever the game state chaneges
@@ -154,7 +163,10 @@ public class InGameUI : MonoBehaviour
         Application.Quit();
         GameStateManager.instance.DeletePlayerPrefsPosition();
     }
+    
+    #endregion
 
+    #region Crab Eye UI
     /// <summary>
     /// activates the searching eye UI
     /// </summary>
@@ -184,4 +196,5 @@ public class InGameUI : MonoBehaviour
         eyeAnim.SetTrigger("FadeOut");
         eyeAnim.SetBool("detectedPlayer", false);
     }
+    #endregion
 }

@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class Credits : MonoBehaviour
 {
+    #region Variables
+    
     [SerializeField] private GameObject skipText;
 
     private PlayerControllerMap inputActions;
@@ -15,7 +17,10 @@ public class Credits : MonoBehaviour
 
     //bool to check if player can skip the credits
     private bool allowSkip;
+    
+    #endregion
 
+    #region Unity Methods
     private void Awake()
     {
         inputActions = new PlayerControllerMap();
@@ -42,7 +47,10 @@ public class Credits : MonoBehaviour
 
         inputActions.UI.SkipCredits.performed -= SkipCredits;
     }
+    
+    #endregion
 
+    #region Input Methods
     //if the allowSkip is true, loads main menu and set allowSkip back to false
     private void SkipCredits(InputAction.CallbackContext context)
     {
@@ -52,7 +60,10 @@ public class Credits : MonoBehaviour
             GameStateManager.instance.GoToMainMenu();
         }
     }
+    
+    #endregion
 
+    #region Credit Methods
     //loads the main menu
     public void EndCredits()
     {
@@ -70,4 +81,6 @@ public class Credits : MonoBehaviour
         allowSkip = true;
         skipText.SetActive(true);
     }
+    
+    #endregion
 }

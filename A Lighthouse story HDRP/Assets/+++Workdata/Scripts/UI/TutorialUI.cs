@@ -15,6 +15,8 @@ public class TutorialUI : MonoBehaviour
         Crouch
     };
 
+    #region Variables
+
     [SerializeField] private TutorialName tutorialUI;
 
     private bool isActive = false;
@@ -22,7 +24,10 @@ public class TutorialUI : MonoBehaviour
     private Animator tutorialAnim;
     
     private PlayerControllerMap inputActions;
+    
+    #endregion
 
+    #region Unity Methods
     private void Awake()
     {
         tutorialAnim = GetComponent<Animator>();
@@ -74,7 +79,10 @@ public class TutorialUI : MonoBehaviour
             tutorialAnim.SetBool("Fade", true);
         }
     }
+    
+    #endregion
 
+    #region Input Methods
     private void PlayerMovement(InputAction.CallbackContext context)
     {
         if (context.ReadValue<Vector3>() != Vector3.zero && tutorialUI == TutorialName.Move)
@@ -119,7 +127,10 @@ public class TutorialUI : MonoBehaviour
             StartCoroutine(WaitForFadeOut());
         }
     }
+    
+    #endregion
 
+    #region Tutorial Methods
     public void FadeInTutorial()
     {
         tutorialAnim.SetBool("Fade", true);
@@ -131,4 +142,6 @@ public class TutorialUI : MonoBehaviour
         yield return new WaitForSeconds(1.1f);
         gameObject.SetActive(false);
     }
+    
+    #endregion
 }

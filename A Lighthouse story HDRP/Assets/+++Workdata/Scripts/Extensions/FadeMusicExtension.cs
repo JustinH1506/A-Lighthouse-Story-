@@ -3,6 +3,12 @@ using UnityEngine;
 
 public static class FadeMusicExtension
 {
+   /// <summary>
+   /// Fades out the current audio clip and fades in the new audio clip
+   /// </summary>
+   /// <param name="aSource">the audio source</param>
+   /// <param name="clip">the clip to play</param>
+   /// <param name="duration">the duration to fade</param>
    public static void FadingInOut(this AudioSource aSource, AudioClip clip, float duration)
    {
       aSource.GetComponentInParent<MonoBehaviour>().StartCoroutine(FadeOutAudio(aSource, clip, duration));
@@ -14,6 +20,14 @@ public static class FadeMusicExtension
       aSource.GetComponentInParent<MonoBehaviour>().StartCoroutine(FadeInAudio(aSource, duration));
    }*/
 
+   /// <summary>
+   /// turn down the volume of the audio source and change the clip after stop playing
+   /// goes to fade in coroutine
+   /// </summary>
+   /// <param name="aSource">the audio source</param>
+   /// <param name="clip">the clip to play</param>
+   /// <param name="duration">the duration to fade</param>
+   /// <returns></returns>
    private static IEnumerator FadeOutAudio(AudioSource aSource, AudioClip clip, float duration)
    {
 
@@ -29,6 +43,12 @@ public static class FadeMusicExtension
       aSource.GetComponentInParent<MonoBehaviour>().StartCoroutine(FadeInAudio(aSource, duration));
    }
 
+   /// <summary>
+   /// plays audio and turn up the volume of the audio source
+   /// </summary>
+   /// <param name="aSource">the audio source</param>
+   /// <param name="duration">the duration to fade</param>
+   /// <returns></returns>
    private static IEnumerator FadeInAudio(AudioSource aSource, float duration)
    {
       aSource.volume = 0;

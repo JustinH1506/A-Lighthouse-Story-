@@ -28,6 +28,10 @@ public class VolumeSettings : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// sets the mixer group value and saves settings
+    /// </summary>
+    /// <param name="volume">current volume slider float</param>
     public void SetVolume(float volume)
     {
         volume = slider.value;

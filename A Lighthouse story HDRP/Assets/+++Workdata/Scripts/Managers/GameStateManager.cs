@@ -67,6 +67,9 @@ public class GameStateManager : MonoBehaviour
         LoadSceneManager.instance.SwitchScene(sceneName);
     }
 
+    /// <summary>
+    /// deletes all player positions in playerprefs
+    /// </summary>
     public void DeletePlayerPrefsPosition()
     {
         PlayerPrefs.DeleteKey(PlayerMovement.PlayerXKey);
