@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.HighDefinition;
 
 public class PlayerJumping : PlayerBase
 {
@@ -12,7 +13,9 @@ public class PlayerJumping : PlayerBase
     
     #endregion
 
-    #region Varaibles
+    #region Variables
+    
+    #region Serialized Variables
     
     [Tooltip("How strong the Player jumps.")]
     [SerializeField] private float jumpStrength;
@@ -33,12 +36,17 @@ public class PlayerJumping : PlayerBase
     [Tooltip("How far the RayCast goes.")]
     [SerializeField] private float rayCastDistance;
 
+    [Tooltip("Layer which can be considered ground to Jump on.")]
+    [SerializeField] private LayerMask ground;
+    #endregion
+    
+    #region Private variables
+    
     private float inputY;
 
     private bool canJump;
-
-    [Tooltip("Layer which can be considered ground to Jump on.")]
-    [SerializeField] private LayerMask ground;
+    
+    #endregion 
     
     #endregion
     
@@ -60,30 +68,30 @@ public class PlayerJumping : PlayerBase
             coyoteTimeCounter = coyoteTime;
             
             canJump = true;
-            
-            anim.SetTrigger("hasLanded");
         }
-
-        if (!GroundCheck())
+        else
         {
-            coyoteTimeCounter -= Time.deltaTime;
-
-            if (coyoteTimeCounter >= 0)
-            {
-                canJump = false;
-            }
+            canJump = false;
         }
         
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < 0f)
         {
             fallMultiplier -= Time.deltaTime;
             
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            
+            anim.SetFloat("velocityY", rb.velocity.y);
         }
         else if (rb.velocity.y > -0.01f)
         {
             fallMultiplier = mainFallMultiplier;
         }
+    }
+
+    private void LateUpdate()
+    {
+        Debug.Log(GroundCheck());
+        anim.SetBool("hasLanded", GroundCheck());
     }
 
     /// <summary>
@@ -94,9 +102,9 @@ public class PlayerJumping : PlayerBase
     {
         if(canJump && !_playerObjectMove.isMoving)
         {
-            rb.AddForce(new Vector3(rb.velocity.x, jumpStrength, rb.velocity.z), ForceMode.Impulse);
+            rb.velocity = new Vector3(0f, jumpStrength, 0f);
 
-            anim.SetTrigger("isJumping");
+            anim.Play("Jumping");
         }
     }
     

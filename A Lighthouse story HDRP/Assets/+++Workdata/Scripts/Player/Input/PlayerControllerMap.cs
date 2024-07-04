@@ -60,7 +60,7 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
                     ""id"": ""a1f0a1fa-03ae-47f9-94bd-def5792d70a5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -164,7 +164,7 @@ public partial class @PlayerControllerMap: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""19abaafd-90a8-4950-b815-11eeb2533093"",
                     ""path"": ""<Keyboard>/ctrl"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Sneak"",

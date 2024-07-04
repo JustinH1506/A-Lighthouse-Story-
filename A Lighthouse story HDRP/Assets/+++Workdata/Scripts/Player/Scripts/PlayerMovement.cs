@@ -35,6 +35,9 @@ public class PlayerMovement : PlayerBase
     
     [Tooltip("Maximum speed the character can move.")]
     public float maxSpeed;
+
+    [Tooltip("Speed when the Player is in the air.")]
+    public float aerialSpeed;
     
     [Tooltip("Speed the player has during normal walking.")]
     public float defaultSpeed;
@@ -136,6 +139,10 @@ public class PlayerMovement : PlayerBase
 
             if (cameraRelativeMovement != Vector3.zero)
             {
+                if (rb.velocity.y < -1f)
+                {
+                    maxSpeed = aerialSpeed;
+                }
                 
                 rb.AddForce(cameraRelativeMovement * acceleration, ForceMode.Force);
                 
