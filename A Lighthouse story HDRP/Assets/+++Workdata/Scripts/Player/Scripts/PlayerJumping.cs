@@ -19,6 +19,10 @@ public class PlayerJumping : PlayerBase
 
     [Tooltip("Jump strength during jumping.")]
     [SerializeField] private float sprintJumpStrength;
+
+    [SerializeField] private float mainFallMultiplier;
+    
+    [SerializeField] private float fallMultiplier;
     
     [Tooltip("Time before falling.")]
     [SerializeField] private float coyoteTime;
@@ -28,6 +32,8 @@ public class PlayerJumping : PlayerBase
 
     [Tooltip("How far the RayCast goes.")]
     [SerializeField] private float rayCastDistance;
+
+    private float inputY;
 
     private bool canJump;
 
@@ -67,6 +73,17 @@ public class PlayerJumping : PlayerBase
                 canJump = false;
             }
         }
+        
+        if (rb.velocity.y < 0)
+        {
+            fallMultiplier -= Time.deltaTime;
+            
+            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > -0.01f)
+        {
+            fallMultiplier = mainFallMultiplier;
+        }
     }
 
     /// <summary>
@@ -75,16 +92,10 @@ public class PlayerJumping : PlayerBase
     /// <param name="context"></param>
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && canJump && !_playerObjectMove.isMoving && _playerMovement.isSprinting)
-        {
-            rb.AddForce(new Vector3(rb.velocity.x, sprintJumpStrength, rb.velocity.z), ForceMode.Impulse);
-            
-            anim.SetTrigger("isJumping");
-        }
-        else if (context.performed && canJump && !_playerObjectMove.isMoving)
+        if(canJump && !_playerObjectMove.isMoving)
         {
             rb.AddForce(new Vector3(rb.velocity.x, jumpStrength, rb.velocity.z), ForceMode.Impulse);
-            
+
             anim.SetTrigger("isJumping");
         }
     }

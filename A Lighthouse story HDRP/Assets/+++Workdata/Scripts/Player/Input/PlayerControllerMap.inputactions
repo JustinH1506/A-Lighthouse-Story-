@@ -16,12 +16,12 @@
                 },
                 {
                     "name": "Jump",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "af228ae9-ba54-47aa-859a-0c2f05fddc63",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector3",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Sneak",
@@ -117,15 +117,26 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "900571bb-e91b-4952-ace4-6cf0e4f55423",
+                    "name": "3D Vector",
+                    "id": "be845540-383f-460d-a84b-6194830f5250",
+                    "path": "3DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "3cec06f2-723c-4b27-a9f9-476b1ffa7d3c",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",

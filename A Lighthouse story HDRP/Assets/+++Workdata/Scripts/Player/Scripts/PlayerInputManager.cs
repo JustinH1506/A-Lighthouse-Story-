@@ -41,7 +41,6 @@ public class PlayerInputManager : MonoBehaviour
         _playerControllerMap.Enable();
 
         _playerControllerMap.Player.Jump.performed += _playerJumping.Jump;
-        _playerControllerMap.Player.Jump.canceled += _playerJumping.Jump;
         
         _playerControllerMap.Player.Move.performed += _playerMovement.Move;
         _playerControllerMap.Player.Move.canceled += _playerMovement.Move;
@@ -66,7 +65,6 @@ public class PlayerInputManager : MonoBehaviour
         _playerControllerMap.Disable();
         
         _playerControllerMap.Player.Jump.performed -= _playerJumping.Jump;
-        _playerControllerMap.Player.Jump.canceled -= _playerJumping.Jump;
         
         _playerControllerMap.Player.Move.performed -= _playerMovement.Move;
         _playerControllerMap.Player.Move.canceled -= _playerMovement.Move;

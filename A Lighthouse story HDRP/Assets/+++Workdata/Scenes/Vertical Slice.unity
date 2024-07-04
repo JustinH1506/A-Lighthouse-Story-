@@ -6944,6 +6944,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpStrength: 2
   sprintJumpStrength: 2
+  mainFallMultiplier: 0.255
+  fallMultiplier: 0.255
   coyoteTime: 0.2
   coyoteTimeCounter: 0
   rayCastDistance: 0.1
@@ -19925,7 +19927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757256179}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.106415115, y: 0.027814126, z: 0.0029779244, w: 0.99392825}
+  m_LocalRotation: {x: -0.10641512, y: 0.027814135, z: 0.0029779258, w: 0.99392825}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

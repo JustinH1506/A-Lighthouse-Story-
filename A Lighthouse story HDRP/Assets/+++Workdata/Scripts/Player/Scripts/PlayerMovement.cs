@@ -70,6 +70,7 @@ public class PlayerMovement : PlayerBase
     
     #endregion
 
+    #region Methods
     protected override void Awake()
     {
         base.Awake();
@@ -87,8 +88,6 @@ public class PlayerMovement : PlayerBase
             transform.position = safePosition;
         }
     }
-
-    #region Methods
 
     /// <summary>
     /// Calls Movement Method.
