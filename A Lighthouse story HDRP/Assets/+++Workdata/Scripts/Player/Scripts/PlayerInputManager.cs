@@ -46,8 +46,10 @@ public class PlayerInputManager : MonoBehaviour
         _playerControllerMap.Player.Move.canceled += _playerMovement.Move;
         
         _playerControllerMap.Player.Sneak.performed += _playerMovement.Sneak;
+        _playerControllerMap.Player.Sneak.canceled += _playerMovement.Sneak;
         
         _playerControllerMap.Player.Sprint.performed += _playerMovement.Sprint;
+        _playerControllerMap.Player.Sprint.canceled += _playerMovement.Sprint;
         
         _playerControllerMap.Player.MoveObject.started += _playerObjectMove.ConnectObject;
         _playerControllerMap.Player.MoveObject.canceled += _playerObjectMove.DisconnectObject;
@@ -68,6 +70,12 @@ public class PlayerInputManager : MonoBehaviour
         
         _playerControllerMap.Player.Move.performed -= _playerMovement.Move;
         _playerControllerMap.Player.Move.canceled -= _playerMovement.Move;
+        
+        _playerControllerMap.Player.Sneak.performed += _playerMovement.Sneak;
+        _playerControllerMap.Player.Sneak.canceled += _playerMovement.Sneak;
+        
+        _playerControllerMap.Player.Sprint.performed += _playerMovement.Sprint;
+        _playerControllerMap.Player.Sprint.canceled += _playerMovement.Sprint;
         
         _playerControllerMap.Player.MoveObject.started -= _playerObjectMove.ConnectObject;
         _playerControllerMap.Player.MoveObject.canceled -= _playerObjectMove.DisconnectObject;

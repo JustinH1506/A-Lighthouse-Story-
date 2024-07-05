@@ -7049,7 +7049,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.05
   m_Height: 0.27
@@ -7204,54 +7204,12 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.06
   m_Height: 0.25
   m_Direction: 1
   m_Center: {x: -0.00008022785, y: 0.11927217, z: 0.0050000027}
---- !u!65 &752863046
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 752863035}
-  m_Material: {fileID: 13400000, guid: 03ba87e94f65a31479231d93e67a5078, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.11, y: 0.24, z: 0.12}
-  m_Center: {x: 0.0033204856, y: 0.1216686, z: 0.0068434775}
---- !u!65 &752863047
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 752863035}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.25, z: 0.11}
-  m_Center: {x: 0.0033204856, y: 0.1216686, z: 0.0068434775}
 --- !u!114 &752863048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13664,7 +13622,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4104380202958562290, guid: 6331f089b06744746a04989a047dc7a9, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 780a36bdd45671e43882ae2dc92247b8, type: 2}
 --- !u!1 &1125838709
 GameObject:
   m_ObjectHideFlags: 0
@@ -15683,7 +15641,7 @@ CapsuleCollider:
   serializedVersion: 2
   m_Radius: 0.012873897
   m_Height: 0.020142855
-  m_Direction: 1
+  m_Direction: 2
   m_Center: {x: 0.00037982548, y: -0.000071427785, z: -0.0000227266}
 --- !u!1 &1295247652
 GameObject:
@@ -17550,7 +17508,7 @@ CapsuleCollider:
   serializedVersion: 2
   m_Radius: 0.012873897
   m_Height: 0.020142855
-  m_Direction: 1
+  m_Direction: 2
   m_Center: {x: 0.00037982548, y: -0.000071427785, z: -0.0000227266}
 --- !u!1 &1477839690 stripped
 GameObject:
@@ -20339,14 +20297,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 752863044}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ad59f350549f844e810da583a5f653c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 752863046}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ad59f350549f844e810da583a5f653c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 752863047}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ad59f350549f844e810da583a5f653c,
         type: 3}
       insertIndex: -1

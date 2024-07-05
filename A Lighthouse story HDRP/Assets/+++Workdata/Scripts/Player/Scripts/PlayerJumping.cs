@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering.HighDefinition;
 
 public class PlayerJumping : PlayerBase
 {
@@ -74,7 +72,7 @@ public class PlayerJumping : PlayerBase
             canJump = false;
         }
         
-        if (rb.velocity.y < 0f)
+        if (rb.velocity.y < -1f)
         {
             fallMultiplier -= Time.deltaTime;
             

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -200,11 +199,11 @@ public class PlayerMovement : PlayerBase
         {
             isSneaking = true;
             
+            isSprinting = false;
+            
             anim.SetBool("isSneaking", isSneaking);
 
             sneakCollider.height = 0.2f;
-
-            isSprinting = false;
             
             maxSpeed = sneakSpeed;
         }
