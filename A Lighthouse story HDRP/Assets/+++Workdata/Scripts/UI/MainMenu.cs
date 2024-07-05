@@ -50,7 +50,7 @@ public class MainMenu : MonoBehaviour
     #region Input Methods
     private void PressAnyButton(InputAction.CallbackContext context)
     {
-        if (context.performed && canPressAnyButton)
+        if (context.performed && canPressAnyButton && LoadSceneManager.instance.sceneLoaded)
         {
             mainMenuAnim.Play("Fade_In_Main");
             canPressAnyButton = false;
@@ -66,7 +66,8 @@ public class MainMenu : MonoBehaviour
     public void StartNewGame()
     {
         GameStateManager.instance.DeletePlayerPrefsPosition();
-        GameStateManager.instance.StartNewGame();
+        StartCredits();
+        LoadSceneManager.instance.goToLevel = true;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -104,7 +105,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void StartCredits()
     {
-        LoadSceneManager.instance.SwitchScene("Credits");
+        LoadSceneManager.instance.SwitchScene("Credits", false);
     }
     
     #endregion

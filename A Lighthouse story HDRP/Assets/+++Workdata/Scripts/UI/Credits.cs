@@ -57,7 +57,7 @@ public class Credits : MonoBehaviour
         if (context.performed && allowSkip)
         {
             allowSkip = false;
-            GameStateManager.instance.GoToMainMenu();
+            EndCredits();
         }
     }
     
@@ -67,7 +67,15 @@ public class Credits : MonoBehaviour
     //loads the main menu
     public void EndCredits()
     {
-        GameStateManager.instance.GoToMainMenu();
+        if (LoadSceneManager.instance.goToLevel)
+        {
+            GameStateManager.instance.StartNewGame();
+            LoadSceneManager.instance.goToLevel = false;
+        }
+        else
+        {
+            GameStateManager.instance.GoToMainMenu();
+        }
     }
 
     /// <summary>

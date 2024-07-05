@@ -54,13 +54,6 @@ public class MusicManager : MonoBehaviour
     {
         Instance = this;
     }
-
-    private void Start()
-    {
-        musicAudio.clip = mainMenuMusic;
-        musicAudio.Play();
-    }
-    
     #endregion
 
     #region Music Methods
