@@ -10401,7 +10401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902764902}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.106415115, y: 0.027814126, z: 0.0029779244, w: 0.99392825}
+  m_LocalRotation: {x: -0.10641512, y: 0.027814135, z: 0.0029779258, w: 0.99392825}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13358,7 +13358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072999977}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.106415115, y: 0.027814126, z: 0.0029779244, w: 0.99392825}
+  m_LocalRotation: {x: -0.10641512, y: 0.027814135, z: 0.0029779258, w: 0.99392825}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18294,7 +18294,12 @@ PrefabInstance:
     - target: {fileID: -6832372512837029899, guid: 31c3e9e1b10868a4abc4f9d91a838ae6,
         type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6832372512837029899, guid: 31c3e9e1b10868a4abc4f9d91a838ae6,
+        type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6832372512837029899, guid: 31c3e9e1b10868a4abc4f9d91a838ae6,
         type: 3}
@@ -18491,6 +18496,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ea11cd53c300c8846b3d3fc625540eee, type: 2}
+    - target: {fileID: 6359992953913933376, guid: 31c3e9e1b10868a4abc4f9d91a838ae6,
+        type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6359992953913933376, guid: 31c3e9e1b10868a4abc4f9d91a838ae6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -21667,7 +21677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757256179}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.10641512, y: 0.027814135, z: 0.0029779258, w: 0.99392825}
+  m_LocalRotation: {x: -0.106415115, y: 0.027814126, z: 0.0029779244, w: 0.99392825}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
