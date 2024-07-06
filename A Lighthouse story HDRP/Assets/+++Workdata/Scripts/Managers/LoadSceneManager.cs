@@ -10,6 +10,8 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class LoadSceneManager : MonoBehaviour
 {
+    [SerializeField] private CanvasGroup loadingScreen;
+    
     public static LoadSceneManager instance;
     private string currentScene; //this saves whatever the current loaded main scene is.
 
@@ -20,17 +22,27 @@ public class LoadSceneManager : MonoBehaviour
         instance = this;
     }
 
-    public void SwitchScene(string newScene)
+    /// <summary>
+    /// load the new scene and unload current scene
+    /// </summary>
+    /// <param name="newScene"></param>
+    /// <param name="showLoadingScreen">with or without loadingscreen</param>
+    public void SwitchScene(string newScene, bool showLoadingScreen = true)
     {
         //when a scene is to be switched, we start a coroutine, so that we can first unload the current scene,
         //then load the next scene, while being able to do it asynchronous (here we could, for example, show a loading
         //screen animation)
-        StartCoroutine(LoadNewSceneCoroutine(newScene));
+        StartCoroutine(LoadNewSceneCoroutine(newScene, showLoadingScreen));
     }
 
-    private IEnumerator LoadNewSceneCoroutine(string newSceneName)
+    private IEnumerator LoadNewSceneCoroutine(string newSceneName, bool showLoadingScreen)
     {
         //first, show the loading screen, so that the player does not have to see elements plopping in and out of the scene
+        if (showLoadingScreen)
+        {
+            ShowLoadingScreen();
+        }
+
         sceneLoaded = false;
         
         //if the current scene is actually loaded, we first unload it
@@ -54,9 +66,26 @@ public class LoadSceneManager : MonoBehaviour
         yield return null;
         newScene = SceneManager.GetSceneByName(newSceneName);
         SceneManager.SetActiveScene(newScene);
-        
+
+        if (showLoadingScreen)
+        {
+            yield return new WaitForSeconds(2f);
+        }
         sceneLoaded = true;
+        showLoadingScreen = true;
         //lastly, we disable the loading screen and set the current scene accordingly
+        HideLoadingScreen();
         currentScene = newSceneName;
+    }
+    
+    
+    public void ShowLoadingScreen()
+    {
+        loadingScreen.ShowCanvasGroup();
+    }
+
+    public void HideLoadingScreen()
+    {
+        loadingScreen.HideCanvasGroup();
     }
 }

@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    #region Variables
+    
     [SerializeField] private GameObject ocean;
     
     private Animator mainMenuAnim;
@@ -17,7 +19,10 @@ public class MainMenu : MonoBehaviour
     private PlayerControllerMap inputActions;
 
     private AutoFlip autoFlipScript;
+    
+    #endregion
 
+    #region Unity Methods
     private void Awake()
     {
         mainMenuAnim = GetComponent<Animator>();
@@ -39,23 +44,29 @@ public class MainMenu : MonoBehaviour
 
         inputActions.UI.PressAnyButton.performed -= PressAnyButton;
     }
+    
+    #endregion
 
+    #region Input Methods
     private void PressAnyButton(InputAction.CallbackContext context)
     {
-        if (context.performed && canPressAnyButton)
+        if (context.performed && canPressAnyButton && LoadSceneManager.instance.sceneLoaded)
         {
             mainMenuAnim.Play("Fade_In_Main");
             canPressAnyButton = false;
         }
     }
+    
+    #endregion
 
+    #region Main Menu Methods
     /// <summary>
     /// starts new Game and loads the level
     /// </summary>
     public void StartNewGame()
     {
         GameStateManager.instance.DeletePlayerPrefsPosition();
-        GameStateManager.instance.StartNewGame();
+        LoadSceneManager.instance.SwitchScene("Story", false);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -93,6 +104,8 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void StartCredits()
     {
-        LoadSceneManager.instance.SwitchScene("Credits");
+        LoadSceneManager.instance.SwitchScene("Credits", false);
     }
+    
+    #endregion
 }

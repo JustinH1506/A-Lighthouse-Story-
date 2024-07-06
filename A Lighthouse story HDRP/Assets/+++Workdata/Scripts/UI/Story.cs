@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Credits : MonoBehaviour
+public class Story : MonoBehaviour
 {
     #region Variables
     
     [SerializeField] private GameObject skipText;
-
+    
     private PlayerControllerMap inputActions;
 
     //in game menu script
     private GameObject inGameUI;
 
-    //bool to check if player can skip the credits
+    //bool to check if player can skip the story
     private bool allowSkip;
     
     #endregion
@@ -33,7 +33,7 @@ public class Credits : MonoBehaviour
         skipText.SetActive(false);
         StartCoroutine(WaitForSkip());
     }
-
+    
     private void OnEnable()
     {
         inputActions.Enable();
@@ -50,26 +50,22 @@ public class Credits : MonoBehaviour
     
     #endregion
 
-    #region Input Methods
-    //if the allowSkip is true, loads main menu and set allowSkip back to false
+    #region Story Methods
+    //if the allowSkip is true, loads the level and set allowSkip back to false
     private void SkipCredits(InputAction.CallbackContext context)
     {
         if (context.performed && allowSkip)
         {
             allowSkip = false;
-            EndCredits();
+            StartLevel();
         }
     }
-    
-    #endregion
 
-    #region Credit Methods
-    //loads the main menu
-    public void EndCredits()
+    public void StartLevel()
     {
-        GameStateManager.instance.GoToMainMenu();
+        GameStateManager.instance.StartNewGame();
     }
-
+    
     /// <summary>
     /// waits 2 seconds and turn allowSkip to true
     /// </summary>
@@ -81,6 +77,5 @@ public class Credits : MonoBehaviour
         allowSkip = true;
         skipText.SetActive(true);
     }
-    
     #endregion
 }

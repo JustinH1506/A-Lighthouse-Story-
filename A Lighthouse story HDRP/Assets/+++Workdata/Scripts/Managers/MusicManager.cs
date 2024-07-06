@@ -6,6 +6,8 @@ using UnityEngine.Serialization;
 
 public class MusicManager : MonoBehaviour
 {
+    #region Variables
+    
     public static MusicManager Instance { get; private set; }
 
     [Header("Audio Sources")] 
@@ -44,18 +46,17 @@ public class MusicManager : MonoBehaviour
     public AudioClip turnPages;
     public AudioClip buttonHover;
     public AudioClip buttonPress;
+    
+    #endregion
 
+    #region Unity Methods
     private void Awake()
     {
         Instance = this;
     }
+    #endregion
 
-    private void Start()
-    {
-        musicAudio.clip = mainMenuMusic;
-        musicAudio.Play();
-    }
-
+    #region Music Methods
     /// <summary>
     /// stops current music and plays the new clip
     /// </summary>
@@ -63,7 +64,6 @@ public class MusicManager : MonoBehaviour
     public void PlayMusic(AudioClip clip, float fadeDuration)
     {
         musicAudio.FadingInOut(clip, fadeDuration);
-        
     }
 
     /// <summary>
@@ -92,4 +92,6 @@ public class MusicManager : MonoBehaviour
     {
         inGameSFXAudio.PlayOneShot(clip);
     }
+    
+    #endregion
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: abf329ee81e09884f8f297b07d7a52c5
+guid: d3b43d7a5eeb34f499580d140472abc1
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,28 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Base_MTL
-    second: {fileID: 2100000, guid: 5f17c3610adf9b84e94f30bb677183e8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Button_MTL
-    second: {fileID: 2100000, guid: b6f141aef6687c64f9f3937e26dd50c3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Glas_Material
-    second: {fileID: 2100000, guid: 6d41d33df668f2742890ebbd0d5774e7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Lighter_MTL
-    second: {fileID: 2100000, guid: 05628d647d21013479bf315f115c11be, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Nail_MTL
-    second: {fileID: 2100000, guid: dcd1d11011dcb40468d278a3d6daf511, type: 2}
+      name: Prop_Book_Fabi_MTL
+    second: {fileID: 2100000, guid: b01e99138f755394f878d665576825da, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

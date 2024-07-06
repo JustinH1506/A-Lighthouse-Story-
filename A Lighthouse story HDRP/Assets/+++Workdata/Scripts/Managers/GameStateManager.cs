@@ -37,16 +37,20 @@ public class GameStateManager : MonoBehaviour
     private void Start()
     {
         //when we start the game, we first want to enter the main menu
-        GoToMainMenu();
+        GoToMainMenu(false);
     }
     
-    //called to enter the main menu. Also changes the game state
-    public void GoToMainMenu()
+    /// <summary>
+    /// called to enter the main menu. Also changes the game state
+    /// </summary>
+    /// <param name="showLoadingScreen">with or without loading screen</param>
+    public void GoToMainMenu(bool showLoadingScreen = true)
     {
+        
         currentState = GameState.InMainMenu;
         if (onStateChanged != null)
             onStateChanged(currentState);
-        LoadSceneManager.instance.SwitchScene(mainMenuSceneName);
+        LoadSceneManager.instance.SwitchScene(mainMenuSceneName, showLoadingScreen);
         MusicManager.Instance.PlayMusic(MusicManager.Instance.mainMenuMusic, 0.1f);
     }
 
@@ -67,6 +71,9 @@ public class GameStateManager : MonoBehaviour
         LoadSceneManager.instance.SwitchScene(sceneName);
     }
 
+    /// <summary>
+    /// deletes all player positions in playerprefs
+    /// </summary>
     public void DeletePlayerPrefsPosition()
     {
         PlayerPrefs.DeleteKey(PlayerMovement.PlayerXKey);

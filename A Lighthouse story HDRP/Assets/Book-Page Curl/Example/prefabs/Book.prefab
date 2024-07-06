@@ -809,13 +809,13 @@ MonoBehaviour:
   background: {fileID: 21300000, guid: 3c47abcf3fb3d12408efe3073b2e379f, type: 3}
   bookPages:
   - {fileID: 21300000, guid: c3b93059217bb2543b56b99566fbd73f, type: 3}
-  - {fileID: 21300000, guid: 85af6bcb05bb125469fe527759b1a87d, type: 3}
+  - {fileID: 21300000, guid: 5521676db35b1a444bc21a36e3eb5f41, type: 3}
   - {fileID: 21300000, guid: c34ff6a188a365d45b86063fbfe9a501, type: 3}
   - {fileID: 21300000, guid: 9da75b360ac532949b3860c0588b5e57, type: 3}
-  - {fileID: 21300000, guid: 39a2cb6ec7ee9854685c659d9174c0e2, type: 3}
-  - {fileID: 21300000, guid: bdfbc432443fe2342a374eae171329c6, type: 3}
+  - {fileID: 21300000, guid: 27d83875a3f2e5e459721c3bba6d8cdc, type: 3}
+  - {fileID: 21300000, guid: fc063273e4d257e40b03f9d84d31773c, type: 3}
   - {fileID: 21300000, guid: 4be61577b99d4d6498ee642dca8a4c9b, type: 3}
-  - {fileID: 21300000, guid: 5f5c8362f8fd9fd4cbe6a8d9e07e53e8, type: 3}
+  - {fileID: 21300000, guid: 7aed9f79081e62d4681dddc58de10d90, type: 3}
   - {fileID: 21300000, guid: c3cef6075e3176c4daaea9118547a939, type: 3}
   UIPagesLeft:
   - {fileID: 7128772932440576390}
