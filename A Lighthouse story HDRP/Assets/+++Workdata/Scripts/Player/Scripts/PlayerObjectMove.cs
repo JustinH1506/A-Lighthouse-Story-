@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -93,7 +94,9 @@ public class PlayerObjectMove : PlayerBase
         {
              moveableObject = null;
 
-            //moveableObjectRb = null;
+             isMoving = false;
+
+             //moveableObjectRb = null;
         }
 
         if(isMoving && moveableObject != null && moveableObjectRb != null && !isBranch)
@@ -107,6 +110,20 @@ public class PlayerObjectMove : PlayerBase
             Debug.Log(moveableObjectRb.velocity);*/
             
             transform.LookAt(new Vector3(moveableObject.transform.position.x, transform.position.y, moveableObject.transform.position.z));
+
+            if (rb.velocity == Vector3.forward)
+            {
+                anim.SetBool("isPushing", true);
+                
+                anim.SetBool("isPulling", false);
+            }
+
+            if (rb.velocity == Vector3.back)
+            {
+                anim.SetBool("isPushing", false);
+                
+                anim.SetBool("isPulling", true);
+            }
         }
     }
 
@@ -125,8 +142,6 @@ public class PlayerObjectMove : PlayerBase
             _fixedJoint.connectedBody = rb;
             
             isMoving = true;
-            
-            anim.SetTrigger("isPushing");
         }
     }
     

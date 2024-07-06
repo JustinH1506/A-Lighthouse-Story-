@@ -14,7 +14,7 @@ public class PlayerMovement : PlayerBase
 
     #region Components
 
-    [SerializeField] private CapsuleCollider sneakCollider;
+    [SerializeField] private CapsuleCollider sneakCollider, nonSneakCollider;
     
     #endregion
     
@@ -203,7 +203,9 @@ public class PlayerMovement : PlayerBase
             
             anim.SetBool("isSneaking", isSneaking);
 
-            sneakCollider.height = 0.2f;
+            sneakCollider.enabled = true;
+
+            nonSneakCollider.enabled = false;
             
             maxSpeed = sneakSpeed;
         }
@@ -212,8 +214,10 @@ public class PlayerMovement : PlayerBase
             isSneaking = false;
             
             anim.SetBool("isSneaking", isSneaking);
-            
-            sneakCollider.height = 0.25f;
+
+            sneakCollider.enabled = false;
+
+            nonSneakCollider.enabled = true;
             
             maxSpeed = defaultSpeed;
         }

@@ -63,8 +63,6 @@ public class PlayerJumping : PlayerBase
     {
         if (GroundCheck())
         {
-            coyoteTimeCounter = coyoteTime;
-            
             canJump = true;
         }
         else
@@ -74,16 +72,16 @@ public class PlayerJumping : PlayerBase
         
         if (rb.velocity.y < -1f)
         {
-            fallMultiplier -= Time.deltaTime;
+            fallMultiplier += Time.deltaTime;
             
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            
-            anim.SetFloat("velocityY", rb.velocity.y);
         }
         else if (rb.velocity.y > -0.01f)
         {
             fallMultiplier = mainFallMultiplier;
         }
+        
+        anim.SetFloat("velocityY", rb.velocity.y);
     }
 
     private void LateUpdate()
