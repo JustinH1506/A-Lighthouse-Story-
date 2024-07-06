@@ -28,6 +28,8 @@ public class EnemyPatrol : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
         _anim = GetComponentInChildren<Animator>();
+
+        _anim.enabled = true;
     }
 
     /// <summary>
@@ -59,6 +61,8 @@ public class EnemyPatrol : MonoBehaviour
             _navMeshAgent.SetDestination(playerPosition.position);
 
             _navMeshAgent.angularSpeed = 120;
+            
+            MusicManager.Instance.PlayMusic(MusicManager.Instance.crabChaseMusic, 0.5f);
             
             _anim.SetFloat("speed", -1f);
             

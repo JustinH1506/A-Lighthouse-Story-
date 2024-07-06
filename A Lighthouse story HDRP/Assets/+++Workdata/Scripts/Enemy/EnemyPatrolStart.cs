@@ -9,7 +9,6 @@ public class EnemyPatrolStart : MonoBehaviour
     [SerializeField] private EnemyPatrol _enemyPatrol;
 
     [SerializeField] private PlayerMovement _playerMovement;
-
     
     /// <summary>
     /// Starts WaitTimeDuringHideCrabShot.
@@ -34,10 +33,6 @@ public class EnemyPatrolStart : MonoBehaviour
         hideCrabShot.enabled = true;
 
         yield return new WaitForSeconds(3f);
-        
-        InGameUI.Instance.ActivateSearchingEye();
-        
-        InGameUI.Instance.EyeSearchingState();
         
         MusicManager.Instance.PlayMusic(MusicManager.Instance.crabSearchMusic, 0.5f);
 

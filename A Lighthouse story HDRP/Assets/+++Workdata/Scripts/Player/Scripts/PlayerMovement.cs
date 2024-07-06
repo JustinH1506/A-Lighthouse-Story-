@@ -144,8 +144,6 @@ public class PlayerMovement : PlayerBase
                 }
                 
                 rb.AddForce(cameraRelativeMovement * acceleration, ForceMode.Force);
-                
-                Debug.Log(rb.velocity);
 
                 if (rb.velocity.magnitude > maxSpeed)
                 {

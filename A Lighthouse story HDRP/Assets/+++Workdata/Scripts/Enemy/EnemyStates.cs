@@ -51,7 +51,11 @@ public class EnemyStates : MonoBehaviour
         
         crabShot.enabled = true;
 
+        MusicManager.Instance.PlayInGameSFX(MusicManager.Instance.crabScreech);
+        
         yield return new WaitForSeconds(crabShotWaitTime);
+        
+        MusicManager.Instance.PlayInGameSFX(MusicManager.Instance.crabSteps);
         
         MusicManager.Instance.PlayMusic(MusicManager.Instance.crabChaseMusic, 1f);
 

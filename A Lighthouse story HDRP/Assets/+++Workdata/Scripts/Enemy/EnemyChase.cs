@@ -25,6 +25,8 @@ public class EnemyChase : MonoBehaviour
         anim = GetComponent<Animator>();
 
         _navMeshAgent = GetComponent<NavMeshAgent>();
+
+        anim.enabled = true;
     }
 
     /// <summary>
@@ -44,7 +46,9 @@ public class EnemyChase : MonoBehaviour
 
         _navMeshAgent.SetDestination(targetPos);
         
-        anim.SetFloat("speed", -1f);
+        anim.SetFloat("Speed", -1f);
+        
+        anim.SetTrigger("walk");
     }
 
     private void OnCollisionEnter(Collision other)

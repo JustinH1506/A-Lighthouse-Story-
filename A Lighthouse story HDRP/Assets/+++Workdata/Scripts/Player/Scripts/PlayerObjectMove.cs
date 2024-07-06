@@ -62,6 +62,8 @@ public class PlayerObjectMove : PlayerBase
         _springJoint = GetComponentInChildren<SpringJoint>();
 
         playerMovement = GetComponent<PlayerMovement>();
+        
+        
     }
 
     /// <summary>
@@ -95,36 +97,27 @@ public class PlayerObjectMove : PlayerBase
              moveableObject = null;
 
              isMoving = false;
-
-             //moveableObjectRb = null;
         }
 
         if(isMoving && moveableObject != null && moveableObjectRb != null && !isBranch)
         {
-            /*Vector3 forceDirection = moveableObject.transform.position - transform.position;
-            forceDirection.y = 0;
-            forceDirection.Normalize();
-            
-            moveableObjectRb.AddForceAtPosition(forceDirection * (pushPower * playerMovement.inputX), transform.position, ForceMode.Impulse);
-            
-            Debug.Log(moveableObjectRb.velocity);*/
-            
-            transform.LookAt(new Vector3(moveableObject.transform.position.x, transform.position.y, moveableObject.transform.position.z));
+            //transform.LookAt(new Vector3(moveableObject.transform.position.x, transform.position.y, moveableObject.transform.position.z));
 
-            if (rb.velocity == Vector3.forward)
+            if (rb.velocity.z < Vector3.forward.z);
             {
                 anim.SetBool("isPushing", true);
                 
                 anim.SetBool("isPulling", false);
             }
 
-            if (rb.velocity == Vector3.back)
+            if (rb.velocity.z > Vector3.forward.z)
             {
                 anim.SetBool("isPushing", false);
                 
                 anim.SetBool("isPulling", true);
             }
         }
+        
     }
 
     /// <summary>

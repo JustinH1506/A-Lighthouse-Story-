@@ -24,24 +24,6 @@ public class States : PlayerBase
         {
             waitUntilLookIdle = Random.Range(3f, 5f);
         }
-        
-        /*sandStepList.Add(MusicManager.Instance.sandStepA);
-        sandStepList.Add(MusicManager.Instance.sandStepB);
-        sandStepList.Add(MusicManager.Instance.sandStepC);
-        sandStepList.Add(MusicManager.Instance.sandStepD);
-        sandStepList.Add(MusicManager.Instance.sandStepE);
-        
-        sandStepList.Add(MusicManager.Instance.grassStepA);
-        sandStepList.Add(MusicManager.Instance.grassStepB);
-        sandStepList.Add(MusicManager.Instance.grassStepC);
-        sandStepList.Add(MusicManager.Instance.grassStepD);
-        sandStepList.Add(MusicManager.Instance.grassStepE);
-        
-        sandStepList.Add(MusicManager.Instance.woodStepA);
-        sandStepList.Add(MusicManager.Instance.woodStepB);
-        sandStepList.Add(MusicManager.Instance.woodStepC);
-        sandStepList.Add(MusicManager.Instance.woodStepD);
-        sandStepList.Add(MusicManager.Instance.woodStepE);*/
     }
 
     private void Update()
@@ -54,6 +36,10 @@ public class States : PlayerBase
             {
                 waitUntilLookIdle = Random.Range(3f, 5f);
             }
+        }
+        else
+        {
+            waitUntilLookIdle = Random.Range(3f, 5f);
         }
         
         anim.SetFloat("lokkingTime", waitUntilLookIdle);

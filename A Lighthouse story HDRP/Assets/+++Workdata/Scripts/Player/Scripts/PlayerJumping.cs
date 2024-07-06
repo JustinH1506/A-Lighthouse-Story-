@@ -86,7 +86,6 @@ public class PlayerJumping : PlayerBase
 
     private void LateUpdate()
     {
-        Debug.Log(GroundCheck());
         anim.SetBool("hasLanded", GroundCheck());
     }
 
