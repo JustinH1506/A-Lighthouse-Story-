@@ -16,8 +16,6 @@ public class LoadSceneManager : MonoBehaviour
     private string currentScene; //this saves whatever the current loaded main scene is.
 
     public bool sceneLoaded = true;
-    
-    public bool goToLevel = false;
 
     private void Awake()
     {

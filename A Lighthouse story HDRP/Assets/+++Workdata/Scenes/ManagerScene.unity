@@ -5068,7 +5068,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 510308686}
   sceneLoaded: 1
-  goToLevel: 0
 --- !u!4 &1528830632
 Transform:
   m_ObjectHideFlags: 0
@@ -6778,7 +6777,7 @@ MonoBehaviour:
   owlSound: {fileID: 8300000, guid: b16d177b6caa76c45941966a56434d35, type: 3}
   hawkSound: {fileID: 8300000, guid: 885c13d7cc385c643be0575aabf5a84e, type: 3}
   crowSound: {fileID: 8300000, guid: af769c4fe3673114dbc2ff23309c6dc4, type: 3}
-  turnPages: {fileID: 8300000, guid: 3ff842f66b32401458ca572aeadd8bb9, type: 3}
+  turnPages: {fileID: 8300000, guid: 8bdedaed1972f3d458ba5cba62f6df4f, type: 3}
   buttonHover: {fileID: 8300000, guid: a098cb47c68f4d14b975d55b9eb1e924, type: 3}
   buttonPress: {fileID: 8300000, guid: afc8925844b22c44cab9f42458f4224b, type: 3}
 --- !u!4 &1811845560

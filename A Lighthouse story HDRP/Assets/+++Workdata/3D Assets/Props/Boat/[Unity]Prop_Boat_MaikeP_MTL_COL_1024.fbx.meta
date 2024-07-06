@@ -1,11 +1,36 @@
 fileFormatVersion: 2
-guid: 20311cf15bc752f42b11577007e644b3
+guid: 61093ec81e2a27d4bb35a3fe30383edc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base_MTL
+    second: {fileID: 2100000, guid: 5f17c3610adf9b84e94f30bb677183e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Button_MTL
+    second: {fileID: 2100000, guid: b6f141aef6687c64f9f3937e26dd50c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glas_Material
+    second: {fileID: 2100000, guid: 6d41d33df668f2742890ebbd0d5774e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lighter_MTL
+    second: {fileID: 2100000, guid: 05628d647d21013479bf315f115c11be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Nail_MTL
+    second: {fileID: 2100000, guid: dcd1d11011dcb40468d278a3d6daf511, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -43,8 +68,8 @@ ModelImporter:
     importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
@@ -97,7 +122,7 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1

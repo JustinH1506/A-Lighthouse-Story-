@@ -66,8 +66,7 @@ public class MainMenu : MonoBehaviour
     public void StartNewGame()
     {
         GameStateManager.instance.DeletePlayerPrefsPosition();
-        StartCredits();
-        LoadSceneManager.instance.goToLevel = true;
+        LoadSceneManager.instance.SwitchScene("Story", false);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
