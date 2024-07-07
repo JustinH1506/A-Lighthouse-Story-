@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -97,6 +96,11 @@ public class EnemyPatrol : MonoBehaviour
                 }
             }
         }
+    }
+    
+    public void CrabSteps()
+    {
+        MusicManager.Instance.PlayInGameSFX(MusicManager.Instance.crabSteps[UnityEngine.Random.Range(0,9)]);
     }
 
     public void DeactivateCrabEyeUI()

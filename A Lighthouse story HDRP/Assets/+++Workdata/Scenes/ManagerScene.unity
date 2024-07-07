@@ -1665,7 +1665,7 @@ Transform:
   m_GameObject: {fileID: 421975429}
   serializedVersion: 2
   m_LocalRotation: {x: 0.20442194, y: -0.000000008421511, z: 0.0000000017586798, w: 0.9788829}
-  m_LocalPosition: {x: -1.921, y: 0.452, z: -2.58}
+  m_LocalPosition: {x: -2.159, y: 0.452, z: -2.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6772,7 +6772,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bb4aa1ca518ec9c4cad1ce32f5a5cdfe, type: 3}
   - {fileID: 8300000, guid: 71f0c68698809f84c9bb726dc15ec854, type: 3}
   crabScreech: {fileID: 8300000, guid: bbe551dbf017871468c690c88577516f, type: 3}
-  crabSteps: {fileID: 8300000, guid: 422611c3850fd9f4ea549d4e01a3252c, type: 3}
+  crabSteps:
+  - {fileID: 8300000, guid: ee80a25cff2db884290f4deb315838b5, type: 3}
+  - {fileID: 8300000, guid: ae85bdb500682bf4fbfb91a038911bc7, type: 3}
+  - {fileID: 8300000, guid: d8c5aed7474ea7d40bad538ecde2d249, type: 3}
+  - {fileID: 8300000, guid: 7e4cd7d29a1b74441bf5cab1e1baa426, type: 3}
+  - {fileID: 8300000, guid: c40bff4aaedec0742bafb3f9f2f13857, type: 3}
+  - {fileID: 8300000, guid: 2f72b34e394fa8b4191f512d746fb0ff, type: 3}
+  - {fileID: 8300000, guid: 96776a477eefadf459b1795638dca0ab, type: 3}
+  - {fileID: 8300000, guid: fd68e37b388cfd041b9ad3d844a9101f, type: 3}
+  - {fileID: 8300000, guid: 7908e04a8f4f40144a532a90f1de645c, type: 3}
+  - {fileID: 8300000, guid: 257d83ffe441b8e449799567f0ab5738, type: 3}
   checkpointActivate: {fileID: 8300000, guid: 4fa2f19f671dc0f48a2e75103f60adf3, type: 3}
   owlSound: {fileID: 8300000, guid: b16d177b6caa76c45941966a56434d35, type: 3}
   hawkSound: {fileID: 8300000, guid: 885c13d7cc385c643be0575aabf5a84e, type: 3}

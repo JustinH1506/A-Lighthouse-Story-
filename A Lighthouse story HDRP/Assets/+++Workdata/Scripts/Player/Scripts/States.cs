@@ -45,9 +45,9 @@ public class States : PlayerBase
         anim.SetFloat("lokkingTime", waitUntilLookIdle);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void FixedUpdate()
     {
-        if (other.gameObject.layer == sand)
+        if (Physics.Raycast(transform.position, Vector3.down, Mathf.Infinity, sand))
         {
             isSand = true;
 
@@ -55,10 +55,10 @@ public class States : PlayerBase
 
             isWood = false;
             
-            MusicManager.Instance.PlayAmbience(MusicManager.Instance.beachAmbience, 1f);
+            //MusicManager.Instance.PlayAmbience(MusicManager.Instance.beachAmbience, 1f);
         }
-
-        if (other.gameObject.layer == grass)
+        
+        if (Physics.Raycast(transform.position, Vector3.down, Mathf.Infinity, grass))
         {
             isGrass = true;
             
@@ -66,10 +66,10 @@ public class States : PlayerBase
 
             isWood = false;
             
-            MusicManager.Instance.PlayAmbience(MusicManager.Instance.forestAmbience, 1f);
+            //MusicManager.Instance.PlayAmbience(MusicManager.Instance.forestAmbience, 1f);
         }
         
-        if (other.gameObject.layer == wood)
+        if (Physics.Raycast(transform.position, Vector3.down, Mathf.Infinity, wood))
         {
             isWood = true;
             

@@ -101,8 +101,6 @@ public class PlayerObjectMove : PlayerBase
 
         if(isMoving && moveableObject != null && moveableObjectRb != null && !isBranch)
         {
-            //transform.LookAt(new Vector3(moveableObject.transform.position.x, transform.position.y, moveableObject.transform.position.z));
-
             if (rb.velocity.z < Vector3.forward.z);
             {
                 anim.SetBool("isPushing", true);
@@ -135,6 +133,8 @@ public class PlayerObjectMove : PlayerBase
             _fixedJoint.connectedBody = rb;
             
             isMoving = true;
+            
+            anim.SetTrigger("isPushing");
         }
     }
     
@@ -155,8 +155,6 @@ public class PlayerObjectMove : PlayerBase
             moveableObject.GetComponent<BoxCollider>().material = null;
             
             isMoving = false;
-            
-            anim.SetTrigger("stoppedPushing");
         }
     }
 
@@ -183,8 +181,6 @@ public class PlayerObjectMove : PlayerBase
             moveableObjectRb = null;
             
             isMoving = false;
-            
-            anim.SetTrigger("stoppedPushing");
         }
     }
 

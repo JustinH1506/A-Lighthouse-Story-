@@ -85,7 +85,7 @@ public class TutorialUI : MonoBehaviour
     #region Input Methods
     private void PlayerMovement(InputAction.CallbackContext context)
     {
-        if (context.ReadValue<Vector3>() != Vector3.zero && tutorialUI == TutorialName.Move)
+        if (context.ReadValue<Vector3>() != Vector3.zero && tutorialUI == TutorialName.Move && LoadSceneManager.instance.sceneLoaded)
         {
             tutorialAnim.SetBool("Fade", false);
             StartCoroutine(WaitForFadeOut());

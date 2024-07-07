@@ -36,7 +36,7 @@ public class MusicManager : MonoBehaviour
 
     [Header("InGame SFX")]
     public AudioClip crabScreech;
-    public AudioClip crabSteps;
+    public AudioClip[] crabSteps = new AudioClip[10];
     public AudioClip checkpointActivate;
     public AudioClip owlSound;
     public AudioClip hawkSound;

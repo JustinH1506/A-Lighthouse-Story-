@@ -95,7 +95,7 @@ public class PlayerJumping : PlayerBase
     /// <param name="context"></param>
     public void Jump(InputAction.CallbackContext context)
     {
-        if(canJump && !_playerObjectMove.isMoving)
+        if(canJump && !_playerObjectMove.isMoving && LoadSceneManager.instance.sceneLoaded)
         {
             rb.velocity = new Vector3(0f, jumpStrength, 0f);
 

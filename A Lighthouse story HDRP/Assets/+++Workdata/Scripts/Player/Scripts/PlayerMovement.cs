@@ -82,6 +82,11 @@ public class PlayerMovement : PlayerBase
 
     private void Start()
     {
+        if (!PlayerPrefs.HasKey(PlayerXKey))
+        {
+            anim.Play("Standing Up");
+        }
+        
         if (PlayerPrefs.HasKey(PlayerXKey))
         {
             Vector3 safePosition = new Vector3(PlayerPrefs.GetFloat(PlayerXKey), PlayerPrefs.GetFloat(PlayerYKey),
@@ -105,6 +110,11 @@ public class PlayerMovement : PlayerBase
     /// </summary>
     private void Movement()
     {
+        if (!LoadSceneManager.instance.sceneLoaded)
+        {
+            return;
+        }
+        
         // Disables the movement.
         if (isDisabled) return;
         

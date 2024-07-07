@@ -58,6 +58,11 @@ public class EnemyChase : MonoBehaviour
             _death.StartDeathAnimation();
         }
     }
+    
+    public void CrabSteps()
+    {
+        MusicManager.Instance.PlayInGameSFX(MusicManager.Instance.crabSteps[Random.Range(0,9)]);
+    }
 
     #endregion
 }

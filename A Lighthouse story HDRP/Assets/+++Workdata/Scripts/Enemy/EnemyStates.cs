@@ -55,8 +55,6 @@ public class EnemyStates : MonoBehaviour
         
         yield return new WaitForSeconds(crabShotWaitTime);
         
-        MusicManager.Instance.PlayInGameSFX(MusicManager.Instance.crabSteps);
-        
         MusicManager.Instance.PlayMusic(MusicManager.Instance.crabChaseMusic, 1f);
 
         crabShot.enabled = false;
@@ -66,5 +64,5 @@ public class EnemyStates : MonoBehaviour
         _playerMovement.isDisabled = false;
         
         gameObject.SetActive(false);
-    }
+    } 
 }
