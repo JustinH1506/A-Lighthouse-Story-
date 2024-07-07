@@ -61,8 +61,6 @@ public class LoadSceneManager : MonoBehaviour
         }
         
         //all instantiated objects get added to the active scene.
-        //this way, all bullets and VFX elements we instantiate will be cleaned up
-        //when we unload the scene again later on.
         yield return null;
         newScene = SceneManager.GetSceneByName(newSceneName);
         SceneManager.SetActiveScene(newScene);

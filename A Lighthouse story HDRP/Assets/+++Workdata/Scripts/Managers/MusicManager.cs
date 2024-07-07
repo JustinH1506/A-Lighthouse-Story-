@@ -41,6 +41,7 @@ public class MusicManager : MonoBehaviour
     public AudioClip owlSound;
     public AudioClip hawkSound;
     public AudioClip crowSound;
+    public AudioClip cageFallSound;
 
     [Header("UI SFX")] 
     public AudioClip turnPages;

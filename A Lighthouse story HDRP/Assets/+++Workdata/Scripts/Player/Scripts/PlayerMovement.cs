@@ -268,5 +268,10 @@ public class PlayerMovement : PlayerBase
         
         anim.SetFloat("velocity", 0f);
     }
+
+    public void EnableMovement()
+    {
+        isDisabled = false;
+    }
     #endregion
 }

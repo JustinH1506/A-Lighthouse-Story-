@@ -3,7 +3,12 @@ guid: ac22dce5e117e254c803cf64382e02cd
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Prop_Lighthouse_Fabi_MTL
+    second: {fileID: 2100000, guid: 13e85344ee4c9294a8e68a59029b8f5c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

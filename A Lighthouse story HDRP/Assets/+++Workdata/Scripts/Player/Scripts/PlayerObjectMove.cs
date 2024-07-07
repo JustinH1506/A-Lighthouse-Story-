@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -99,16 +98,16 @@ public class PlayerObjectMove : PlayerBase
              isMoving = false;
         }
 
-        if(isMoving && moveableObject != null && moveableObjectRb != null && !isBranch)
+        if(isMoving && !isBranch)
         {
-            if (rb.velocity.z < Vector3.forward.z);
+            if (transform.forward.z == Vector3.zero.z)
             {
                 anim.SetBool("isPushing", true);
                 
                 anim.SetBool("isPulling", false);
             }
 
-            if (rb.velocity.z > Vector3.forward.z)
+            if (transform.forward.z <= Vector3.zero.z)
             {
                 anim.SetBool("isPushing", false);
                 
@@ -133,8 +132,6 @@ public class PlayerObjectMove : PlayerBase
             _fixedJoint.connectedBody = rb;
             
             isMoving = true;
-            
-            anim.SetTrigger("isPushing");
         }
     }
     
@@ -155,6 +152,9 @@ public class PlayerObjectMove : PlayerBase
             moveableObject.GetComponent<BoxCollider>().material = null;
             
             isMoving = false;
+            
+            anim.SetBool("isPushing", false);
+            anim.SetBool("isPulling", false);
         }
     }
 
@@ -167,8 +167,6 @@ public class PlayerObjectMove : PlayerBase
             moveableObjectRb.mass = 1f;
             
             isMoving = true;
-            
-            anim.SetTrigger("isPushing");
         }
     }
     

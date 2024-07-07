@@ -8,6 +8,8 @@ public class StartFallingCage : MonoBehaviour
 {
     [SerializeField] private Transform player;
 
+    [SerializeField] private Transform hat;
+
     [SerializeField] private Animator anim;
 
     private void OnTriggerEnter(Collider other)
@@ -26,22 +28,17 @@ public class StartFallingCage : MonoBehaviour
             
             player.position = Vector3.MoveTowards(player.position, transform.position, 0.25f * Time.deltaTime);
             
-            player.GetComponent<Animator>().SetFloat("velocity",player.GetComponent<Rigidbody>().velocity.magnitude);
+            player.GetComponent<Animator>().SetFloat("velocity",0.06f);
+            
+            player.LookAt(hat);
             
             yield return null;
         }
         
-        yield return new WaitUntil(() =>
-        {
-            player.position = transform.position;
-            
-            return true;
-        });
-        
         player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         
-        player.GetComponent<Animator>().SetFloat("velocity",player.GetComponent<Rigidbody>().velocity.magnitude);
-        
+        player.GetComponent<Animator>().SetFloat("velocity", 0f);
+
         anim.SetTrigger("Start");
     }
 }

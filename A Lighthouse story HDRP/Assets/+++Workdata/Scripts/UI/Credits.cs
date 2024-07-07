@@ -51,23 +51,40 @@ public class Credits : MonoBehaviour
     #endregion
 
     #region Input Methods
-    //if the allowSkip is true, loads main menu and set allowSkip back to false
+    //if the allowSkip is true, loads main menu if credits started from main menu
+    //otherwise set end of demo panel active and set allowSkip back to false
     private void SkipCredits(InputAction.CallbackContext context)
     {
         if (context.performed && allowSkip)
         {
             allowSkip = false;
             EndCredits();
+            foreach( Transform child in transform )
+            {
+                child.gameObject.SetActive(false);
+            }
         }
     }
     
     #endregion
 
     #region Credit Methods
-    //loads the main menu
+    
+    /// <summary>
+    /// loads the main menu if credits started from main menu
+    /// sets the end of demo panel active if the credits starts after the game
+    /// </summary>
     public void EndCredits()
     {
-        GameStateManager.instance.GoToMainMenu();
+        if (GameStateManager.instance.currentState == GameStateManager.GameState.InGame)
+        {
+            InGameUI.Instance.ShowEndofDemo();
+            skipText.SetActive(false);
+        }
+        else
+        {
+            GameStateManager.instance.GoToMainMenu();
+        }
     }
 
     /// <summary>
