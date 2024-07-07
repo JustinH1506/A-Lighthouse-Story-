@@ -3,7 +3,22 @@ guid: 86f82c185b5cf824eb1500a9098a605b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Unbenanntes_Projekt (29)
+    second: {fileID: 2100000, guid: d66bccc5adda59542bf5f7d360944d68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Unbenanntes_Projekt (30)
+    second: {fileID: 2100000, guid: 8a62287467483974f93992f4a327c14a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: busch
+    second: {fileID: 2100000, guid: 8986dd37828a2994a9f08c6d30b87b2a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -48,7 +63,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
