@@ -13,9 +13,7 @@ public class EnemyChaseStop : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-        _enemyChase.enabled = false;
-
-        anim.enabled = false;
+        _enemyChase.gameObject.SetActive(false);
         
         branchAnim.SetTrigger("Start");
         
