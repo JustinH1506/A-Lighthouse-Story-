@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -60,6 +61,8 @@ public class PlayerMovement : PlayerBase
     
     [HideInInspector]
     public bool isSprinting;
+
+    [SerializeField] private LayerMask targetLayer;
 
     #endregion
 
@@ -179,6 +182,11 @@ public class PlayerMovement : PlayerBase
             
         }
 
+        if (UpwardCheck())
+        {
+            isSneaking = true;
+        }
+
         Vector3 animVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         
         anim.SetFloat("velocity", animVelocity.magnitude);
@@ -193,6 +201,11 @@ public class PlayerMovement : PlayerBase
         inputX = context.ReadValue<Vector3>().x;
         
         inputZ = context.ReadValue<Vector3>().z;
+    }
+    
+    private bool UpwardCheck()
+    {
+        return Physics.Raycast(transform.position, Vector3.up, targetLayer);
     }
     
     /// <summary>

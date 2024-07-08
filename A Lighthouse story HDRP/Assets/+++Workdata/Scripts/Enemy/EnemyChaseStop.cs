@@ -5,6 +5,7 @@ public class EnemyChaseStop : MonoBehaviour
     [SerializeField] private EnemyChase _enemyChase;
 
     [SerializeField] private Animator anim;
+    [SerializeField] private Animator branchAnim;
 
     /// <summary>
     /// Activate enemyChase and set the gameObject false when walking into the collider. 
@@ -15,6 +16,8 @@ public class EnemyChaseStop : MonoBehaviour
         _enemyChase.enabled = false;
 
         anim.enabled = false;
+        
+        branchAnim.SetTrigger("Start");
         
         MusicManager.Instance.PlayMusic(MusicManager.Instance.beachMusic, 0.5f);
         

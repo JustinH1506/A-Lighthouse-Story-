@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -93,7 +94,7 @@ public class PlayerObjectMove : PlayerBase
         }
         else
         {
-             moveableObject = null;
+            moveableObject = null;
 
              isMoving = false;
         }
@@ -112,7 +113,6 @@ public class PlayerObjectMove : PlayerBase
                 anim.SetBool("isPulling", false);
             }
         }
-        
     }
 
     /// <summary>

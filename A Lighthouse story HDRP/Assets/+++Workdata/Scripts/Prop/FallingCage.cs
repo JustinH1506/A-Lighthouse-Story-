@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FallingCage : MonoBehaviour
@@ -9,5 +7,10 @@ public class FallingCage : MonoBehaviour
     public void StartCredits()
     {
         LoadSceneManager.instance.SwitchScene("Credits", false);
+    }
+
+    public void CageSound()
+    {
+        MusicManager.Instance.PlayInGameSFX(MusicManager.Instance.cageFallSound);
     }
 }

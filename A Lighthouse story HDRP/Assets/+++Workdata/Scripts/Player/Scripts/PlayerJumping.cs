@@ -57,6 +57,8 @@ public class PlayerJumping : PlayerBase
         _playerObjectMove = GetComponent<PlayerObjectMove>();
 
         _playerMovement = GetComponent<PlayerMovement>();
+
+        coyoteTimeCounter = coyoteTime;
     }
 
     private void Update()
