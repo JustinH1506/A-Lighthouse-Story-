@@ -3533,7 +3533,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Darline Herbst\nMaike Poschmann\nNele Privenau\nArum Siemon\nFabian Z\xE4nker"
+  m_text: 'Darline Herbst
+
+    Maike Poschmann
+
+    Nele Privenau
+
+    Arum Siemon
+
+    Fabian
+    Zeanker'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 30bb7c157814772479bdb5f6a72343fc, type: 2}
   m_sharedMaterial: {fileID: 7083368014073599817, guid: 30bb7c157814772479bdb5f6a72343fc,
