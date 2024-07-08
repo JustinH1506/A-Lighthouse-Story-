@@ -100,18 +100,16 @@ public class PlayerObjectMove : PlayerBase
 
         if(isMoving && !isBranch)
         {
-            if (transform.forward.z == Vector3.zero.z)
-            {
-                anim.SetBool("isPushing", true);
-                
-                anim.SetBool("isPulling", false);
-            }
-
-            if (transform.forward.z <= Vector3.zero.z)
+            if(Vector2.Angle(new Vector2(rb.velocity.x, rb.velocity.z), new Vector2(transform.forward.x,transform.forward.z)) > 75f)
             {
                 anim.SetBool("isPushing", false);
-                
                 anim.SetBool("isPulling", true);
+            }
+            
+            if(Vector2.Angle(new Vector2(rb.velocity.x, rb.velocity.z), new Vector2(transform.forward.x,transform.forward.z)) < 75f)
+            {
+                anim.SetBool("isPushing", true);
+                anim.SetBool("isPulling", false);
             }
         }
         

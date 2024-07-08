@@ -22,7 +22,7 @@ public class StartFallingCage : MonoBehaviour
 
     private IEnumerator WaitForCageFall()
     {
-        while (player.position != transform.position)
+        while (Vector3.Distance(player.position, transform.position) > 0.02f)
         {
             player.GetComponent<PlayerMovement>().isDisabled = true;
             
