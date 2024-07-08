@@ -46,7 +46,7 @@ public class EnemyChase : MonoBehaviour
 
         _navMeshAgent.SetDestination(targetPos);
         
-        anim.SetFloat("Speed", -1f);
+        anim.SetFloat("speed", -1f);
         
         anim.SetTrigger("walk");
     }
