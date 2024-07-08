@@ -12,6 +12,10 @@ public class SmallCrabs : MonoBehaviour
       if (other.CompareTag("Player"))
       {
          _death.StartDeathAnimation();
+          
+          other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+          
+          other.gameObject.GetComponent<PlayerMovement>().DisableMovement();
       }
    }
 }
