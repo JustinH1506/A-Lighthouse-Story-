@@ -18,6 +18,9 @@ public class States : PlayerBase
     
     List<AudioClip> sandStepList, grassStepList, woodStepList;
 
+    /// <summary>
+    /// Set amount of time to wait to start other idle. 
+    /// </summary>
     private void Start()
     {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
@@ -26,6 +29,9 @@ public class States : PlayerBase
         }
     }
 
+    /// <summary>
+    /// Waits to start other idle and sets it. 
+    /// </summary>
     private void Update()
     {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
@@ -45,6 +51,9 @@ public class States : PlayerBase
         anim.SetFloat("lokkingTime", waitUntilLookIdle);
     }
 
+    /// <summary>
+    /// Checks which ground the player is on. 
+    /// </summary>
     private void FixedUpdate()
     {
         if (Physics.Raycast(transform.position, Vector3.down, Mathf.Infinity, sand))
@@ -78,7 +87,10 @@ public class States : PlayerBase
             isGrass = false;
         }
     }
-
+    
+    /// <summary>
+    /// Handles the step audio depending on which ground we are. 
+    /// </summary>
     public void StepAudio()
     {
         if (isSand)

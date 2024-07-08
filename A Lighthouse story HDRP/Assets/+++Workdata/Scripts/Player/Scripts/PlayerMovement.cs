@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -76,6 +75,10 @@ public class PlayerMovement : PlayerBase
     #endregion
 
     #region Methods
+    
+    /// <summary>
+    /// Sets Default speed.
+    /// </summary>
     protected override void Awake()
     {
         base.Awake();
@@ -83,6 +86,9 @@ public class PlayerMovement : PlayerBase
         maxSpeed = defaultSpeed;
     }
 
+    /// <summary>
+    /// Checks if player has a spawnpoint. 
+    /// </summary>
     private void Start()
     {
         if (!PlayerPrefs.HasKey(PlayerXKey))
@@ -203,6 +209,10 @@ public class PlayerMovement : PlayerBase
         inputZ = context.ReadValue<Vector3>().z;
     }
     
+    /// <summary>
+    /// Checks if object is above player.
+    /// </summary>
+    /// <returns></returns>
     private bool UpwardCheck()
     {
         return Physics.Raycast(transform.position, Vector3.up, targetLayer);
@@ -282,6 +292,9 @@ public class PlayerMovement : PlayerBase
         anim.SetFloat("velocity", 0f);
     }
 
+    /// <summary>
+    /// Enables Movement.
+    /// </summary>
     public void EnableMovement()
     {
         isDisabled = false;

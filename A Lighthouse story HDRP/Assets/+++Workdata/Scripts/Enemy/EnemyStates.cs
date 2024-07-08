@@ -36,13 +36,7 @@ public class EnemyStates : MonoBehaviour
 
     
     /// <summary>
-    /// Call Player movements Disable Movement method.
-    /// Enable crabShot.
-    /// wait for the crabShotWaitTime value.
-    /// crabShot disabled.
-    /// enemy chase enabled.
-    /// playerMovement siDisabled bool is false.
-    /// gameObject gets Set InActive. 
+    /// Starts the crab camera shot.
     /// </summary>
     /// <returns></returns>
     IEnumerator WaitTimeDuringCrabShot()

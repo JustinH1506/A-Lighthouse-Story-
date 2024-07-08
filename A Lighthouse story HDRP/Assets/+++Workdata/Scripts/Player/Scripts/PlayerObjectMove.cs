@@ -156,6 +156,10 @@ public class PlayerObjectMove : PlayerBase
         }
     }
 
+    /// <summary>
+    /// Connects the branch to the player. 
+    /// </summary>
+    /// <param name="context"></param>
     public void ConnectBranch(InputAction.CallbackContext context)
     {
         if (moveableObject != null && isBranch)
@@ -168,6 +172,10 @@ public class PlayerObjectMove : PlayerBase
         }
     }
     
+    /// <summary>
+    /// Disconnects the branch from the player. 
+    /// </summary>
+    /// <param name="context"></param>
     public void DisconnectBranch(InputAction.CallbackContext context)
     {
         if (moveableObject != null && isBranch)

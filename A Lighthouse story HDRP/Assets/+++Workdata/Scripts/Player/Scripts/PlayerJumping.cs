@@ -61,6 +61,9 @@ public class PlayerJumping : PlayerBase
         coyoteTimeCounter = coyoteTime;
     }
 
+    /// <summary>
+    /// Checks if player is on the ground and handles of fast the player falls.
+    /// </summary>
     private void Update()
     {
         if (GroundCheck())
@@ -86,6 +89,9 @@ public class PlayerJumping : PlayerBase
         anim.SetFloat("velocityY", rb.velocity.y);
     }
 
+    /// <summary>
+    /// Handles the landing animation. 
+    /// </summary>
     private void LateUpdate()
     {
         anim.SetBool("hasLanded", GroundCheck());

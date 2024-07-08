@@ -4,6 +4,10 @@ public class SmallCrabs : MonoBehaviour
 {
    [SerializeField] private Death _death;
 
+   /// <summary>
+   /// Stops the player and start death animation. 
+   /// </summary>
+   /// <param name="other"></param>
    private void OnTriggerEnter(Collider other)
    {
       if (other.CompareTag("Player"))

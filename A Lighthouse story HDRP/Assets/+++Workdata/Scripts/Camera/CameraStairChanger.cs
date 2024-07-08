@@ -1,14 +1,14 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraStairChanger : MonoBehaviour
 {
     [SerializeField] private CinemachineFreeLook stairCam;
 
+    /// <summary>
+    /// Enables stairCam. 
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
@@ -17,6 +17,10 @@ public class CameraStairChanger : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Disables Stair cam.
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
         if(other.CompareTag("Player"))

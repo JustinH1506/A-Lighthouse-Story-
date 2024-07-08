@@ -9,6 +9,10 @@ public class TriggerBehavior : MonoBehaviour
     public UnityEvent triggerEnterEvent;
     public UnityEvent triggerExitEvent;
 
+    /// <summary>
+    /// Starts event based on triggerEnterEvent. 
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -17,6 +21,10 @@ public class TriggerBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Starts event based on triggerExitEvent. 
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))

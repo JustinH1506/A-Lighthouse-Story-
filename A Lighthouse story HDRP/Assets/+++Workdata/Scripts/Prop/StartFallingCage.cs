@@ -12,6 +12,10 @@ public class StartFallingCage : MonoBehaviour
 
     [SerializeField] private Animator anim;
 
+    /// <summary>
+    /// Starts the WaitForCageFall courotine.
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -20,6 +24,10 @@ public class StartFallingCage : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Waits for player to reach destination before stopping it and starting the cage for animation. 
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator WaitForCageFall()
     {
         while (Vector3.Distance(player.position, transform.position) > 0.02f)

@@ -51,6 +51,10 @@ public class EnemyChase : MonoBehaviour
         anim.SetTrigger("walk");
     }
 
+    /// <summary>
+    /// Starts Death animation for player.
+    /// </summary>
+    /// <param name="other"></param>
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -59,6 +63,9 @@ public class EnemyChase : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Plays the crabs steps sound effects. 
+    /// </summary>
     public void CrabSteps()
     {
         MusicManager.Instance.PlayInGameSFX(MusicManager.Instance.crabSteps[Random.Range(0,9)]);

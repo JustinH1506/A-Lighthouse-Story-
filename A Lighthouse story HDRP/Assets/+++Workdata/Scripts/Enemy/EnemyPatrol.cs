@@ -39,6 +39,10 @@ public class EnemyPatrol : MonoBehaviour
         Patrol();
     }
 
+    /// <summary>
+    /// Deactivates the searching eye ui icon adn starts death animation. 
+    /// </summary>
+    /// <param name="other"></param>
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -98,21 +102,33 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Plays crabs steps sound effect. 
+    /// </summary>
     public void CrabSteps()
     {
         MusicManager.Instance.PlayInGameSFX(MusicManager.Instance.crabSteps[UnityEngine.Random.Range(0,9)]);
     }
 
+    /// <summary>
+    /// Deactivates the Eye ui. 
+    /// </summary>
     public void DeactivateCrabEyeUI()
     {
         InGameUI.Instance.DeactivateSearchingEye();
     }
-
+    
+    /// <summary>
+    /// Activates the crab eye ui. 
+    /// </summary>
     public void ActivateCrabEyeUI()
     {
         InGameUI.Instance.ActivateSearchingEye();
     }
 
+    /// <summary>
+    /// Start Cabin Music.
+    /// </summary>
     public void ActivateCabinMusic()
     {
         MusicManager.Instance.PlayMusic(MusicManager.Instance.cabinMusic, 0.5f);
